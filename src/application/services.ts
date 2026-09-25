@@ -192,9 +192,11 @@ export async function ensureCatalog() {
   for (const event of seed.events) {
     await EventModel.updateOne({ id: event.id }, { $setOnInsert: event }, { upsert: true });
   }
+  const ids = seed.templates.map((template) => template.id);
   for (const template of seed.templates) {
-    await TemplateModel.updateOne({ id: template.id }, { $setOnInsert: template }, { upsert: true });
+    await TemplateModel.updateOne({ id: template.id }, { $set: template }, { upsert: true });
   }
+  await TemplateModel.deleteMany({ id: { $nin: ids } });
 }
 
 function publicEvent(row: { id: string; label: string; cardLabel: string; detailLabel?: string; namesLabel?: string; hostsLabel?: string; titleLabel?: string }) {
@@ -313,10 +315,14 @@ export async function listGreetings(token: string | undefined, slugValue: string
 export async function getPublicInvite(slugValue: string) {
   const invite = await InviteModel.findOne({ slug: slugValue });
   if (!invite) throw new AppError(404, "Invitation not found.");
+  const greetings = await GreetingModel.find({ inviteId: invite.id }).sort({ createdAt: -1 });
   return {
     slug: invite.slug,
     templateId: invite.templateId,
     fields: invite.fields,
+    greetings: greetings
+      .filter((row) => row.note.trim())
+      .map((row) => ({ name: row.name, note: row.note })),
   };
 }
 

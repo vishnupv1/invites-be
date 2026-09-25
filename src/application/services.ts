@@ -1,4 +1,5 @@
-import { createHash, randomBytes } from "node:crypto";
+import { createHash, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
+import { promisify } from "node:util";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { findTemplate } from "../domain/catalog.js";
@@ -8,27 +9,91 @@ import { GreetingModel, HostModel, InviteModel, MediaModel, PurchaseModel } from
 
 const uploadsDir = path.resolve(process.cwd(), "uploads");
 
+const scryptAsync = promisify(scrypt);
+
 function hashToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
+}
+
+async function hashPassword(password: string) {
+  const salt = randomBytes(16).toString("hex");
+  const derived = (await scryptAsync(password, salt, 32)) as Buffer;
+  return `${salt}:${derived.toString("hex")}`;
+}
+
+async function passwordMatches(password: string, stored: string) {
+  const [salt, hex] = stored.split(":");
+  if (!salt || !hex) return false;
+  const derived = (await scryptAsync(password, salt, 32)) as Buffer;
+  const expected = Buffer.from(hex, "hex");
+  if (derived.length !== expected.length) return false;
+  return timingSafeEqual(derived, expected);
+}
+
+function issueToken() {
+  const token = randomBytes(24).toString("hex");
+  return { token, tokenHash: hashToken(token) };
 }
 
 function slug() {
   return randomBytes(6).toString("base64url");
 }
 
+function hostView(host: { id: string; email: string; name: string }, token: string) {
+  return { token, host: { id: host.id, email: host.email, name: host.name } };
+}
+
 export async function openSession(email: string, name: string) {
   const normalized = email.trim().toLowerCase();
-  const token = randomBytes(24).toString("hex");
-  const tokenHash = hashToken(token);
+  const issued = issueToken();
   const existing = await HostModel.findOne({ email: normalized });
   if (existing) {
     existing.name = name.trim() || existing.name;
-    existing.tokenHash = tokenHash;
+    existing.tokenHash = issued.tokenHash;
     await existing.save();
-    return { token, host: { id: existing.id, email: existing.email, name: existing.name } };
+    return hostView(existing, issued.token);
   }
-  const host = await HostModel.create({ email: normalized, name: name.trim() || "Host", tokenHash });
-  return { token, host: { id: host.id, email: host.email, name: host.name } };
+  const host = await HostModel.create({
+    email: normalized,
+    name: name.trim() || "Host",
+    tokenHash: issued.tokenHash,
+  });
+  return hostView(host, issued.token);
+}
+
+export async function signUp(name: string, email: string, password: string) {
+  const normalized = email.trim().toLowerCase();
+  const passwordHash = await hashPassword(password);
+  const issued = issueToken();
+  const existing = await HostModel.findOne({ email: normalized });
+  if (existing?.passwordHash) {
+    throw new AppError(409, "An account with that email already exists. Log in instead.");
+  }
+  if (existing) {
+    existing.name = name.trim() || existing.name;
+    existing.passwordHash = passwordHash;
+    existing.tokenHash = issued.tokenHash;
+    await existing.save();
+    return hostView(existing, issued.token);
+  }
+  const host = await HostModel.create({
+    email: normalized,
+    name: name.trim() || "Host",
+    passwordHash,
+    tokenHash: issued.tokenHash,
+  });
+  return hostView(host, issued.token);
+}
+
+export async function logIn(email: string, password: string) {
+  const host = await HostModel.findOne({ email: email.trim().toLowerCase() });
+  if (!host?.passwordHash) throw new AppError(401, "No account for that email. Create one to continue.");
+  const ok = await passwordMatches(password, host.passwordHash);
+  if (!ok) throw new AppError(401, "That password doesn't match.");
+  const issued = issueToken();
+  host.tokenHash = issued.tokenHash;
+  await host.save();
+  return hostView(host, issued.token);
 }
 
 export async function hostFromToken(token: string | undefined) {
@@ -138,10 +203,20 @@ export function mediaPath(filename: string) {
 }
 
 function toInvite(
-  invite: { _id: unknown; templateId: string; slug: string; names: string; title: string; date: string; createdAt?: Date },
+  invite: {
+    _id: unknown;
+    templateId: string;
+    slug: string;
+    names: string;
+    title: string;
+    date: string;
+    createdAt?: Date;
+    fields?: { photos?: string[]; event?: string };
+  },
   replies: number,
   yes: number,
 ) {
+  const photos = Array.isArray(invite.fields?.photos) ? invite.fields.photos : [];
   return {
     id: String(invite._id),
     templateId: invite.templateId,
@@ -152,5 +227,7 @@ function toInvite(
     createdAt: invite.createdAt?.toISOString() ?? new Date().toISOString(),
     replies,
     yes,
+    event: invite.fields?.event ?? "",
+    cover: photos[0] ?? "",
   };
 }

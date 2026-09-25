@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, createInvite, getPublicInvite, hostFromToken, listInvites, listPurchases, mediaPath, openSession, purchaseTemplate, saveMedia } from "../application/services.js";
+import { addGreeting, createInvite, getPublicInvite, hostFromToken, listInvites, listPurchases, logIn, mediaPath, openSession, purchaseTemplate, saveMedia, signUp } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -20,12 +20,33 @@ export function buildServer() {
 
   app.setErrorHandler((error, _request, reply) => {
     if (error instanceof AppError) return reply.status(error.status).send({ error: error.message });
-    if (error instanceof z.ZodError) return reply.status(400).send({ error: "Check the invitation details." });
+    if (error instanceof z.ZodError) return reply.status(400).send({ error: "Check those details." });
     app.log.error(error);
     return reply.status(500).send({ error: "Something went wrong." });
   });
 
   app.get("/health", async () => ({ ok: true }));
+
+  app.post("/api/auth/signup", async (request) => {
+    const body = z
+      .object({
+        name: z.string().trim().min(1).max(120),
+        email: z.string().email(),
+        password: z.string().min(8).max(200),
+      })
+      .parse(request.body);
+    return signUp(body.name, body.email, body.password);
+  });
+
+  app.post("/api/auth/login", async (request) => {
+    const body = z
+      .object({
+        email: z.string().email(),
+        password: z.string().min(1).max(200),
+      })
+      .parse(request.body);
+    return logIn(body.email, body.password);
+  });
 
   app.post("/api/session", async (request) => {
     const body = z.object({ email: z.string().email(), name: z.string().min(1).max(120) }).parse(request.body);

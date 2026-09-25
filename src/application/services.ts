@@ -1,5 +1,5 @@
 import { createHash, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
-import { readFileSync } from "node:fs";
+import catalogSeedFile from "../infrastructure/catalog-seed.json" with { type: "json" };
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -183,8 +183,7 @@ type SeedEvent = { id: string; label: string; cardLabel: string; detailLabel: st
 type SeedTemplate = { id: string; name: string; style: string; price: number; free: boolean; events: string[]; tagline: string; description: string; asks: unknown; samples: unknown };
 
 function catalogSeed() {
-  const file = new URL("../infrastructure/catalog-seed.json", import.meta.url);
-  return JSON.parse(readFileSync(file, "utf8")) as { events: SeedEvent[]; templates: SeedTemplate[] };
+  return catalogSeedFile as { events: SeedEvent[]; templates: SeedTemplate[] };
 }
 
 export async function ensureCatalog() {

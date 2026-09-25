@@ -52,6 +52,37 @@ const MediaSchema = new Schema(
   { timestamps: true },
 );
 
+const EventSchema = new Schema(
+  {
+    id: { type: String, required: true, unique: true },
+    label: { type: String, required: true },
+    cardLabel: { type: String, required: true },
+    detailLabel: { type: String, default: "" },
+    namesLabel: { type: String, default: "" },
+    hostsLabel: { type: String, default: "" },
+    titleLabel: { type: String, default: "" },
+  },
+  { timestamps: true },
+);
+
+const TemplateSchema = new Schema(
+  {
+    id: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
+    style: { type: String, required: true },
+    price: { type: Number, required: true },
+    free: { type: Boolean, required: true },
+    events: { type: [String], required: true },
+    tagline: { type: String, default: "" },
+    description: { type: String, default: "" },
+    asks: { type: Schema.Types.Mixed, required: true },
+    samples: { type: Schema.Types.Mixed, required: true },
+  },
+  { timestamps: true },
+);
+
+export const EventModel = mongoose.model("Event", EventSchema);
+export const TemplateModel = mongoose.model("Template", TemplateSchema);
 export const HostModel = mongoose.model("Host", HostSchema);
 export const PurchaseModel = mongoose.model("Purchase", PurchaseSchema);
 export const InviteModel = mongoose.model("Invite", InviteSchema);

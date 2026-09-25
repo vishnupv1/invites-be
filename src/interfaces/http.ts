@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, createInvite, getPublicInvite, hostFromToken, listInvites, listPurchases, logIn, mediaPath, openSession, purchaseTemplate, saveMedia, signUp } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, mediaPath, openSession, purchaseTemplate, saveMedia, signUp } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -26,6 +26,19 @@ export function buildServer() {
   });
 
   app.get("/health", async () => ({ ok: true }));
+
+  app.get("/api/events", async () => listEvents());
+
+  app.get("/api/templates", async () => listTemplates());
+
+  app.get("/api/templates/:id", async (request) => {
+    const { id } = request.params as { id: string };
+    const template = await getCatalogTemplate(id);
+    if (!template) throw new AppError(404, "Unknown template.");
+    return template;
+  });
+
+  app.get("/api/admin/summary", async (request) => adminSummary(bearer(request.headers.authorization)));
 
   app.post("/api/auth/signup", async (request) => {
     const body = z
@@ -70,6 +83,11 @@ export function buildServer() {
   app.post("/api/invites", async (request) => {
     const body = z.object({ templateId: z.string(), fields: inviteFieldsSchema }).parse(request.body);
     return createInvite(bearer(request.headers.authorization), body.templateId, body.fields);
+  });
+
+  app.get("/api/invites/:slug/greetings", async (request) => {
+    const { slug } = request.params as { slug: string };
+    return listGreetings(bearer(request.headers.authorization), slug);
   });
 
   app.get("/api/invites/:slug", async (request) => {

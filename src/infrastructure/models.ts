@@ -4,6 +4,7 @@ const HostSchema = new Schema(
   {
     email: { type: String, required: true, unique: true, lowercase: true },
     name: { type: String, required: true },
+    passwordHash: { type: String },
     tokenHash: { type: String, required: true, unique: true },
   },
   { timestamps: true },

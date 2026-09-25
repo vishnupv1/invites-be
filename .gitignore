@@ -4,3 +4,4 @@ uploads
 dist
 *.log
 .DS_Store
+.env.example

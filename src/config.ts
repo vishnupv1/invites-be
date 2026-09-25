@@ -18,10 +18,15 @@ if (existsSync(envFile)) {
   }
 }
 
+const corsOrigins = (process.env.CORS_ORIGIN ?? "")
+  .split(",")
+  .map((origin) => origin.trim().replace(/\/$/, ""))
+  .filter(Boolean);
+
 export const config = {
   port: Number(process.env.PORT ?? 4010),
   mongoUri: process.env.MONGODB_OG_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/vellum",
-  corsOrigin: process.env.CORS_ORIGIN ?? true,
+  corsOrigin: corsOrigins.length === 0 ? true : corsOrigins.length === 1 ? corsOrigins[0] : corsOrigins,
   adminEmail: (process.env.ADMIN_EMAIL ?? "admin@invitesready.com").trim().toLowerCase(),
   adminPassword: process.env.ADMIN_PASSWORD ?? "12345",
   adminEmails: (process.env.ADMIN_EMAILS ?? process.env.ADMIN_EMAIL ?? "admin@invitesready.com")

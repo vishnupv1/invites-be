@@ -104,6 +104,146 @@
           "receptionVenue": "Grand Palace Auditorium",
           "receptionAddress": "NH Bypass, Malappuram"
         }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Nikah",
+        "reception": "Walima",
+        "themes": [],
+        "defaultTheme": "",
+        "shots": [
+          {
+            "label": "Moment 1"
+          },
+          {
+            "label": "Moment 2"
+          },
+          {
+            "label": "Moment 3"
+          },
+          {
+            "label": "Moment 4"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 0
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Opening card",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note to guests",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Nikah",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Walima",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Duas and wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     },
     {
@@ -145,6 +285,128 @@
           "receptionVenue": "Grand Palace Auditorium",
           "receptionAddress": "NH Bypass, Malappuram"
         }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Ceremony",
+        "reception": "Reception",
+        "themes": [],
+        "defaultTheme": "",
+        "shots": [
+          {
+            "label": "Title photo"
+          },
+          {
+            "label": "Moment 1"
+          },
+          {
+            "label": "Moment 2"
+          },
+          {
+            "label": "Moment 3"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 0
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Title screen",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note to guests",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Ceremony",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "wishes",
+            "label": "Wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     },
     {
@@ -159,7 +421,7 @@
       "tagline": "Garden wedding",
       "description": "A cream garden wedding. Flip the card for the date, then the day, the venues, and a reply.",
       "asks": {
-        "photos": 4,
+        "photos": 3,
         "audio": true,
         "location": true
       },
@@ -186,6 +448,162 @@
           "receptionVenue": "Lakeside Convention Centre",
           "receptionAddress": "Kumarakom Road, Kottayam"
         }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Ceremony",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "terracotta",
+            "name": "Terracotta"
+          },
+          {
+            "id": "emerald",
+            "name": "Sage"
+          },
+          {
+            "id": "midnight",
+            "name": "Dusk"
+          }
+        ],
+        "defaultTheme": "terracotta",
+        "shots": [
+          {
+            "label": "Portrait"
+          },
+          {
+            "label": "Ceremony"
+          },
+          {
+            "label": "Reception"
+          }
+        ],
+        "rsvp": {
+          "meal": true,
+          "song": true,
+          "maxGuests": 0
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Flip card",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Place line",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Story line",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Ceremony",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "travel",
+            "label": "Where to stay",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     },
     {
@@ -227,6 +645,135 @@
           "dress": "",
           "rsvpBy": "2027-02-28"
         }
+      },
+      "meta": {
+        "names": "child",
+        "ceremony": "Holy Baptism",
+        "reception": "Lunch and cake",
+        "themes": [
+          {
+            "id": "sky",
+            "name": "Sky"
+          },
+          {
+            "id": "rose",
+            "name": "Blush"
+          },
+          {
+            "id": "emerald",
+            "name": "Sage"
+          }
+        ],
+        "defaultTheme": "sky",
+        "shots": [
+          {
+            "label": "Baby photo"
+          },
+          {
+            "label": "Family photo"
+          },
+          {
+            "label": "Tiny feet"
+          },
+          {
+            "label": "First smile"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 12
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Dove opening",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Parents",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Child",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Holy Baptism",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Lunch and cake",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     },
     {
@@ -268,6 +815,149 @@
           "lat": "",
           "lng": ""
         }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Muhurtham",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "midnight",
+            "name": "Midnight"
+          },
+          {
+            "id": "plum",
+            "name": "Royal"
+          },
+          {
+            "id": "emerald",
+            "name": "Emerald"
+          }
+        ],
+        "defaultTheme": "midnight",
+        "shots": [
+          {
+            "label": "Moment 1"
+          },
+          {
+            "label": "Moment 2"
+          },
+          {
+            "label": "Moment 3"
+          },
+          {
+            "label": "Moment 4"
+          },
+          {
+            "label": "Moment 5"
+          },
+          {
+            "label": "Moment 6"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Temple doors",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Honour line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Muhurtham",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     },
     {
@@ -282,7 +972,7 @@
       "tagline": "Wedding",
       "description": "A bottle on the shore opens onto sunset vows, a beach reception, and a reply.",
       "asks": {
-        "photos": 6,
+        "photos": 3,
         "audio": true,
         "location": true
       },
@@ -309,6 +999,150 @@
           "lat": "",
           "lng": ""
         }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Sunset vows",
+        "reception": "Beach reception",
+        "themes": [
+          {
+            "id": "terracotta",
+            "name": "Sunset"
+          },
+          {
+            "id": "sky",
+            "name": "Tropical"
+          },
+          {
+            "id": "plum",
+            "name": "Dusk"
+          }
+        ],
+        "defaultTheme": "terracotta",
+        "shots": [
+          {
+            "label": "Surf school"
+          },
+          {
+            "label": "Island hopping"
+          },
+          {
+            "label": "The proposal"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Bottle on the shore",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Sunset vows",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Beach reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Story",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "travel",
+            "label": "Travel and dress",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     },
     {
@@ -323,7 +1157,7 @@
       "tagline": "Housewarming",
       "description": "A front door opens onto a griha pravesh, a house tour, and a reply.",
       "asks": {
-        "photos": 4,
+        "photos": 0,
         "audio": true,
         "location": true
       },
@@ -350,6 +1184,119 @@
           "lat": "",
           "lng": ""
         }
+      },
+      "meta": {
+        "names": "family",
+        "ceremony": "Griha Pravesh",
+        "themes": [
+          {
+            "id": "terracotta",
+            "name": "Day"
+          },
+          {
+            "id": "rose",
+            "name": "Sunset"
+          },
+          {
+            "id": "midnight",
+            "name": "Night"
+          }
+        ],
+        "defaultTheme": "terracotta",
+        "shots": [],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 12
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Front door",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "names",
+            "label": "Family",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Griha Pravesh",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "Programme",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "house",
+            "label": "House tour",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "gift",
+            "label": "Gift note",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
       }
     }
   ]

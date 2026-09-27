@@ -274,8 +274,8 @@
       "id": "beach",
       "name": "Beach",
       "style": "beach",
-      "price": 0,
-      "free": true,
+      "price": 2000,
+      "free": false,
       "events": [
         "marriage"
       ],

@@ -76,6 +76,7 @@ const TemplateSchema = new Schema(
     tagline: { type: String, default: "" },
     description: { type: String, default: "" },
     asks: { type: Schema.Types.Mixed, required: true },
+    meta: { type: Schema.Types.Mixed, default: null },
     samples: { type: Schema.Types.Mixed, required: true },
   },
   { timestamps: true },

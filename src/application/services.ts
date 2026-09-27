@@ -180,7 +180,19 @@ export async function hostFromToken(token: string | undefined) {
 }
 
 type SeedEvent = { id: string; label: string; cardLabel: string; detailLabel: string; namesLabel: string; hostsLabel: string; titleLabel: string };
-type SeedTemplate = { id: string; name: string; style: string; price: number; free: boolean; events: string[]; tagline: string; description: string; asks: unknown; samples: unknown };
+type SeedTemplate = {
+  id: string;
+  name: string;
+  style: string;
+  price: number;
+  free: boolean;
+  events: string[];
+  tagline: string;
+  description: string;
+  asks: unknown;
+  meta?: unknown;
+  samples: unknown;
+};
 
 function catalogSeed() {
   return catalogSeedFile as { events: SeedEvent[]; templates: SeedTemplate[] };
@@ -221,6 +233,7 @@ function publicTemplate(row: SeedTemplate) {
     tagline: row.tagline,
     description: row.description,
     asks: row.asks,
+    meta: row.meta ?? null,
     samples: row.samples,
   };
 }

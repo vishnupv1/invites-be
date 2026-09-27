@@ -3,7 +3,7 @@ import { z } from "zod";
 const text = z.string().max(500).default("");
 
 export const inviteFieldsSchema = z.object({
-  event: z.enum(["marriage", "reception", "birthday", "anniversary", "engagement", "housewarming"]),
+  event: z.enum(["marriage", "reception", "birthday", "anniversary", "engagement", "housewarming", "baptism"]),
   hosts: text,
   names: z.string().trim().min(1).max(200),
   title: text,

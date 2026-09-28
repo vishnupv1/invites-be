@@ -48,6 +48,7 @@ const MediaSchema = new Schema(
     hostId: { type: Schema.Types.ObjectId, ref: "Host", required: true },
     filename: { type: String, required: true },
     mime: { type: String, required: true },
+    data: { type: Buffer },
   },
   { timestamps: true },
 );

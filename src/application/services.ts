@@ -5,7 +5,7 @@ import path from "node:path";
 import { promisify } from "node:util";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
-import { inviteFieldsSchema, type InviteFields } from "../domain/invite-fields.js";
+import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema, type EditorState, type InviteFields } from "../domain/invite-fields.js";
 import { EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
 
 const uploadsDir = path.resolve(process.cwd(), "uploads");
@@ -287,12 +287,77 @@ export async function createInvite(token: string | undefined, templateId: string
     hostId: host.id,
     templateId,
     slug: slug(),
+    status: "live",
     names: parsed.names,
     title: parsed.title,
     date: parsed.date,
     fields: parsed,
   });
   return toInvite(invite, 0, 0);
+}
+
+export async function saveInvite(
+  token: string | undefined,
+  input: { id?: string; templateId: string; fields: InviteFields; editor?: EditorState },
+) {
+  const host = await hostFromToken(token);
+  const template = await getCatalogTemplate(input.templateId);
+  if (!template) throw new AppError(404, "Unknown template.");
+  const parsed = draftFieldsSchema.parse(input.fields);
+  const editor = input.editor ? editorStateSchema.parse(input.editor) : undefined;
+  const names = parsed.names.trim() || "Untitled invitation";
+  if (input.id) {
+    const invite = await InviteModel.findOne({ _id: input.id, hostId: host.id });
+    if (!invite) throw new AppError(404, "Invitation not found.");
+    invite.templateId = input.templateId;
+    invite.names = names;
+    invite.title = parsed.title;
+    invite.date = parsed.date || invite.date || "";
+    invite.fields = parsed;
+    if (editor) invite.editor = editor;
+    invite.markModified("fields");
+    invite.markModified("editor");
+    await invite.save();
+    return toInvite(invite, await GreetingModel.countDocuments({ inviteId: invite.id }), await GreetingModel.countDocuments({ inviteId: invite.id, attending: true }));
+  }
+  const invite = await InviteModel.create({
+    hostId: host.id,
+    templateId: input.templateId,
+    slug: slug(),
+    status: "draft",
+    names,
+    title: parsed.title,
+    date: parsed.date || "",
+    fields: parsed,
+    editor,
+  });
+  return toInvite(invite, 0, 0);
+}
+
+export async function publishInvite(token: string | undefined, id: string) {
+  const host = await hostFromToken(token);
+  const invite = await InviteModel.findOne({ _id: id, hostId: host.id });
+  if (!invite) throw new AppError(404, "Invitation not found.");
+  if (invite.status !== "draft") return toInvite(invite, await GreetingModel.countDocuments({ inviteId: invite.id }), await GreetingModel.countDocuments({ inviteId: invite.id, attending: true }));
+  await assertCanUse(host.id, invite.templateId);
+  const names = String(invite.fields?.names ?? "").trim();
+  const date = String(invite.fields?.date ?? "").trim();
+  if (!names || date.length < 8) throw new AppError(400, "Add the names and a date before publishing.");
+  invite.names = names;
+  invite.status = "live";
+  await invite.save();
+  return toInvite(invite, await GreetingModel.countDocuments({ inviteId: invite.id }), await GreetingModel.countDocuments({ inviteId: invite.id, attending: true }));
+}
+
+export async function getOwnInvite(token: string | undefined, id: string) {
+  const host = await hostFromToken(token);
+  const invite = await InviteModel.findOne({ _id: id, hostId: host.id });
+  if (!invite) throw new AppError(404, "Invitation not found.");
+  const [replies, yes] = await Promise.all([
+    GreetingModel.countDocuments({ inviteId: invite.id }),
+    GreetingModel.countDocuments({ inviteId: invite.id, attending: true }),
+  ]);
+  return { ...toInvite(invite, replies, yes), fields: invite.fields, editor: invite.editor ?? null };
 }
 
 export async function listInvites(token: string | undefined) {
@@ -325,7 +390,7 @@ export async function listGreetings(token: string | undefined, slugValue: string
 
 export async function getPublicInvite(slugValue: string) {
   const invite = await InviteModel.findOne({ slug: slugValue });
-  if (!invite) throw new AppError(404, "Invitation not found.");
+  if (!invite || invite.status === "draft") throw new AppError(404, "Invitation not found.");
   const greetings = await GreetingModel.find({ inviteId: invite.id }).sort({ createdAt: -1 });
   return {
     slug: invite.slug,
@@ -339,7 +404,7 @@ export async function getPublicInvite(slugValue: string) {
 
 export async function addGreeting(slugValue: string, input: { name: string; note: string; attending: boolean }) {
   const invite = await InviteModel.findOne({ slug: slugValue });
-  if (!invite) throw new AppError(404, "Invitation not found.");
+  if (!invite || invite.status === "draft") throw new AppError(404, "Invitation not found.");
   const greeting = await GreetingModel.create({
     inviteId: invite.id,
     name: input.name.trim(),
@@ -396,6 +461,7 @@ function toInvite(
     title: string;
     date: string;
     createdAt?: Date;
+    status?: string;
     fields?: {
       photos?: string[];
       event?: string;
@@ -413,6 +479,7 @@ function toInvite(
     id: String(invite._id),
     templateId: invite.templateId,
     code: invite.slug,
+    status: invite.status === "draft" ? "draft" : "live",
     names: invite.names,
     title: invite.title,
     date: invite.date,

@@ -3,10 +3,10 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, purchaseTemplate, readMedia, saveMedia, signUp } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
-import { inviteFieldsSchema } from "../domain/invite-fields.js";
+import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
 
 function bearer(header: string | undefined) {
   if (!header?.startsWith("Bearer ")) return undefined;
@@ -90,6 +90,39 @@ export function buildServer() {
   app.post("/api/invites", async (request) => {
     const body = z.object({ templateId: z.string(), fields: inviteFieldsSchema }).parse(request.body);
     return createInvite(bearer(request.headers.authorization), body.templateId, body.fields);
+  });
+
+  app.post("/api/invites/draft", async (request) => {
+    const body = z
+      .object({
+        templateId: z.string(),
+        fields: draftFieldsSchema,
+        editor: editorStateSchema.optional(),
+      })
+      .parse(request.body);
+    return saveInvite(bearer(request.headers.authorization), body);
+  });
+
+  app.get("/api/invites/record/:id", async (request) => {
+    const { id } = request.params as { id: string };
+    return getOwnInvite(bearer(request.headers.authorization), id);
+  });
+
+  app.put("/api/invites/record/:id", async (request) => {
+    const { id } = request.params as { id: string };
+    const body = z
+      .object({
+        templateId: z.string(),
+        fields: draftFieldsSchema,
+        editor: editorStateSchema.optional(),
+      })
+      .parse(request.body);
+    return saveInvite(bearer(request.headers.authorization), { ...body, id });
+  });
+
+  app.post("/api/invites/record/:id/publish", async (request) => {
+    const { id } = request.params as { id: string };
+    return publishInvite(bearer(request.headers.authorization), id);
   });
 
   app.get("/api/invites/:slug/greetings", async (request) => {

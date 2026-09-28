@@ -20,10 +20,25 @@ export const inviteFieldsSchema = z.object({
   receptionVenue: text,
   receptionAddress: z.string().max(500).default(""),
   photos: z.array(z.string().max(300)).max(16).default([]),
+  notes: z.string().max(8000).default(""),
   audio: z.string().max(300).default(""),
   lat: text,
   lng: text,
   lines: z.string().max(8000).default(""),
 });
 
+export const draftFieldsSchema = inviteFieldsSchema.extend({
+  names: z.string().trim().max(200).default(""),
+  date: z.string().max(20).default(""),
+});
+
+export const editorStateSchema = z
+  .object({
+    swatch: z.string().max(40).default(""),
+    receptionOn: z.boolean().default(false),
+    sections: z.array(z.object({ id: z.string().max(40), on: z.boolean() })).max(40).default([]),
+  })
+  .partial();
+
 export type InviteFields = z.infer<typeof inviteFieldsSchema>;
+export type EditorState = z.infer<typeof editorStateSchema>;

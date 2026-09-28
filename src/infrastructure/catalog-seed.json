@@ -1798,6 +1798,233 @@
           }
         ]
       }
+    },
+    {
+      "id": "peace",
+      "name": "Peace",
+      "style": "peace",
+      "price": 999,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Gift hamper",
+      "description": "A gift-hamper wedding. The ribbon opens onto the day, the story, the celebrations and a reply.",
+      "asks": {
+        "photos": 5,
+        "audio": true,
+        "location": true
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "hosts": "Together with their families",
+          "names": "Maya & Dev",
+          "title": "are getting married",
+          "detail": "Priya & Vivek",
+          "date": "2028-12-09",
+          "time": "17:00",
+          "venue": "The Glasshouse",
+          "address": "Bengaluru",
+          "message": "See you there",
+          "dress": "Black-tie optional in soft neutrals, blush and champagne.",
+          "rsvpBy": "2028-11-09",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"A shared umbrella\",\"text\":\"Caught in a monsoon downpour outside the same bookshop.\"},{\"year\":\"2021\",\"title\":\"The first trip\",\"text\":\"A road trip to the hills and far too many playlists.\"},{\"year\":\"2024\",\"title\":\"Moving in\",\"text\":\"Two cities, one tiny apartment, a very opinionated cat.\"},{\"year\":\"2027\",\"title\":\"The question\",\"text\":\"A quiet morning, a handwritten note and a very happy yes.\"}],\"programme\":[{\"kick\":\"Friday evening\",\"title\":\"Welcome Cocktails\",\"time\":\"Fri, 8 December · 7:00 PM\",\"text\":\"The Rooftop Terrace\",\"note\":\"Cocktail chic\"},{\"kick\":\"The main event\",\"title\":\"The Ceremony\",\"time\":\"Sat, 9 December · 5:00 PM\",\"text\":\"The Glasshouse Garden\",\"note\":\"Black-tie optional\"},{\"kick\":\"After dark\",\"title\":\"Dinner & Dancing\",\"time\":\"Sat, 9 December · 7:30 PM\",\"text\":\"The Crystal Ballroom\",\"note\":\"Bring dancing shoes\"}],\"gift\":\"Your presence is our present. If you'd like, a donation to our chosen charity would mean the world.\",\"stay\":\"Rooms are held at two hotels nearby. Mention the couple when booking.\",\"airport\":\"Valet parking on site, and cabs from the airport take about 50 minutes.\",\"caption\":\"#MayaMeetsDev\"}"
+        }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The ceremony",
+        "themes": [
+          {
+            "id": "blush",
+            "name": "Blush"
+          },
+          {
+            "id": "noir",
+            "name": "Noir"
+          },
+          {
+            "id": "sage",
+            "name": "Sage"
+          }
+        ],
+        "defaultTheme": "blush",
+        "shots": [
+          {
+            "label": "Paris, 2023"
+          },
+          {
+            "label": "Our first home"
+          },
+          {
+            "label": "The proposal"
+          },
+          {
+            "label": "Sunday mornings"
+          },
+          {
+            "label": "Road trip"
+          }
+        ],
+        "rsvp": {
+          "meal": true,
+          "song": false,
+          "maxGuests": 8
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Gift hamper",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Family line",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "The gift is for",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Closing line",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Place",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebration",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress code",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "travel",
+            "label": "Stay and the journey",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gift",
+            "label": "Gifts",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Love notes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      }
     }
   ]
 }

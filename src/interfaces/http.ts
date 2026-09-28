@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, mediaPath, openSession, purchaseTemplate, saveMedia, signUp } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, purchaseTemplate, readMedia, saveMedia, signUp } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -16,13 +16,20 @@ function bearer(header: string | undefined) {
 export function buildServer() {
   const app = Fastify({ logger: true });
   app.register(cors, { origin: config.corsOrigin });
-  app.register(multipart, { limits: { fileSize: 5_000_000 } });
+  app.register(multipart, { limits: { fileSize: 4_500_000 } });
 
   app.setErrorHandler((error, _request, reply) => {
     if (error instanceof AppError) return reply.status(error.status).send({ error: error.message });
     if (error instanceof z.ZodError) return reply.status(400).send({ error: "Check those details." });
+    const code = "code" in error ? String(error.code) : "";
+    if (code === "FST_REQ_FILE_TOO_LARGE" || error.statusCode === 413) {
+      return reply.status(413).send({ error: "That file is larger than 4.5 MB. Choose a smaller one." });
+    }
+    if (code === "FST_INVALID_MULTIPART_CONTENT_TYPE" || code === "FST_NO_FORM_DATA") {
+      return reply.status(400).send({ error: "Choose a photo or an audio file." });
+    }
     app.log.error(error);
-    return reply.status(500).send({ error: "Something went wrong." });
+    return reply.status(500).send({ error: "Could not finish that. Try again." });
   });
 
   app.get("/health", async () => ({ ok: true }));
@@ -120,7 +127,10 @@ export function buildServer() {
 
   app.get("/media/:filename", async (request, reply) => {
     const { filename } = request.params as { filename: string };
-    return reply.send(createReadStream(mediaPath(filename)));
+    const file = await readMedia(filename);
+    reply.type(file.mime);
+    if ("body" in file) return reply.send(file.body);
+    return reply.send(createReadStream(file.path));
   });
 
   return app;

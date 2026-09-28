@@ -1,6 +1,6 @@
 import { createHash, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
 import catalogSeedFile from "../infrastructure/catalog-seed.json" with { type: "json" };
-import { mkdir, writeFile } from "node:fs/promises";
+import { access, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { config } from "../config.js";
@@ -351,17 +351,35 @@ export async function addGreeting(slugValue: string, input: { name: string; note
 
 export async function saveMedia(token: string | undefined, file: { filename: string; mimetype: string; buffer: Buffer }) {
   const host = await hostFromToken(token);
+  if (!file.buffer.length) throw new AppError(400, "That file is empty. Choose it again.");
   if (!file.mimetype.startsWith("image/") && !file.mimetype.startsWith("audio/")) {
     throw new AppError(400, "Upload a photo or an audio file.");
   }
-  if (file.buffer.length > 5_000_000) throw new AppError(400, "That file is larger than 5 MB.");
-  await mkdir(uploadsDir, { recursive: true });
+  if (file.buffer.length > 4_500_000) throw new AppError(400, "That file is larger than 4.5 MB. Choose a smaller one.");
   const id = randomBytes(8).toString("hex");
   const ext = path.extname(file.filename).slice(0, 8) || (file.mimetype.startsWith("audio/") ? ".mp3" : ".jpg");
   const filename = `${id}${ext}`;
-  await writeFile(path.join(uploadsDir, filename), file.buffer);
-  await MediaModel.create({ hostId: host.id, filename, mime: file.mimetype });
+  await MediaModel.create({ hostId: host.id, filename, mime: file.mimetype, data: file.buffer });
+  try {
+    await mkdir(uploadsDir, { recursive: true });
+    await writeFile(path.join(uploadsDir, filename), file.buffer);
+  } catch {
+    // The database copy is what guests load. Disk storage is only a local convenience.
+  }
   return { url: `/media/${filename}` };
+}
+
+export async function readMedia(filename: string) {
+  if (!/^[\w.-]+$/.test(filename)) throw new AppError(400, "Bad file name.");
+  const row = await MediaModel.findOne({ filename });
+  if (row?.data?.length) return { mime: row.mime, body: Buffer.from(row.data) };
+  const disk = path.join(uploadsDir, filename);
+  try {
+    await access(disk);
+  } catch {
+    throw new AppError(404, "That file is no longer available.");
+  }
+  return { mime: row?.mime || "application/octet-stream", path: disk };
 }
 
 export function mediaPath(filename: string) {

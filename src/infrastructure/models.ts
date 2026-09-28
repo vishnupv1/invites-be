@@ -28,7 +28,9 @@ const InviteSchema = new Schema(
     names: { type: String, required: true },
     title: { type: String, default: "" },
     date: { type: String, required: true },
+    status: { type: String, enum: ["draft", "live"], default: "live" },
     fields: { type: Schema.Types.Mixed, required: true },
+    editor: { type: Schema.Types.Mixed },
   },
   { timestamps: true },
 );

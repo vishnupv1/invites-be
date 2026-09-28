@@ -15,7 +15,10 @@ function bearer(header: string | undefined) {
 
 export function buildServer() {
   const app = Fastify({ logger: true });
-  app.register(cors, { origin: config.corsOrigin });
+  app.register(cors, {
+    origin: config.corsOrigin,
+    methods: ["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE"],
+  });
   app.register(multipart, { limits: { fileSize: 4_500_000 } });
 
   app.setErrorHandler((error, _request, reply) => {

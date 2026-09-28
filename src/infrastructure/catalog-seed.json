@@ -1587,6 +1587,217 @@
           }
         ]
       }
+    },
+    {
+      "id": "thiruvizha",
+      "name": "Thiruvizha",
+      "style": "thiruvizha",
+      "price": 1600,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Tamil wedding",
+      "description": "A Tamil wedding. The kolam opens onto the muhurtham, the rituals and a reply — in English, Tamil, or both — with one nadaswaram.",
+      "asks": {
+        "photos": 4,
+        "audio": true,
+        "location": true
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "hosts": "The Iyer & Subramanian families",
+          "names": "Arjun & Meenakshi",
+          "title": "request the honour of your presence at the wedding of our children",
+          "detail": "அர்ஜுன் & மீனாட்சி",
+          "date": "2027-04-18",
+          "time": "09:15",
+          "venue": "Meenakshi Temple Mandapam",
+          "address": "Madurai",
+          "message": "With the blessings of our elders, we invite you to the thiruvizha of our children. Your presence will complete the day.",
+          "dress": "Kanjivaram silks and veshti. Temple jewellery welcome.\nகாஞ்சிபுரம் பட்டு, வேட்டி. கோவில் நகைகள் வரவேற்கப்படுகின்றன.",
+          "rsvpBy": "2027-03-20",
+          "receptionTime": "18:30",
+          "receptionVenue": "The Grand Pandhal",
+          "receptionAddress": "KK Nagar, Madurai",
+          "lines": "{\"hostsTamil\":\"ஐயர் மற்றும் சுப்பிரமணியன் குடும்பத்தினர்\",\"inviteTamil\":\"எங்கள் பிள்ளைகளின் திருமணத்திற்கு தங்களை அன்புடன் அழைக்கிறோம்\",\"tamilNote\":\"பெரியோர்களின் ஆசியுடன், எங்கள் பிள்ளைகளின் திருமண விழாவிற்கு தங்களை அன்புடன் அழைக்கிறோம். தங்கள் வருகை எங்கள் திருவிழாவை நிறைவு செய்யும்.\",\"ceremonyName\":\"Muhurtham\",\"receptionName\":\"Virundhu\",\"programme\":[{\"time\":\"6:30 AM\",\"title\":\"Nichayathartham\",\"tamil\":\"நிச்சயதார்த்தம்\",\"text\":\"The families exchange blessings and fix this wedding day.\"},{\"time\":\"7:45 AM\",\"title\":\"Mapillai azhaippu\",\"tamil\":\"மாப்பிள்ளை அழைப்பு\",\"text\":\"The groom is welcomed with a garland, aarti and the nadaswaram.\"},{\"time\":\"9:15 AM\",\"title\":\"Muhurtham\",\"tamil\":\"முகூர்த்தம்\",\"text\":\"The thali is tied as the temple bells and nadaswaram rise together.\"},{\"time\":\"10:30 AM\",\"title\":\"Oonjal\",\"tamil\":\"ஊஞ்சல்\",\"text\":\"The couple is seated on the swing and showered with rice and flowers.\"},{\"time\":\"6:30 PM\",\"title\":\"Virundhu\",\"tamil\":\"விருந்து\",\"text\":\"A banana-leaf feast, then an evening of music under the pandhal.\"}]}"
+        }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Muhurtham",
+        "reception": "Virundhu",
+        "themes": [
+          {
+            "id": "rani",
+            "name": "Temple"
+          },
+          {
+            "id": "ivory",
+            "name": "Jasmine"
+          },
+          {
+            "id": "emerald",
+            "name": "Banana leaf"
+          }
+        ],
+        "defaultTheme": "rani",
+        "shots": [
+          {
+            "label": "The couple"
+          },
+          {
+            "label": "Muhurtham"
+          },
+          {
+            "label": "Oonjal"
+          },
+          {
+            "label": "Virundhu"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 8
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Kolam gate",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "English invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Tamil names",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "English blessing",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Muhurtham day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Muhurtham",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Virundhu",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "Rituals, in English and Tamil",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Attire",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Blessings",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Nadaswaram",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      }
     }
   ]
 }

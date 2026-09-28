@@ -67,7 +67,6 @@ export async function openSession(email: string, name: string) {
   const issued = issueToken();
   const existing = await HostModel.findOne({ email: normalized });
   if (existing) {
-    existing.name = name.trim() || existing.name;
     existing.tokenHash = issued.tokenHash;
     await existing.save();
     return hostView(existing, issued.token);

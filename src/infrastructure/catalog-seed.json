@@ -1298,6 +1298,222 @@
           }
         ]
       }
+    },
+    {
+      "id": "shaadi",
+      "name": "Shaadi",
+      "style": "shaadi",
+      "price": 1500,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Shaadi",
+      "description": "A palace wedding. The veil lifts onto six festivities, a photograph for every frame, and a reply.",
+      "asks": {
+        "photos": 12,
+        "audio": true,
+        "location": true
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "hosts": "Mrs. & Mr. Rajiv Sharma and Mrs. & Mr. Anil Malhotra",
+          "names": "Aarav Sharma & Ishita Malhotra",
+          "title": "शुभ विवाह",
+          "detail": "son of Meera & Rajiv Sharma · daughter of Nisha & Anil Malhotra",
+          "date": "2027-11-24",
+          "time": "20:30",
+          "venue": "The Aravalli Palace",
+          "address": "Lakeside, Udaipur",
+          "message": "With the blessings of both families, we invite you to the wedding of Aarav and Ishita.",
+          "dress": "",
+          "rsvpBy": "2027-10-25",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "lines": "[{\"day\":\"Day One · 22 November\",\"name\":\"Haldi\",\"hindi\":\"हल्दी\",\"when\":\"Mon 22 Nov · 11:00 AM\",\"venue\":\"Poolside Courtyard\",\"dress\":\"Shades of yellow\"},{\"day\":\"Day One · 22 November\",\"name\":\"Mehendi\",\"hindi\":\"मेहंदी\",\"when\":\"Mon 22 Nov · 4:00 PM\",\"venue\":\"The Garden Pavilion\",\"dress\":\"Greens & florals\"},{\"day\":\"Day Two · 23 November\",\"name\":\"Sangeet\",\"hindi\":\"संगीत\",\"when\":\"Tue 23 Nov · 7:30 PM\",\"venue\":\"Durbar Hall\",\"dress\":\"Glam & sparkle\"},{\"day\":\"Day Three · 24 November\",\"name\":\"Baraat\",\"hindi\":\"बारात\",\"when\":\"Wed 24 Nov · 6:00 PM\",\"venue\":\"From the Palace Gates\",\"dress\":\"Safa & festive\"},{\"day\":\"Day Three · 24 November\",\"name\":\"Pheras\",\"hindi\":\"फेरे\",\"when\":\"Wed 24 Nov · 8:30 PM\",\"venue\":\"Lakeside Mandap\",\"dress\":\"Traditional Indian\"},{\"day\":\"Day Three · 24 November\",\"name\":\"Reception\",\"hindi\":\"स्वागत समारोह\",\"when\":\"Wed 24 Nov · 10:30 PM\",\"venue\":\"The Mirror Terrace\",\"dress\":\"Black tie Indian\"}]"
+        }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "themes": [
+          {
+            "id": "rani",
+            "name": "Rani"
+          },
+          {
+            "id": "emerald",
+            "name": "Emerald"
+          },
+          {
+            "id": "ivory",
+            "name": "Ivory"
+          }
+        ],
+        "defaultTheme": "rani",
+        "shots": [
+          {
+            "label": "First meeting"
+          },
+          {
+            "label": "Roka"
+          },
+          {
+            "label": "Engagement"
+          },
+          {
+            "label": "Pre-wedding"
+          },
+          {
+            "label": "Family"
+          },
+          {
+            "label": "Haldi"
+          },
+          {
+            "label": "Mehendi"
+          },
+          {
+            "label": "Sangeet"
+          },
+          {
+            "label": "Baraat"
+          },
+          {
+            "label": "Pheras"
+          },
+          {
+            "label": "Reception"
+          },
+          {
+            "label": "The palace"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Veil",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Both families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Hindi line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Parents",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Blessing",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Palace",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "Festivities",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Story in frames",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Blessings",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Shehnai and sitar",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      }
     }
   ]
 }

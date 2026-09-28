@@ -19,10 +19,11 @@ export const inviteFieldsSchema = z.object({
   receptionTime: text,
   receptionVenue: text,
   receptionAddress: z.string().max(500).default(""),
-  photos: z.array(z.string().max(300)).max(8).default([]),
+  photos: z.array(z.string().max(300)).max(16).default([]),
   audio: z.string().max(300).default(""),
   lat: text,
   lng: text,
+  lines: z.string().max(8000).default(""),
 });
 
 export type InviteFields = z.infer<typeof inviteFieldsSchema>;

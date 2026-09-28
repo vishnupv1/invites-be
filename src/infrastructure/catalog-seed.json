@@ -113,16 +113,16 @@
         "defaultTheme": "",
         "shots": [
           {
-            "label": "Moment 1"
+            "label": "The couple"
           },
           {
-            "label": "Moment 2"
+            "label": "Nikah"
           },
           {
-            "label": "Moment 3"
+            "label": "Walima"
           },
           {
-            "label": "Moment 4"
+            "label": "Families"
           }
         ],
         "rsvp": {
@@ -297,13 +297,13 @@
             "label": "Title photo"
           },
           {
-            "label": "Moment 1"
+            "label": "Ceremony"
           },
           {
-            "label": "Moment 2"
+            "label": "Reception"
           },
           {
-            "label": "Moment 3"
+            "label": "Together"
           }
         ],
         "rsvp": {
@@ -446,7 +446,8 @@
           "rsvpBy": "2027-04-01",
           "receptionTime": "19:00",
           "receptionVenue": "Lakeside Convention Centre",
-          "receptionAddress": "Kumarakom Road, Kottayam"
+          "receptionAddress": "Kumarakom Road, Kottayam",
+          "lines": "{\"story\":[{\"year\":\"2016\",\"title\":\"First day of college\",\"text\":\"Assigned the same lab bench in first-year chemistry. One broken beaker, and a laugh that stayed.\"},{\"year\":\"2022\",\"title\":\"A monsoon road trip\",\"text\":\"Munnar in the rain, one flat tyre and a lot of chai. That was when they knew.\"},{\"year\":\"2026\",\"title\":\"The question\",\"text\":\"A proposal on the Kumarakom backwaters at sunset. The answer came before the question finished.\"}],\"airport\":\"Cochin International — about 1.5 hours by road. Shuttles will run on the day.\",\"stay\":\"Rooms are held at two hotels near the church. Mention the couple when booking.\",\"gift\":\"Your presence is the greatest gift. If you'd like to bless them further, a card at the reception is more than enough.\",\"faqs\":[{\"q\":\"Can I bring a plus-one?\",\"a\":\"Your invite shows how many seats are reserved. Please say if that changes.\"},{\"q\":\"Are children welcome?\",\"a\":\"Yes. There is a children's corner at the reception.\"},{\"q\":\"Is there parking?\",\"a\":\"Yes, at both venues, with people to guide you in.\"}]}"
         }
       },
       "meta": {
@@ -582,10 +583,20 @@
             "fields": []
           },
           {
+            "id": "story",
+            "label": "Love story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
             "id": "travel",
-            "label": "Where to stay",
-            "configurable": false,
-            "fields": []
+            "label": "Travel, stay and gifts",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
           },
           {
             "id": "rsvp",
@@ -636,14 +647,15 @@
           "hosts": "Jacob & Maria Thomas",
           "names": "Ethan Joseph",
           "title": "Please join us for the Holy Baptism of",
-          "detail": "",
+          "detail": "beloved son of",
           "date": "2027-03-14",
           "time": "10:30",
           "venue": "St. Mary's Church",
           "address": "Pala",
           "message": "Suffer the little children to come unto me, and forbid them not: for of such is the kingdom of God.",
           "dress": "",
-          "rsvpBy": "2027-02-28"
+          "rsvpBy": "2027-02-28",
+          "lines": "{\"people\":[{\"name\":\"Tony Mathew\",\"role\":\"Godfather\"},{\"name\":\"Anita George\",\"role\":\"Godmother\"}],\"facts\":[{\"label\":\"Born\",\"value\":\"2 November 2026\"},{\"label\":\"Loves\",\"value\":\"Milk & long naps\"},{\"label\":\"First smile\",\"value\":\"Christmas Eve\"},{\"label\":\"Best friend\",\"value\":\"Bruno the bear\"}]}"
         }
       },
       "meta": {
@@ -713,6 +725,30 @@
             "configurable": true,
             "fields": [
               "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Relationship",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Verse",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Godparents and little facts",
+            "configurable": true,
+            "fields": [
+              "lines"
             ]
           },
           {
@@ -803,7 +839,7 @@
           "time": "10:30",
           "venue": "Sree Krishna Temple Auditorium",
           "address": "Guruvayur",
-          "message": "",
+          "message": "From our pre-wedding shoot on the backwaters of Alleppey — a few favourite frames before the big day.",
           "dress": "Kasavu, silks and jewel tones for the Muhurtham. Go bold and festive for the Sangeet.",
           "rsvpBy": "2027-01-15",
           "hostEmail": "",
@@ -813,7 +849,8 @@
           "photos": [],
           "audio": "",
           "lat": "",
-          "lng": ""
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"A wrong train\",\"text\":\"Both missed the Chennai Mail — and shared a very long wait at Ernakulam.\"},{\"year\":\"2023\",\"title\":\"Families meet\",\"text\":\"Two families, one sadhya, and a lot of approving nods.\"},{\"year\":\"2026\",\"title\":\"The yes\",\"text\":\"A houseboat, a sunset on Vembanad, and a ring hidden in payasam.\"}],\"sangeetTime\":\"18:00\",\"sangeetVenue\":\"Poolside lawns, Casino Hotel, Kochi\",\"caption\":\"Pre-wedding shoot · Alleppey\"}"
         }
       },
       "meta": {
@@ -837,22 +874,22 @@
         "defaultTheme": "midnight",
         "shots": [
           {
-            "label": "Moment 1"
+            "label": "Pre-wedding 1"
           },
           {
-            "label": "Moment 2"
+            "label": "Pre-wedding 2"
           },
           {
-            "label": "Moment 3"
+            "label": "Pre-wedding 3"
           },
           {
-            "label": "Moment 4"
+            "label": "Pre-wedding 4"
           },
           {
-            "label": "Moment 5"
+            "label": "Pre-wedding 5"
           },
           {
-            "label": "Moment 6"
+            "label": "Pre-wedding 6"
           }
         ],
         "rsvp": {
@@ -889,6 +926,22 @@
             "configurable": true,
             "fields": [
               "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Moments note",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Love story and sangeet",
+            "configurable": true,
+            "fields": [
+              "lines"
             ]
           },
           {
@@ -987,7 +1040,7 @@
           "time": "17:30",
           "venue": "Cliff-top lawn",
           "address": "Varkala",
-          "message": "",
+          "message": "Shuttles from the airport on Friday afternoon. Rooms are held at two cliff-top resorts — mention “Rohan & Alisha” when booking.",
           "dress": "Light linens, flowing sarees and breezy dresses. Leave the heels at home — we'll be on sand!",
           "rsvpBy": "2027-02-20",
           "receptionTime": "19:30",
@@ -997,7 +1050,8 @@
           "photos": [],
           "audio": "",
           "lat": "",
-          "lng": ""
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"2020\",\"title\":\"Surf school, day one\",\"text\":\"Both wiped out on the same wave in Kovalam.\"},{\"year\":\"2023\",\"title\":\"Island hopping\",\"text\":\"Lakshadweep, a leaky kayak and zero regrets.\"},{\"year\":\"2026\",\"title\":\"The proposal\",\"text\":\"Written in the sand at Varkala. The tide nearly won.\"}],\"travelFrom\":\"Trivandrum Airport\",\"travelKm\":\"50 km\"}"
         }
       },
       "meta": {
@@ -1088,9 +1142,11 @@
           },
           {
             "id": "story",
-            "label": "Story",
-            "configurable": false,
-            "fields": []
+            "label": "How we washed ashore",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
           },
           {
             "id": "gallery",
@@ -1102,9 +1158,11 @@
           },
           {
             "id": "travel",
-            "label": "Travel and dress",
-            "configurable": false,
-            "fields": []
+            "label": "Getting there",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
           },
           {
             "id": "dress",
@@ -1167,12 +1225,12 @@
           "hosts": "",
           "names": "Arun, Deepa & little Aadi",
           "title": "invite you to bless our new home",
-          "detail": "",
+          "detail": "As tradition goes, we'll boil milk in our new kitchen and let it overflow — a wish for a home that always brims with abundance, warmth and happiness. We'd love for you to be there when it bubbles over!",
           "date": "2027-01-17",
           "time": "06:30",
           "venue": "Flat 4B, Green Meadows Villas",
           "address": "Kakkanad",
-          "message": "",
+          "message": "No gifts please — just bring your blessings, your appetite and your best stories.",
           "dress": "",
           "rsvpBy": "2027-01-10",
           "hostEmail": "",
@@ -1182,7 +1240,8 @@
           "photos": [],
           "audio": "",
           "lat": "",
-          "lng": ""
+          "lng": "",
+          "lines": "{\"programme\":[{\"time\":\"6:30 AM\",\"title\":\"Ganapathi pooja\",\"text\":\"Lighting the lamp and a small prayer at the doorway.\"},{\"time\":\"7:15 AM\",\"title\":\"Paalukachal\",\"text\":\"Boiling milk for the first time in our kitchen.\"},{\"time\":\"12:00 PM\",\"title\":\"Sadya lunch\",\"text\":\"A full banana-leaf feast. Come hungry!\"},{\"time\":\"6:00 PM\",\"title\":\"Evening get-together\",\"text\":\"Tea, snacks, music and fairy lights on the terrace.\"}],\"rooms\":[{\"label\":\"Living room\",\"name\":\"The living room\",\"text\":\"Big windows, a swing (yes, indoors!) and a wall waiting for family photos.\",\"note\":\"Aadi’s favourite spot\"},{\"label\":\"Kitchen\",\"name\":\"The kitchen\",\"text\":\"Where the paalukachal happens — and where Deepa promises unlimited filter coffee.\",\"note\":\"Coffee always on\"},{\"label\":\"Kids’ room\",\"name\":\"Aadi’s room\",\"text\":\"Glow-in-the-dark stars on the ceiling and a reading nook full of picture books.\",\"note\":\"Toys everywhere, sorry!\"},{\"label\":\"Balcony\",\"name\":\"The balcony garden\",\"text\":\"Curry leaves, tulsi, and a view of the evening sky over the paddy fields.\",\"note\":\"Best seat for sunsets\"}]}"
         }
       },
       "meta": {
@@ -1233,6 +1292,14 @@
             ]
           },
           {
+            "id": "detail",
+            "label": "Paalukachal",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
             "id": "when",
             "label": "Date and time",
             "configurable": true,
@@ -1252,21 +1319,27 @@
           },
           {
             "id": "programme",
-            "label": "Programme",
-            "configurable": false,
-            "fields": []
+            "label": "The day’s programme",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
           },
           {
             "id": "house",
             "label": "House tour",
-            "configurable": false,
-            "fields": []
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
           },
           {
             "id": "gift",
             "label": "Gift note",
-            "configurable": false,
-            "fields": []
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
           },
           {
             "id": "countdown",

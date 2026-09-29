@@ -10,4 +10,6 @@ npm run dev
 
 MongoDB must already be running at the URI in `.env` (default `mongodb://127.0.0.1:27017/vellum`).
 
-The API listens on port 4010. Card numbers stay in the browser; this service only records that a template was bought.
+Add `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` to `.env` (and to the deployed environment). The API creates Razorpay orders and verifies successful payments before recording a purchase; card details are handled by Razorpay Checkout.
+
+The API listens on port 4010.

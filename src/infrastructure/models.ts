@@ -16,10 +16,13 @@ const PurchaseSchema = new Schema(
     templateId: { type: String, required: true },
     price: { type: Number, required: true },
     coupon: { type: String, default: "" },
+    razorpayOrderId: { type: String },
+    razorpayPaymentId: { type: String },
   },
   { timestamps: true },
 );
 PurchaseSchema.index({ hostId: 1, templateId: 1 }, { unique: true });
+PurchaseSchema.index({ razorpayPaymentId: 1 }, { unique: true, sparse: true });
 
 const CouponSchema = new Schema(
   {

@@ -45,6 +45,8 @@ export const config = {
   port: Number(process.env.PORT ?? 4010),
   mongoUri: process.env.MONGODB_OG_URI || process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/vellum",
   corsOrigin: corsOrigins,
+  razorpayKeyId: (process.env.RAZORPAY_KEY_ID ?? "").trim(),
+  razorpayKeySecret: (process.env.RAZORPAY_KEY_SECRET ?? "").trim(),
   adminEmail: (process.env.ADMIN_EMAIL ?? "admin@invitesready.com").trim().toLowerCase(),
   adminPassword: process.env.ADMIN_PASSWORD ?? "12345",
   adminEmails: (process.env.ADMIN_EMAILS ?? process.env.ADMIN_EMAIL ?? "admin@invitesready.com")

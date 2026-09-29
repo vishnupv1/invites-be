@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp, verifyCoupon } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -83,6 +83,11 @@ export function buildServer() {
     return { id: host.id, email: host.email, name: host.name };
   });
 
+  app.delete("/api/session", async (request) => {
+    await endSession(bearer(request.headers.authorization));
+    return { ok: true };
+  });
+
   app.post("/api/coupons/verify", async (request) => {
     const body = z.object({ code: z.string().max(40) }).parse(request.body);
     return verifyCoupon(body.code);
@@ -93,6 +98,22 @@ export function buildServer() {
   app.post("/api/payments/order", async (request) => {
     const body = z.object({ templateId: z.string() }).parse(request.body);
     return createPaymentOrder(bearer(request.headers.authorization), body.templateId);
+  });
+
+  app.post("/api/create-order", async (request) => {
+    const body = z.object({ templateId: z.string() }).parse(request.body);
+    return createPaymentOrder(bearer(request.headers.authorization), body.templateId);
+  });
+
+  app.post("/api/verify-payment", async (request) => {
+    const payment = z
+      .object({
+        razorpay_payment_id: z.string().min(1).max(100),
+        razorpay_order_id: z.string().min(1).max(100),
+        razorpay_signature: z.string().regex(/^[a-f0-9]{64}$/i),
+      })
+      .parse(request.body);
+    return verifyPayment(bearer(request.headers.authorization), payment);
   });
 
   app.post("/api/purchases", async (request) => {

@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp, verifyCoupon } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp, verifyCoupon } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -24,8 +24,10 @@ export function buildServer() {
   app.setErrorHandler((error, _request, reply) => {
     if (error instanceof AppError) return reply.status(error.status).send({ error: error.message });
     if (error instanceof z.ZodError) return reply.status(400).send({ error: "Check those details." });
-    const code = "code" in error ? String(error.code) : "";
-    if (code === "FST_REQ_FILE_TOO_LARGE" || error.statusCode === 413) {
+    const details = typeof error === "object" && error !== null ? error : {};
+    const code = "code" in details ? String(details.code) : "";
+    const statusCode = "statusCode" in details ? Number(details.statusCode) : 0;
+    if (code === "FST_REQ_FILE_TOO_LARGE" || statusCode === 413) {
       return reply.status(413).send({ error: "That file is larger than 4.5 MB. Choose a smaller one." });
     }
     if (code === "FST_INVALID_MULTIPART_CONTENT_TYPE" || code === "FST_NO_FORM_DATA") {
@@ -88,9 +90,26 @@ export function buildServer() {
 
   app.get("/api/purchases", async (request) => listPurchases(bearer(request.headers.authorization)));
 
+  app.post("/api/payments/order", async (request) => {
+    const body = z.object({ templateId: z.string() }).parse(request.body);
+    return createPaymentOrder(bearer(request.headers.authorization), body.templateId);
+  });
+
   app.post("/api/purchases", async (request) => {
-    const body = z.object({ templateId: z.string(), coupon: z.string().max(40).optional() }).parse(request.body);
-    return purchaseTemplate(bearer(request.headers.authorization), body.templateId, body.coupon);
+    const body = z
+      .object({
+        templateId: z.string(),
+        coupon: z.string().max(40).optional(),
+        payment: z
+          .object({
+            razorpay_payment_id: z.string().min(1).max(100),
+            razorpay_order_id: z.string().min(1).max(100),
+            razorpay_signature: z.string().regex(/^[a-f0-9]{64}$/i),
+          })
+          .optional(),
+      })
+      .parse(request.body);
+    return purchaseTemplate(bearer(request.headers.authorization), body.templateId, body.coupon, body.payment);
   });
 
   app.get("/api/invites", async (request) => listInvites(bearer(request.headers.authorization)));

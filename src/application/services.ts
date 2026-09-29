@@ -1,8 +1,9 @@
-import { createHash, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
 import catalogSeedFile from "../infrastructure/catalog-seed.json" with { type: "json" };
 import { access, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
+import Razorpay from "razorpay";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema, type EditorState, type InviteFields } from "../domain/invite-fields.js";
@@ -40,8 +41,8 @@ function slug() {
   return randomBytes(6).toString("base64url");
 }
 
-function hostView(host: { id: string; email: string; name: string }, token: string) {
-  return { token, host: { id: host.id, email: host.email, name: host.name } };
+function hostView(host: { id?: unknown; email: string; name: string }, token: string) {
+  return { token, host: { id: String(host.id), email: host.email, name: host.name } };
 }
 
 export async function ensureAdmin() {
@@ -264,15 +265,91 @@ export async function verifyCoupon(code: string) {
   return { valid: true as const, code: coupon.code };
 }
 
-export async function purchaseTemplate(token: string | undefined, templateId: string, coupon?: string) {
+function razorpayClient() {
+  if (!config.razorpayKeyId || !config.razorpayKeySecret) {
+    throw new AppError(503, "Payments are not configured yet.");
+  }
+  return new Razorpay({ key_id: config.razorpayKeyId, key_secret: config.razorpayKeySecret });
+}
+
+export async function createPaymentOrder(token: string | undefined, templateId: string) {
+  const host = await hostFromToken(token);
+  const template = await getCatalogTemplate(templateId);
+  if (!template) throw new AppError(404, "Unknown template.");
+  if (template.free) throw new AppError(400, "This template is free.");
+  if (await PurchaseModel.exists({ hostId: host.id, templateId })) {
+    throw new AppError(409, "You already own this template.");
+  }
+  const order = await razorpayClient().orders.create({
+    amount: Math.round(template.price * 100),
+    currency: "INR",
+    receipt: `p_${Date.now()}_${randomBytes(4).toString("hex")}`,
+    notes: { hostId: String(host.id), templateId },
+  });
+  return {
+    keyId: config.razorpayKeyId,
+    orderId: order.id,
+    amount: Number(order.amount),
+    currency: order.currency,
+  };
+}
+
+type PaymentProof = {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+};
+
+export async function purchaseTemplate(
+  token: string | undefined,
+  templateId: string,
+  coupon?: string,
+  payment?: PaymentProof,
+) {
   const host = await hostFromToken(token);
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
   if (template.free) return { templateId, owned: true };
   const verified = coupon?.trim() ? await verifyCoupon(coupon) : null;
+  if (!verified) {
+    if (!payment) throw new AppError(402, "Complete the payment to unlock this template.");
+    if (!config.razorpayKeySecret) throw new AppError(503, "Payments are not configured yet.");
+    const expected = createHmac("sha256", config.razorpayKeySecret)
+      .update(`${payment.razorpay_order_id}|${payment.razorpay_payment_id}`)
+      .digest("hex");
+    const actual = Buffer.from(payment.razorpay_signature, "hex");
+    const wanted = Buffer.from(expected, "hex");
+    if (actual.length !== wanted.length || !timingSafeEqual(actual, wanted)) {
+      throw new AppError(400, "Razorpay could not verify that payment.");
+    }
+    const order = await razorpayClient().orders.fetch(payment.razorpay_order_id);
+    const notes = order.notes ?? {};
+    if (
+      order.status !== "paid" ||
+      Number(order.amount) !== Math.round(template.price * 100) ||
+      order.currency !== "INR" ||
+      String(notes.hostId ?? "") !== String(host.id) ||
+      String(notes.templateId ?? "") !== templateId
+    ) {
+      throw new AppError(400, "That payment does not match this purchase.");
+    }
+  }
   await PurchaseModel.updateOne(
     { hostId: host.id, templateId },
-    { $setOnInsert: { hostId: host.id, templateId, price: verified ? 0 : template.price, coupon: verified?.code ?? "" } },
+    {
+      $setOnInsert: {
+        hostId: host.id,
+        templateId,
+        price: verified ? 0 : template.price,
+        coupon: verified?.code ?? "",
+        ...(!verified && payment
+          ? {
+              razorpayOrderId: payment.razorpay_order_id,
+              razorpayPaymentId: payment.razorpay_payment_id,
+            }
+          : {}),
+      },
+    },
     { upsert: true },
   );
   return { templateId, owned: true };

@@ -67,7 +67,11 @@ export async function openSession(email: string, name: string) {
   const normalized = email.trim().toLowerCase();
   const issued = issueToken();
   const existing = await HostModel.findOne({ email: normalized });
+  if (existing?.passwordHash) {
+    throw new AppError(401, "Log in to use that email.");
+  }
   if (existing) {
+    existing.name = name.trim() || existing.name;
     existing.tokenHash = issued.tokenHash;
     await existing.save();
     return hostView(existing, issued.token);
@@ -172,6 +176,12 @@ export async function adminSummary(token: string | undefined) {
   };
 }
 
+export async function endSession(token: string | undefined) {
+  const host = await hostFromToken(token);
+  host.tokenHash = issueToken().tokenHash;
+  await host.save();
+}
+
 export async function hostFromToken(token: string | undefined) {
   if (!token) throw new AppError(401, "Sign in is required.");
   const host = await HostModel.findOne({ tokenHash: hashToken(token) });
@@ -272,6 +282,13 @@ function razorpayClient() {
   return new Razorpay({ key_id: config.razorpayKeyId, key_secret: config.razorpayKeySecret });
 }
 
+function throwRazorpayError(error: unknown): never {
+  const statusCode =
+    typeof error === "object" && error !== null && "statusCode" in error ? Number(error.statusCode) : 0;
+  if (statusCode === 401) throw new AppError(401, "Razorpay credentials were rejected.");
+  throw new AppError(500, "Razorpay could not create the order. Try again.");
+}
+
 export async function createPaymentOrder(token: string | undefined, templateId: string) {
   const host = await hostFromToken(token);
   const template = await getCatalogTemplate(templateId);
@@ -280,12 +297,21 @@ export async function createPaymentOrder(token: string | undefined, templateId: 
   if (await PurchaseModel.exists({ hostId: host.id, templateId })) {
     throw new AppError(409, "You already own this template.");
   }
-  const order = await razorpayClient().orders.create({
-    amount: Math.round(template.price * 100),
-    currency: "INR",
-    receipt: `p_${Date.now()}_${randomBytes(4).toString("hex")}`,
-    notes: { hostId: String(host.id), templateId },
-  });
+  const amount = Math.round(template.price * 100);
+  if (!Number.isSafeInteger(amount) || amount < 100) {
+    throw new AppError(400, "Payment amount must be at least ₹1.");
+  }
+  let order;
+  try {
+    order = await razorpayClient().orders.create({
+      amount,
+      currency: "INR",
+      receipt: `p_${Date.now()}_${randomBytes(4).toString("hex")}`,
+      notes: { hostId: String(host.id), templateId },
+    });
+  } catch (error) {
+    throwRazorpayError(error);
+  }
   return {
     keyId: config.razorpayKeyId,
     orderId: order.id,
@@ -300,6 +326,29 @@ type PaymentProof = {
   razorpay_signature: string;
 };
 
+async function verifyPaymentProof(token: string | undefined, payment: PaymentProof) {
+  const host = await hostFromToken(token);
+  if (!config.razorpayKeySecret) throw new AppError(503, "Payments are not configured yet.");
+  const expected = createHmac("sha256", config.razorpayKeySecret)
+    .update(`${payment.razorpay_order_id}|${payment.razorpay_payment_id}`)
+    .digest("hex");
+  const actual = Buffer.from(payment.razorpay_signature, "hex");
+  const wanted = Buffer.from(expected, "hex");
+  if (actual.length !== wanted.length || !timingSafeEqual(actual, wanted)) {
+    throw new AppError(400, "Razorpay could not verify that payment.");
+  }
+  const order = await razorpayClient().orders.fetch(payment.razorpay_order_id);
+  if (order.status !== "paid" || String(order.notes?.hostId ?? "") !== String(host.id)) {
+    throw new AppError(400, "That payment does not match this purchase.");
+  }
+  return { host, order };
+}
+
+export async function verifyPayment(token: string | undefined, payment: PaymentProof) {
+  await verifyPaymentProof(token, payment);
+  return { success: true as const };
+}
+
 export async function purchaseTemplate(
   token: string | undefined,
   templateId: string,
@@ -313,22 +362,11 @@ export async function purchaseTemplate(
   const verified = coupon?.trim() ? await verifyCoupon(coupon) : null;
   if (!verified) {
     if (!payment) throw new AppError(402, "Complete the payment to unlock this template.");
-    if (!config.razorpayKeySecret) throw new AppError(503, "Payments are not configured yet.");
-    const expected = createHmac("sha256", config.razorpayKeySecret)
-      .update(`${payment.razorpay_order_id}|${payment.razorpay_payment_id}`)
-      .digest("hex");
-    const actual = Buffer.from(payment.razorpay_signature, "hex");
-    const wanted = Buffer.from(expected, "hex");
-    if (actual.length !== wanted.length || !timingSafeEqual(actual, wanted)) {
-      throw new AppError(400, "Razorpay could not verify that payment.");
-    }
-    const order = await razorpayClient().orders.fetch(payment.razorpay_order_id);
+    const { order } = await verifyPaymentProof(token, payment);
     const notes = order.notes ?? {};
     if (
-      order.status !== "paid" ||
       Number(order.amount) !== Math.round(template.price * 100) ||
       order.currency !== "INR" ||
-      String(notes.hostId ?? "") !== String(host.id) ||
       String(notes.templateId ?? "") !== templateId
     ) {
       throw new AppError(400, "That payment does not match this purchase.");

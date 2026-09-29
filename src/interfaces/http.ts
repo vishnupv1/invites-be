@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp, verifyCoupon } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -81,11 +81,16 @@ export function buildServer() {
     return { id: host.id, email: host.email, name: host.name };
   });
 
+  app.post("/api/coupons/verify", async (request) => {
+    const body = z.object({ code: z.string().max(40) }).parse(request.body);
+    return verifyCoupon(body.code);
+  });
+
   app.get("/api/purchases", async (request) => listPurchases(bearer(request.headers.authorization)));
 
   app.post("/api/purchases", async (request) => {
-    const body = z.object({ templateId: z.string() }).parse(request.body);
-    return purchaseTemplate(bearer(request.headers.authorization), body.templateId);
+    const body = z.object({ templateId: z.string(), coupon: z.string().max(40).optional() }).parse(request.body);
+    return purchaseTemplate(bearer(request.headers.authorization), body.templateId, body.coupon);
   });
 
   app.get("/api/invites", async (request) => listInvites(bearer(request.headers.authorization)));

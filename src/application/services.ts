@@ -6,7 +6,7 @@ import { promisify } from "node:util";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema, type EditorState, type InviteFields } from "../domain/invite-fields.js";
-import { EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
+import { CouponModel, EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
 
 const uploadsDir = path.resolve(process.cwd(), "uploads");
 
@@ -252,14 +252,27 @@ export async function getCatalogTemplate(id: string) {
   return row ? publicTemplate(row as SeedTemplate) : null;
 }
 
-export async function purchaseTemplate(token: string | undefined, templateId: string) {
+export async function ensureCoupons() {
+  await CouponModel.updateOne({ code: "WELCOME26" }, { $setOnInsert: { code: "WELCOME26", active: true } }, { upsert: true });
+}
+
+export async function verifyCoupon(code: string) {
+  const normalized = code.trim().toUpperCase();
+  if (!normalized) throw new AppError(400, "Enter a coupon code.");
+  const coupon = await CouponModel.findOne({ code: normalized }).lean();
+  if (!coupon || coupon.active === false) throw new AppError(400, "That coupon code is not valid.");
+  return { valid: true as const, code: coupon.code };
+}
+
+export async function purchaseTemplate(token: string | undefined, templateId: string, coupon?: string) {
   const host = await hostFromToken(token);
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
   if (template.free) return { templateId, owned: true };
+  const verified = coupon?.trim() ? await verifyCoupon(coupon) : null;
   await PurchaseModel.updateOne(
     { hostId: host.id, templateId },
-    { $setOnInsert: { hostId: host.id, templateId, price: template.price } },
+    { $setOnInsert: { hostId: host.id, templateId, price: verified ? 0 : template.price, coupon: verified?.code ?? "" } },
     { upsert: true },
   );
   return { templateId, owned: true };

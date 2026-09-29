@@ -15,10 +15,19 @@ const PurchaseSchema = new Schema(
     hostId: { type: Schema.Types.ObjectId, ref: "Host", required: true },
     templateId: { type: String, required: true },
     price: { type: Number, required: true },
+    coupon: { type: String, default: "" },
   },
   { timestamps: true },
 );
 PurchaseSchema.index({ hostId: 1, templateId: 1 }, { unique: true });
+
+const CouponSchema = new Schema(
+  {
+    code: { type: String, required: true, unique: true, uppercase: true, trim: true },
+    active: { type: Boolean, required: true, default: true },
+  },
+  { timestamps: true },
+);
 
 const InviteSchema = new Schema(
   {
@@ -89,6 +98,7 @@ export const EventModel = mongoose.model("Event", EventSchema);
 export const TemplateModel = mongoose.model("Template", TemplateSchema);
 export const HostModel = mongoose.model("Host", HostSchema);
 export const PurchaseModel = mongoose.model("Purchase", PurchaseSchema);
+export const CouponModel = mongoose.model("Coupon", CouponSchema);
 export const InviteModel = mongoose.model("Invite", InviteSchema);
 export const GreetingModel = mongoose.model("Greeting", GreetingSchema);
 export const MediaModel = mongoose.model("Media", MediaSchema);

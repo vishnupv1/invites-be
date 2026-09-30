@@ -2025,6 +2025,212 @@
           }
         ]
       }
+    },
+    {
+      "id": "botanica",
+      "name": "Blush Botanica",
+      "style": "botanica",
+      "price": 479,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Gold rings draw themselves, a wreath opens, and the day unfolds in floral frames.",
+      "asks": {
+        "photos": 6,
+        "audio": true,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The ceremony",
+        "themes": [
+          {
+            "id": "blush",
+            "name": "Blush"
+          },
+          {
+            "id": "sage",
+            "name": "Sage"
+          },
+          {
+            "id": "midnight",
+            "name": "Midnight"
+          }
+        ],
+        "defaultTheme": "blush",
+        "shots": [
+          {
+            "label": "Where it began"
+          },
+          {
+            "label": "Salt & sunsets"
+          },
+          {
+            "label": "She said yes"
+          },
+          {
+            "label": "Bridal bouquet"
+          },
+          {
+            "label": "A toast"
+          },
+          {
+            "label": "Golden hour"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 8
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Loader and wreath",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Family line",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note to guests",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Place",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebration",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hosts": "Together with their families",
+          "names": "Nila & Kiran",
+          "title": "invite you to celebrate their wedding",
+          "detail": "",
+          "date": "2027-03-06",
+          "time": "17:00",
+          "venue": "Willow Grove Estate",
+          "address": "Ooty",
+          "message": "A garden wedding, then dinner and dancing under the lights.",
+          "dress": "Garden pastels, soft silks and comfortable shoes for the lawn.",
+          "rsvpBy": "2027-02-06",
+          "hostEmail": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"Where it began\",\"text\":\"Two strangers, one rainy book fair and a shared umbrella.\"},{\"year\":\"2022\",\"title\":\"Salt & sunsets\",\"text\":\"A spontaneous road trip to the coast that changed everything.\"},{\"year\":\"2026\",\"title\":\"She said yes\",\"text\":\"A quiet garden, a handwritten note and two very happy hearts.\"}],\"programme\":[{\"kick\":\"The ceremony\",\"title\":\"Vows in the garden\",\"time\":\"Sat, 6 March \\u00b7 5:00 PM\",\"text\":\"The Rose Lawn\"},{\"kick\":\"Evening\",\"title\":\"Dinner & toasts\",\"time\":\"Sat, 6 March \\u00b7 7:00 PM\",\"text\":\"The Glass Conservatory\"},{\"kick\":\"Late night\",\"title\":\"Dancing under the stars\",\"time\":\"Sat, 6 March \\u00b7 9:30 PM\",\"text\":\"The Terrace\"}]}",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": ""
+        }
+      }
     }
   ]
 }

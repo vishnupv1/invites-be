@@ -413,7 +413,7 @@
       "id": "anna",
       "name": "Anna",
       "style": "anna",
-      "price": 1250,
+      "price": 299,
       "free": false,
       "events": [
         "marriage"
@@ -816,7 +816,7 @@
       "id": "vivah",
       "name": "Vivah",
       "style": "vivah",
-      "price": 1500,
+      "price": 379,
       "free": false,
       "events": [
         "marriage"
@@ -1017,7 +1017,7 @@
       "id": "beach",
       "name": "Beach",
       "style": "beach",
-      "price": 10,
+      "price": 549,
       "free": false,
       "events": [
         "marriage"
@@ -1376,7 +1376,7 @@
       "id": "shaadi",
       "name": "Shaadi",
       "style": "shaadi",
-      "price": 1500,
+      "price": 499,
       "free": false,
       "events": [
         "marriage"
@@ -1592,7 +1592,7 @@
       "id": "thiruvizha",
       "name": "Thiruvizha",
       "style": "thiruvizha",
-      "price": 1600,
+      "price": 449,
       "free": false,
       "events": [
         "marriage"

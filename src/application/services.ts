@@ -528,7 +528,7 @@ export async function getPublicInvite(slugValue: string) {
     swatch: typeof editor?.swatch === "string" ? editor.swatch : "",
     greetings: greetings
       .filter((row) => row.note.trim())
-      .map((row) => ({ name: row.name, note: row.note })),
+      .map((row) => ({ name: row.name, note: row.note, attending: row.attending })),
   };
 }
 

@@ -2231,6 +2231,188 @@
           "receptionAddress": ""
         }
       }
+    },
+    {
+      "id": "heavenly",
+      "name": "Heavenly",
+      "style": "heavenly",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Guests tap the palace doors, walk through into a lantern-lit world, and the invitation rises in gold.",
+      "asks": {
+        "photos": 6,
+        "audio": true,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "themes": [
+          {
+            "id": "gold",
+            "name": "Golden hour"
+          }
+        ],
+        "defaultTheme": "gold",
+        "shots": [
+          {
+            "label": "Just us"
+          },
+          {
+            "label": "Wild hearts"
+          },
+          {
+            "label": "How it began"
+          },
+          {
+            "label": "She said yes"
+          },
+          {
+            "label": "Family"
+          },
+          {
+            "label": "Golden hour"
+          }
+        ],
+        "rsvp": {
+          "meal": true,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Palace doors",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Family line",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Gallery",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Replies & wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"How it began\",\"text\":\"A rooftop party, a borrowed umbrella and a song neither of us could stop humming.\"},{\"year\":\"2022\",\"title\":\"Wild hearts\",\"text\":\"A road trip through the hills that turned two friends into something more.\"},{\"year\":\"2025\",\"title\":\"She said yes\",\"text\":\"Golden hour by the sea, a trembling question and the easiest answer ever.\"}],\"programme\":[{\"kick\":\"Saturday evening\",\"title\":\"Welcome dinner\",\"time\":\"Sat, 13 Feb · 7:30 PM\",\"text\":\"The Garden Terrace\",\"note\":\"Smart casual\"},{\"kick\":\"The main event\",\"title\":\"The wedding\",\"time\":\"Sun, 14 Feb · 5:00 PM\",\"text\":\"The Floral Pavilion\",\"note\":\"Festive formal\"},{\"kick\":\"After sunset\",\"title\":\"Reception\",\"time\":\"Sun, 14 Feb · 8:30 PM\",\"text\":\"The Lantern Lawn\",\"note\":\"Black tie\"}],\"caption\":\"#AaravWedsRiya\",\"instagram\":\"@aarav.weds.riya\",\"venueNote\":\"Tea Garden Road, Munnar, Kerala. Shuttles run from the Munnar town square every 30 minutes from 4 PM.\",\"venuePhone\":\"\"}",
+          "hosts": "Together with their families",
+          "names": "Aarav & Riya",
+          "title": "invite you to celebrate their wedding",
+          "detail": "",
+          "date": "2027-02-14",
+          "time": "17:00",
+          "venue": "The Royal Orchid",
+          "address": "Munnar, Kerala",
+          "message": "Three days of lanterns, flowers and family in the hills.",
+          "dress": "Festive formal",
+          "rsvpBy": "2027-01-20"
+        }
+      }
     }
   ]
 }

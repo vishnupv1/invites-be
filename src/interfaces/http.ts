@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -71,6 +71,13 @@ export function buildServer() {
       })
       .parse(request.body);
     return logIn(body.email, body.password);
+  });
+
+  app.get("/api/auth/google", async () => ({ clientId: config.googleClientId }));
+
+  app.post("/api/auth/google", async (request) => {
+    const body = z.object({ code: z.string().min(1).max(2048) }).parse(request.body);
+    return signInWithGoogle(body.code);
   });
 
   app.post("/api/session", async (request) => {

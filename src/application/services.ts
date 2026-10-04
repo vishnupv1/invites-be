@@ -84,6 +84,54 @@ export async function openSession(email: string, name: string) {
   return hostView(host, issued.token);
 }
 
+
+async function googleProfile(code: string) {
+  if (!config.googleClientId || !config.googleClientSecret) throw new AppError(503, "Google sign-in is not set up.");
+  const exchanged = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      code,
+      client_id: config.googleClientId,
+      client_secret: config.googleClientSecret,
+      redirect_uri: "postmessage",
+      grant_type: "authorization_code",
+    }),
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!exchanged.ok) throw new AppError(401, "Google could not confirm that sign-in.");
+  const tokens = (await exchanged.json()) as { id_token?: string };
+  if (!tokens.id_token) throw new AppError(401, "Google could not confirm that sign-in.");
+  const info = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(tokens.id_token)}`, {
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!info.ok) throw new AppError(401, "Google could not confirm that sign-in.");
+  const token = (await info.json()) as { aud?: string; email?: string; email_verified?: string | boolean; name?: string };
+  if (token.aud !== config.googleClientId) throw new AppError(401, "That Google sign-in is for a different app.");
+  const verified = token.email_verified === true || token.email_verified === "true";
+  if (!token.email || !verified) throw new AppError(401, "Google did not confirm that email.");
+  return { email: token.email.trim().toLowerCase(), name: token.name?.trim() || "" };
+}
+
+export async function signInWithGoogle(code: string) {
+  const profile = await googleProfile(code);
+  const issued = issueToken();
+  const name = profile.name || profile.email.split("@")[0] || "Host";
+  const existing = await HostModel.findOne({ email: profile.email });
+  if (existing) {
+    if (!existing.name || existing.name === "Host") existing.name = name;
+    existing.tokenHash = issued.tokenHash;
+    await existing.save();
+    return hostView(existing, issued.token);
+  }
+  const host = await HostModel.create({
+    email: profile.email,
+    name,
+    tokenHash: issued.tokenHash,
+  });
+  return hostView(host, issued.token);
+}
+
 export async function signUp(name: string, email: string, password: string) {
   const normalized = email.trim().toLowerCase();
   const passwordHash = await hashPassword(password);

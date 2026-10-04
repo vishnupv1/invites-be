@@ -47,6 +47,8 @@ export const config = {
   corsOrigin: corsOrigins,
   razorpayKeyId: (process.env.RAZORPAY_KEY_ID ?? "").trim(),
   razorpayKeySecret: (process.env.RAZORPAY_KEY_SECRET ?? "").trim(),
+  googleClientId: (process.env.GOOGLE_CLIENT_ID ?? "").trim(),
+  googleClientSecret: (process.env.GOOGLE_CLIENT_SECRET ?? "").trim(),
   adminEmail: (process.env.ADMIN_EMAIL ?? "admin@invitesready.com").trim().toLowerCase(),
   adminPassword: process.env.ADMIN_PASSWORD ?? "12345",
   adminEmails: (process.env.ADMIN_EMAILS ?? process.env.ADMIN_EMAIL ?? "admin@invitesready.com")

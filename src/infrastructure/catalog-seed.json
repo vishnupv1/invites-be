@@ -2783,6 +2783,165 @@
         "lines": "{\"addressee\": \"Little Riya & family\", \"programme\": [{\"time\": \"4:00 PM\", \"title\": \"Welcome & games\", \"text\": \"Treasure hunt, balloon pop\"}, {\"time\": \"4:45 PM\", \"title\": \"Magic show\", \"text\": \"Mr. Wonder & his rabbit\"}, {\"time\": \"5:30 PM\", \"title\": \"Cake cutting\", \"text\": \"Chocolate, of course!\"}, {\"time\": \"6:00 PM\", \"title\": \"Dance party\", \"text\": \"Bring your best moves\"}, {\"time\": \"6:30 PM\", \"title\": \"Dinner & goodie bags\", \"text\": \"Pizza, pasta & surprises\"}], \"caption\": \"#AadiTurns5\", \"venueNote\": \"Free parking at the back\", \"venuePhone\": \"\"}"
       }
     }
+  },
+  {
+    "id": "grandoor",
+    "name": "The Grand Door",
+    "style": "grandoor",
+    "price": 499,
+    "free": false,
+    "events": [
+      "marriage"
+    ],
+    "tagline": "Wedding",
+    "description": "Guests tap the palace doors, the leaves swing open, and a blush-and-gold invitation rises over the lake.",
+    "asks": {
+      "photos": 3,
+      "audio": false,
+      "location": true
+    },
+    "meta": {
+      "names": "couple",
+      "ceremony": "The wedding",
+      "themes": [
+        {
+          "id": "blush",
+          "name": "Blush & gold"
+        }
+      ],
+      "defaultTheme": "blush",
+      "shots": [
+        {
+          "label": "First meeting"
+        },
+        {
+          "label": "The proposal"
+        },
+        {
+          "label": "Forever"
+        }
+      ],
+      "rsvp": {
+        "meal": true,
+        "song": false,
+        "maxGuests": 2
+      },
+      "components": [
+        {
+          "id": "opening",
+          "label": "The grand door",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "hosts",
+          "label": "Opening line",
+          "configurable": true,
+          "fields": [
+            "hosts"
+          ]
+        },
+        {
+          "id": "names",
+          "label": "Couple",
+          "configurable": true,
+          "fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "line",
+          "label": "Invitation line",
+          "configurable": true,
+          "fields": [
+            "title"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Wedding day",
+          "configurable": true,
+          "fields": [
+            "date",
+            "time"
+          ]
+        },
+        {
+          "id": "ceremony",
+          "label": "The venue",
+          "configurable": true,
+          "fields": [
+            "venue",
+            "address",
+            "lat",
+            "lng"
+          ]
+        },
+        {
+          "id": "countdown",
+          "label": "Countdown",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "programme",
+          "label": "The celebration",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "story",
+          "label": "Our story",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "gallery",
+          "label": "Photographs",
+          "configurable": true,
+          "fields": [
+            "photos"
+          ]
+        },
+        {
+          "id": "rsvp",
+          "label": "Kindly reply",
+          "configurable": true,
+          "fields": [
+            "rsvpBy"
+          ]
+        }
+      ]
+    },
+    "samples": {
+      "marriage": {
+        "event": "marriage",
+        "hostEmail": "",
+        "receptionTime": "",
+        "receptionVenue": "",
+        "receptionAddress": "",
+        "photos": [],
+        "audio": "",
+        "lat": "",
+        "lng": "",
+        "lines": "{\"story\":[{\"year\":\"2020\",\"title\":\"First meet\",\"text\":\"A friend’s rooftop dinner in Mumbai, and a conversation that never ended.\"},{\"year\":\"2024\",\"title\":\"The proposal\",\"text\":\"On a boat on Lake Pichola, at sunset, he asked. She said yes before he finished.\"},{\"year\":\"2026\",\"title\":\"Forever\",\"text\":\"Now we begin our greatest chapter, and we want you there.\"}],\"programme\":[{\"kick\":\"11 DECEMBER\",\"title\":\"Mehendi\",\"time\":\"Friday · 4:00 PM\",\"text\":\"The Garden Courtyard\"},{\"kick\":\"12 DECEMBER\",\"title\":\"The Wedding\",\"time\":\"Saturday · 5:00 PM\",\"text\":\"Lakeside Mandap\"},{\"kick\":\"13 DECEMBER\",\"title\":\"Reception\",\"time\":\"Sunday · 8:00 PM\",\"text\":\"The Grand Terrace\"}],\"venueNote\":\"Lake Palace Road, Udaipur 313001\"}",
+        "hosts": "A story worth celebrating",
+        "names": "Anjali & Rohan",
+        "title": "invite you to celebrate their love",
+        "detail": "",
+        "date": "2026-12-12",
+        "time": "17:00",
+        "venue": "The Riviera Palace",
+        "address": "Lake Pichola · Udaipur, Rajasthan",
+        "message": "",
+        "dress": "",
+        "rsvpBy": "2026-11-20"
+      }
+    }
   }
   ]
 }

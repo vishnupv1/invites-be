@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -88,6 +88,11 @@ export function buildServer() {
   app.get("/api/session", async (request) => {
     const host = await hostFromToken(bearer(request.headers.authorization));
     return { id: host.id, email: host.email, name: host.name };
+  });
+
+  app.patch("/api/session", async (request) => {
+    const body = z.object({ name: z.string().trim().min(1).max(120) }).parse(request.body);
+    return renameHost(bearer(request.headers.authorization), body.name);
   });
 
   app.delete("/api/session", async (request) => {

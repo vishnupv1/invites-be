@@ -237,6 +237,13 @@ export async function hostFromToken(token: string | undefined) {
   return host;
 }
 
+export async function renameHost(token: string | undefined, name: string) {
+  const host = await hostFromToken(token);
+  host.name = name.trim();
+  await host.save();
+  return { id: String(host.id), email: host.email, name: host.name };
+}
+
 type SeedEvent = { id: string; label: string; cardLabel: string; detailLabel: string; namesLabel: string; hostsLabel: string; titleLabel: string };
 type SeedTemplate = {
   id: string;

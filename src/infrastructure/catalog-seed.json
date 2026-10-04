@@ -2607,6 +2607,182 @@
           "rsvpBy": "2027-10-20"
         }
       }
+    },
+  {
+    "id": "inland",
+    "name": "Inland Letter",
+    "style": "inland",
+    "price": 299,
+    "free": false,
+    "events": [
+      "birthday"
+    ],
+    "tagline": "Birthday",
+    "description": "A blue inland letter tears open, the note unfolds, and balloons rise into a birthday party.",
+    "asks": {
+      "photos": 4,
+      "audio": false,
+      "location": true
+    },
+    "meta": {
+      "names": "child",
+      "ceremony": "The party",
+      "themes": [
+        {
+          "id": "post",
+          "name": "Inland post"
+        }
+      ],
+      "defaultTheme": "post",
+      "shots": [
+        {
+          "label": "Turning 4"
+        },
+        {
+          "label": "First bicycle"
+        },
+        {
+          "label": "Beach day"
+        },
+        {
+          "label": "Best friends"
+        }
+      ],
+      "rsvp": {
+        "meal": false,
+        "song": false,
+        "maxGuests": 9
+      },
+      "components": [
+        {
+          "id": "opening",
+          "label": "The letter",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "hosts",
+          "label": "Hosted by",
+          "configurable": true,
+          "fields": [
+            "hosts"
+          ]
+        },
+        {
+          "id": "names",
+          "label": "Birthday child",
+          "configurable": true,
+          "fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "detail",
+          "label": "Turning",
+          "configurable": true,
+          "fields": [
+            "detail"
+          ]
+        },
+        {
+          "id": "line",
+          "label": "Party line",
+          "configurable": true,
+          "fields": [
+            "title"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Party day",
+          "configurable": true,
+          "fields": [
+            "date",
+            "time"
+          ]
+        },
+        {
+          "id": "ceremony",
+          "label": "The party",
+          "configurable": true,
+          "fields": [
+            "venue",
+            "address",
+            "lat",
+            "lng"
+          ]
+        },
+        {
+          "id": "dress",
+          "label": "Dress",
+          "configurable": true,
+          "fields": [
+            "dress"
+          ]
+        },
+        {
+          "id": "countdown",
+          "label": "Countdown",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "programme",
+          "label": "Party plan",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "gallery",
+          "label": "Little album",
+          "configurable": true,
+          "fields": [
+            "photos"
+          ]
+        },
+        {
+          "id": "rsvp",
+          "label": "Will you come?",
+          "configurable": true,
+          "fields": [
+            "rsvpBy"
+          ]
+        },
+        {
+          "id": "wishes",
+          "label": "Birthday wishes",
+          "configurable": false,
+          "fields": []
+        }
+      ]
+    },
+    "samples": {
+      "birthday": {
+        "event": "birthday",
+        "hosts": "Aadi’s family",
+        "names": "Aadi",
+        "title": "Come celebrate with cake, games & a magic show!",
+        "detail": "5",
+        "date": "2027-12-12",
+        "time": "16:00",
+        "venue": "Fun Zone Play Café",
+        "address": "MG Road, Kochi",
+        "message": "Cake, games and a magic show. Come as your favourite superhero or princess.",
+        "dress": "Superheroes & princesses",
+        "rsvpBy": "2027-12-05",
+        "hostEmail": "",
+        "receptionTime": "19:30",
+        "receptionVenue": "",
+        "receptionAddress": "",
+        "photos": [],
+        "audio": "",
+        "lat": "",
+        "lng": "",
+        "lines": "{\"addressee\": \"Little Riya & family\", \"programme\": [{\"time\": \"4:00 PM\", \"title\": \"Welcome & games\", \"text\": \"Treasure hunt, balloon pop\"}, {\"time\": \"4:45 PM\", \"title\": \"Magic show\", \"text\": \"Mr. Wonder & his rabbit\"}, {\"time\": \"5:30 PM\", \"title\": \"Cake cutting\", \"text\": \"Chocolate, of course!\"}, {\"time\": \"6:00 PM\", \"title\": \"Dance party\", \"text\": \"Bring your best moves\"}, {\"time\": \"6:30 PM\", \"title\": \"Dinner & goodie bags\", \"text\": \"Pizza, pasta & surprises\"}], \"caption\": \"#AadiTurns5\", \"venueNote\": \"Free parking at the back\", \"venuePhone\": \"\"}"
+      }
     }
+  }
   ]
 }

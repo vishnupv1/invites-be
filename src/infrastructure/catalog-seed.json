@@ -442,12 +442,12 @@
           "venue": "St. Joseph's Church",
           "address": "Baker Junction, Kottayam",
           "message": "From classmates to forever.",
-          "dress": "Sarees, lehengas, suits or linen. Earthy shades are welcome — please skip white and ivory.",
+          "dress": "Sarees, lehengas, suits or linen. Earthy shades are welcome \u2014 please skip white and ivory.",
           "rsvpBy": "2027-04-01",
           "receptionTime": "19:00",
           "receptionVenue": "Lakeside Convention Centre",
           "receptionAddress": "Kumarakom Road, Kottayam",
-          "lines": "{\"story\":[{\"year\":\"2016\",\"title\":\"First day of college\",\"text\":\"Assigned the same lab bench in first-year chemistry. One broken beaker, and a laugh that stayed.\"},{\"year\":\"2022\",\"title\":\"A monsoon road trip\",\"text\":\"Munnar in the rain, one flat tyre and a lot of chai. That was when they knew.\"},{\"year\":\"2026\",\"title\":\"The question\",\"text\":\"A proposal on the Kumarakom backwaters at sunset. The answer came before the question finished.\"}],\"airport\":\"Cochin International — about 1.5 hours by road. Shuttles will run on the day.\",\"stay\":\"Rooms are held at two hotels near the church. Mention the couple when booking.\",\"gift\":\"Your presence is the greatest gift. If you'd like to bless them further, a card at the reception is more than enough.\",\"faqs\":[{\"q\":\"Can I bring a plus-one?\",\"a\":\"Your invite shows how many seats are reserved. Please say if that changes.\"},{\"q\":\"Are children welcome?\",\"a\":\"Yes. There is a children's corner at the reception.\"},{\"q\":\"Is there parking?\",\"a\":\"Yes, at both venues, with people to guide you in.\"}]}"
+          "lines": "{\"story\":[{\"year\":\"2016\",\"title\":\"First day of college\",\"text\":\"Assigned the same lab bench in first-year chemistry. One broken beaker, and a laugh that stayed.\"},{\"year\":\"2022\",\"title\":\"A monsoon road trip\",\"text\":\"Munnar in the rain, one flat tyre and a lot of chai. That was when they knew.\"},{\"year\":\"2026\",\"title\":\"The question\",\"text\":\"A proposal on the Kumarakom backwaters at sunset. The answer came before the question finished.\"}],\"airport\":\"Cochin International \u2014 about 1.5 hours by road. Shuttles will run on the day.\",\"stay\":\"Rooms are held at two hotels near the church. Mention the couple when booking.\",\"gift\":\"Your presence is the greatest gift. If you'd like to bless them further, a card at the reception is more than enough.\",\"faqs\":[{\"q\":\"Can I bring a plus-one?\",\"a\":\"Your invite shows how many seats are reserved. Please say if that changes.\"},{\"q\":\"Are children welcome?\",\"a\":\"Yes. There is a children's corner at the reception.\"},{\"q\":\"Is there parking?\",\"a\":\"Yes, at both venues, with people to guide you in.\"}]}"
         }
       },
       "meta": {
@@ -839,7 +839,7 @@
           "time": "10:30",
           "venue": "Sree Krishna Temple Auditorium",
           "address": "Guruvayur",
-          "message": "From our pre-wedding shoot on the backwaters of Alleppey — a few favourite frames before the big day.",
+          "message": "From our pre-wedding shoot on the backwaters of Alleppey \u2014 a few favourite frames before the big day.",
           "dress": "Kasavu, silks and jewel tones for the Muhurtham. Go bold and festive for the Sangeet.",
           "rsvpBy": "2027-01-15",
           "hostEmail": "",
@@ -850,7 +850,7 @@
           "audio": "",
           "lat": "",
           "lng": "",
-          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"A wrong train\",\"text\":\"Both missed the Chennai Mail — and shared a very long wait at Ernakulam.\"},{\"year\":\"2023\",\"title\":\"Families meet\",\"text\":\"Two families, one sadhya, and a lot of approving nods.\"},{\"year\":\"2026\",\"title\":\"The yes\",\"text\":\"A houseboat, a sunset on Vembanad, and a ring hidden in payasam.\"}],\"sangeetTime\":\"18:00\",\"sangeetVenue\":\"Poolside lawns, Casino Hotel, Kochi\",\"caption\":\"Pre-wedding shoot · Alleppey\"}"
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"A wrong train\",\"text\":\"Both missed the Chennai Mail \u2014 and shared a very long wait at Ernakulam.\"},{\"year\":\"2023\",\"title\":\"Families meet\",\"text\":\"Two families, one sadhya, and a lot of approving nods.\"},{\"year\":\"2026\",\"title\":\"The yes\",\"text\":\"A houseboat, a sunset on Vembanad, and a ring hidden in payasam.\"}],\"sangeetTime\":\"18:00\",\"sangeetVenue\":\"Poolside lawns, Casino Hotel, Kochi\",\"caption\":\"Pre-wedding shoot \u00b7 Alleppey\"}"
         }
       },
       "meta": {
@@ -1040,8 +1040,8 @@
           "time": "17:30",
           "venue": "Cliff-top lawn",
           "address": "Varkala",
-          "message": "Shuttles from the airport on Friday afternoon. Rooms are held at two cliff-top resorts — mention “Rohan & Alisha” when booking.",
-          "dress": "Light linens, flowing sarees and breezy dresses. Leave the heels at home — we'll be on sand!",
+          "message": "Shuttles from the airport on Friday afternoon. Rooms are held at two cliff-top resorts \u2014 mention \u201cRohan & Alisha\u201d when booking.",
+          "dress": "Light linens, flowing sarees and breezy dresses. Leave the heels at home \u2014 we'll be on sand!",
           "rsvpBy": "2027-02-20",
           "receptionTime": "19:30",
           "receptionVenue": "Black Beach, below the cliff",
@@ -1225,12 +1225,12 @@
           "hosts": "",
           "names": "Arun, Deepa & little Aadi",
           "title": "invite you to bless our new home",
-          "detail": "As tradition goes, we'll boil milk in our new kitchen and let it overflow — a wish for a home that always brims with abundance, warmth and happiness. We'd love for you to be there when it bubbles over!",
+          "detail": "As tradition goes, we'll boil milk in our new kitchen and let it overflow \u2014 a wish for a home that always brims with abundance, warmth and happiness. We'd love for you to be there when it bubbles over!",
           "date": "2027-01-17",
           "time": "06:30",
           "venue": "Flat 4B, Green Meadows Villas",
           "address": "Kakkanad",
-          "message": "No gifts please — just bring your blessings, your appetite and your best stories.",
+          "message": "No gifts please \u2014 just bring your blessings, your appetite and your best stories.",
           "dress": "",
           "rsvpBy": "2027-01-10",
           "hostEmail": "",
@@ -1241,7 +1241,7 @@
           "audio": "",
           "lat": "",
           "lng": "",
-          "lines": "{\"programme\":[{\"time\":\"6:30 AM\",\"title\":\"Ganapathi pooja\",\"text\":\"Lighting the lamp and a small prayer at the doorway.\"},{\"time\":\"7:15 AM\",\"title\":\"Paalukachal\",\"text\":\"Boiling milk for the first time in our kitchen.\"},{\"time\":\"12:00 PM\",\"title\":\"Sadya lunch\",\"text\":\"A full banana-leaf feast. Come hungry!\"},{\"time\":\"6:00 PM\",\"title\":\"Evening get-together\",\"text\":\"Tea, snacks, music and fairy lights on the terrace.\"}],\"rooms\":[{\"label\":\"Living room\",\"name\":\"The living room\",\"text\":\"Big windows, a swing (yes, indoors!) and a wall waiting for family photos.\",\"note\":\"Aadi’s favourite spot\"},{\"label\":\"Kitchen\",\"name\":\"The kitchen\",\"text\":\"Where the paalukachal happens — and where Deepa promises unlimited filter coffee.\",\"note\":\"Coffee always on\"},{\"label\":\"Kids’ room\",\"name\":\"Aadi’s room\",\"text\":\"Glow-in-the-dark stars on the ceiling and a reading nook full of picture books.\",\"note\":\"Toys everywhere, sorry!\"},{\"label\":\"Balcony\",\"name\":\"The balcony garden\",\"text\":\"Curry leaves, tulsi, and a view of the evening sky over the paddy fields.\",\"note\":\"Best seat for sunsets\"}]}"
+          "lines": "{\"programme\":[{\"time\":\"6:30 AM\",\"title\":\"Ganapathi pooja\",\"text\":\"Lighting the lamp and a small prayer at the doorway.\"},{\"time\":\"7:15 AM\",\"title\":\"Paalukachal\",\"text\":\"Boiling milk for the first time in our kitchen.\"},{\"time\":\"12:00 PM\",\"title\":\"Sadya lunch\",\"text\":\"A full banana-leaf feast. Come hungry!\"},{\"time\":\"6:00 PM\",\"title\":\"Evening get-together\",\"text\":\"Tea, snacks, music and fairy lights on the terrace.\"}],\"rooms\":[{\"label\":\"Living room\",\"name\":\"The living room\",\"text\":\"Big windows, a swing (yes, indoors!) and a wall waiting for family photos.\",\"note\":\"Aadi\u2019s favourite spot\"},{\"label\":\"Kitchen\",\"name\":\"The kitchen\",\"text\":\"Where the paalukachal happens \u2014 and where Deepa promises unlimited filter coffee.\",\"note\":\"Coffee always on\"},{\"label\":\"Kids\u2019 room\",\"name\":\"Aadi\u2019s room\",\"text\":\"Glow-in-the-dark stars on the ceiling and a reading nook full of picture books.\",\"note\":\"Toys everywhere, sorry!\"},{\"label\":\"Balcony\",\"name\":\"The balcony garden\",\"text\":\"Curry leaves, tulsi, and a view of the evening sky over the paddy fields.\",\"note\":\"Best seat for sunsets\"}]}"
         }
       },
       "meta": {
@@ -1319,7 +1319,7 @@
           },
           {
             "id": "programme",
-            "label": "The day’s programme",
+            "label": "The day\u2019s programme",
             "configurable": true,
             "fields": [
               "lines"
@@ -1398,8 +1398,8 @@
           "lng": "",
           "hosts": "Mrs. & Mr. Rajiv Sharma and Mrs. & Mr. Anil Malhotra",
           "names": "Aarav Sharma & Ishita Malhotra",
-          "title": "शुभ विवाह",
-          "detail": "son of Meera & Rajiv Sharma · daughter of Nisha & Anil Malhotra",
+          "title": "\u0936\u0941\u092d \u0935\u093f\u0935\u093e\u0939",
+          "detail": "son of Meera & Rajiv Sharma \u00b7 daughter of Nisha & Anil Malhotra",
           "date": "2027-11-24",
           "time": "20:30",
           "venue": "The Aravalli Palace",
@@ -1410,7 +1410,7 @@
           "receptionTime": "",
           "receptionVenue": "",
           "receptionAddress": "",
-          "lines": "[{\"day\":\"Day One · 22 November\",\"name\":\"Haldi\",\"hindi\":\"हल्दी\",\"when\":\"Mon 22 Nov · 11:00 AM\",\"venue\":\"Poolside Courtyard\",\"dress\":\"Shades of yellow\"},{\"day\":\"Day One · 22 November\",\"name\":\"Mehendi\",\"hindi\":\"मेहंदी\",\"when\":\"Mon 22 Nov · 4:00 PM\",\"venue\":\"The Garden Pavilion\",\"dress\":\"Greens & florals\"},{\"day\":\"Day Two · 23 November\",\"name\":\"Sangeet\",\"hindi\":\"संगीत\",\"when\":\"Tue 23 Nov · 7:30 PM\",\"venue\":\"Durbar Hall\",\"dress\":\"Glam & sparkle\"},{\"day\":\"Day Three · 24 November\",\"name\":\"Baraat\",\"hindi\":\"बारात\",\"when\":\"Wed 24 Nov · 6:00 PM\",\"venue\":\"From the Palace Gates\",\"dress\":\"Safa & festive\"},{\"day\":\"Day Three · 24 November\",\"name\":\"Pheras\",\"hindi\":\"फेरे\",\"when\":\"Wed 24 Nov · 8:30 PM\",\"venue\":\"Lakeside Mandap\",\"dress\":\"Traditional Indian\"},{\"day\":\"Day Three · 24 November\",\"name\":\"Reception\",\"hindi\":\"स्वागत समारोह\",\"when\":\"Wed 24 Nov · 10:30 PM\",\"venue\":\"The Mirror Terrace\",\"dress\":\"Black tie Indian\"}]"
+          "lines": "[{\"day\":\"Day One \u00b7 22 November\",\"name\":\"Haldi\",\"hindi\":\"\u0939\u0932\u094d\u0926\u0940\",\"when\":\"Mon 22 Nov \u00b7 11:00 AM\",\"venue\":\"Poolside Courtyard\",\"dress\":\"Shades of yellow\"},{\"day\":\"Day One \u00b7 22 November\",\"name\":\"Mehendi\",\"hindi\":\"\u092e\u0947\u0939\u0902\u0926\u0940\",\"when\":\"Mon 22 Nov \u00b7 4:00 PM\",\"venue\":\"The Garden Pavilion\",\"dress\":\"Greens & florals\"},{\"day\":\"Day Two \u00b7 23 November\",\"name\":\"Sangeet\",\"hindi\":\"\u0938\u0902\u0917\u0940\u0924\",\"when\":\"Tue 23 Nov \u00b7 7:30 PM\",\"venue\":\"Durbar Hall\",\"dress\":\"Glam & sparkle\"},{\"day\":\"Day Three \u00b7 24 November\",\"name\":\"Baraat\",\"hindi\":\"\u092c\u093e\u0930\u093e\u0924\",\"when\":\"Wed 24 Nov \u00b7 6:00 PM\",\"venue\":\"From the Palace Gates\",\"dress\":\"Safa & festive\"},{\"day\":\"Day Three \u00b7 24 November\",\"name\":\"Pheras\",\"hindi\":\"\u092b\u0947\u0930\u0947\",\"when\":\"Wed 24 Nov \u00b7 8:30 PM\",\"venue\":\"Lakeside Mandap\",\"dress\":\"Traditional Indian\"},{\"day\":\"Day Three \u00b7 24 November\",\"name\":\"Reception\",\"hindi\":\"\u0938\u094d\u0935\u093e\u0917\u0924 \u0938\u092e\u093e\u0930\u094b\u0939\",\"when\":\"Wed 24 Nov \u00b7 10:30 PM\",\"venue\":\"The Mirror Terrace\",\"dress\":\"Black tie Indian\"}]"
         }
       },
       "meta": {
@@ -1598,7 +1598,7 @@
         "marriage"
       ],
       "tagline": "Tamil wedding",
-      "description": "A Tamil wedding. The kolam opens onto the muhurtham, the rituals and a reply — in English, Tamil, or both — with one nadaswaram.",
+      "description": "A Tamil wedding. The kolam opens onto the muhurtham, the rituals and a reply \u2014 in English, Tamil, or both \u2014 with one nadaswaram.",
       "asks": {
         "photos": 4,
         "audio": true,
@@ -1615,18 +1615,18 @@
           "hosts": "The Iyer & Subramanian families",
           "names": "Arjun & Meenakshi",
           "title": "request the honour of your presence at the wedding of our children",
-          "detail": "அர்ஜுன் & மீனாட்சி",
+          "detail": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0bcd & \u0bae\u0bc0\u0ba9\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf",
           "date": "2027-04-18",
           "time": "09:15",
           "venue": "Meenakshi Temple Mandapam",
           "address": "Madurai",
           "message": "With the blessings of our elders, we invite you to the thiruvizha of our children. Your presence will complete the day.",
-          "dress": "Kanjivaram silks and veshti. Temple jewellery welcome.\nகாஞ்சிபுரம் பட்டு, வேட்டி. கோவில் நகைகள் வரவேற்கப்படுகின்றன.",
+          "dress": "Kanjivaram silks and veshti. Temple jewellery welcome.\n\u0b95\u0bbe\u0b9e\u0bcd\u0b9a\u0bbf\u0baa\u0bc1\u0bb0\u0bae\u0bcd \u0baa\u0b9f\u0bcd\u0b9f\u0bc1, \u0bb5\u0bc7\u0b9f\u0bcd\u0b9f\u0bbf. \u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bcd \u0ba8\u0b95\u0bc8\u0b95\u0bb3\u0bcd \u0bb5\u0bb0\u0bb5\u0bc7\u0bb1\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9.",
           "rsvpBy": "2027-03-20",
           "receptionTime": "18:30",
           "receptionVenue": "The Grand Pandhal",
           "receptionAddress": "KK Nagar, Madurai",
-          "lines": "{\"hostsTamil\":\"ஐயர் மற்றும் சுப்பிரமணியன் குடும்பத்தினர்\",\"inviteTamil\":\"எங்கள் பிள்ளைகளின் திருமணத்திற்கு தங்களை அன்புடன் அழைக்கிறோம்\",\"tamilNote\":\"பெரியோர்களின் ஆசியுடன், எங்கள் பிள்ளைகளின் திருமண விழாவிற்கு தங்களை அன்புடன் அழைக்கிறோம். தங்கள் வருகை எங்கள் திருவிழாவை நிறைவு செய்யும்.\",\"ceremonyName\":\"Muhurtham\",\"receptionName\":\"Virundhu\",\"programme\":[{\"time\":\"6:30 AM\",\"title\":\"Nichayathartham\",\"tamil\":\"நிச்சயதார்த்தம்\",\"text\":\"The families exchange blessings and fix this wedding day.\"},{\"time\":\"7:45 AM\",\"title\":\"Mapillai azhaippu\",\"tamil\":\"மாப்பிள்ளை அழைப்பு\",\"text\":\"The groom is welcomed with a garland, aarti and the nadaswaram.\"},{\"time\":\"9:15 AM\",\"title\":\"Muhurtham\",\"tamil\":\"முகூர்த்தம்\",\"text\":\"The thali is tied as the temple bells and nadaswaram rise together.\"},{\"time\":\"10:30 AM\",\"title\":\"Oonjal\",\"tamil\":\"ஊஞ்சல்\",\"text\":\"The couple is seated on the swing and showered with rice and flowers.\"},{\"time\":\"6:30 PM\",\"title\":\"Virundhu\",\"tamil\":\"விருந்து\",\"text\":\"A banana-leaf feast, then an evening of music under the pandhal.\"}]}"
+          "lines": "{\"hostsTamil\":\"\u0b90\u0baf\u0bb0\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0bb0\u0bae\u0ba3\u0bbf\u0baf\u0ba9\u0bcd \u0b95\u0bc1\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd\",\"inviteTamil\":\"\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbf\u0bb3\u0bcd\u0bb3\u0bc8\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bcd\u0baa\u0bc1\u0b9f\u0ba9\u0bcd \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd\",\"tamilNote\":\"\u0baa\u0bc6\u0bb0\u0bbf\u0baf\u0bcb\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b86\u0b9a\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd, \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbf\u0bb3\u0bcd\u0bb3\u0bc8\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0bb5\u0bbf\u0bb4\u0bbe\u0bb5\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b85\u0ba9\u0bcd\u0baa\u0bc1\u0b9f\u0ba9\u0bcd \u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd. \u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bb0\u0bc1\u0b95\u0bc8 \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0bb5\u0bbf\u0bb4\u0bbe\u0bb5\u0bc8 \u0ba8\u0bbf\u0bb1\u0bc8\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0bae\u0bcd.\",\"ceremonyName\":\"Muhurtham\",\"receptionName\":\"Virundhu\",\"programme\":[{\"time\":\"6:30 AM\",\"title\":\"Nichayathartham\",\"tamil\":\"\u0ba8\u0bbf\u0b9a\u0bcd\u0b9a\u0baf\u0ba4\u0bbe\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd\",\"text\":\"The families exchange blessings and fix this wedding day.\"},{\"time\":\"7:45 AM\",\"title\":\"Mapillai azhaippu\",\"tamil\":\"\u0bae\u0bbe\u0baa\u0bcd\u0baa\u0bbf\u0bb3\u0bcd\u0bb3\u0bc8 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bc1\",\"text\":\"The groom is welcomed with a garland, aarti and the nadaswaram.\"},{\"time\":\"9:15 AM\",\"title\":\"Muhurtham\",\"tamil\":\"\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd\",\"text\":\"The thali is tied as the temple bells and nadaswaram rise together.\"},{\"time\":\"10:30 AM\",\"title\":\"Oonjal\",\"tamil\":\"\u0b8a\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd\",\"text\":\"The couple is seated on the swing and showered with rice and flowers.\"},{\"time\":\"6:30 PM\",\"title\":\"Virundhu\",\"tamil\":\"\u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1\",\"text\":\"A banana-leaf feast, then an evening of music under the pandhal.\"}]}"
         }
       },
       "meta": {
@@ -1837,7 +1837,7 @@
           "receptionTime": "",
           "receptionVenue": "",
           "receptionAddress": "",
-          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"A shared umbrella\",\"text\":\"Caught in a monsoon downpour outside the same bookshop.\"},{\"year\":\"2021\",\"title\":\"The first trip\",\"text\":\"A road trip to the hills and far too many playlists.\"},{\"year\":\"2024\",\"title\":\"Moving in\",\"text\":\"Two cities, one tiny apartment, a very opinionated cat.\"},{\"year\":\"2027\",\"title\":\"The question\",\"text\":\"A quiet morning, a handwritten note and a very happy yes.\"}],\"programme\":[{\"kick\":\"Friday evening\",\"title\":\"Welcome Cocktails\",\"time\":\"Fri, 8 December · 7:00 PM\",\"text\":\"The Rooftop Terrace\",\"note\":\"Cocktail chic\"},{\"kick\":\"The main event\",\"title\":\"The Ceremony\",\"time\":\"Sat, 9 December · 5:00 PM\",\"text\":\"The Glasshouse Garden\",\"note\":\"Black-tie optional\"},{\"kick\":\"After dark\",\"title\":\"Dinner & Dancing\",\"time\":\"Sat, 9 December · 7:30 PM\",\"text\":\"The Crystal Ballroom\",\"note\":\"Bring dancing shoes\"}],\"gift\":\"Your presence is our present. If you'd like, a donation to our chosen charity would mean the world.\",\"stay\":\"Rooms are held at two hotels nearby. Mention the couple when booking.\",\"airport\":\"Valet parking on site, and cabs from the airport take about 50 minutes.\",\"caption\":\"#MayaMeetsDev\"}"
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"A shared umbrella\",\"text\":\"Caught in a monsoon downpour outside the same bookshop.\"},{\"year\":\"2021\",\"title\":\"The first trip\",\"text\":\"A road trip to the hills and far too many playlists.\"},{\"year\":\"2024\",\"title\":\"Moving in\",\"text\":\"Two cities, one tiny apartment, a very opinionated cat.\"},{\"year\":\"2027\",\"title\":\"The question\",\"text\":\"A quiet morning, a handwritten note and a very happy yes.\"}],\"programme\":[{\"kick\":\"Friday evening\",\"title\":\"Welcome Cocktails\",\"time\":\"Fri, 8 December \u00b7 7:00 PM\",\"text\":\"The Rooftop Terrace\",\"note\":\"Cocktail chic\"},{\"kick\":\"The main event\",\"title\":\"The Ceremony\",\"time\":\"Sat, 9 December \u00b7 5:00 PM\",\"text\":\"The Glasshouse Garden\",\"note\":\"Black-tie optional\"},{\"kick\":\"After dark\",\"title\":\"Dinner & Dancing\",\"time\":\"Sat, 9 December \u00b7 7:30 PM\",\"text\":\"The Crystal Ballroom\",\"note\":\"Bring dancing shoes\"}],\"gift\":\"Your presence is our present. If you'd like, a donation to our chosen charity would mean the world.\",\"stay\":\"Rooms are held at two hotels nearby. Mention the couple when booking.\",\"airport\":\"Valet parking on site, and cabs from the airport take about 50 minutes.\",\"caption\":\"#MayaMeetsDev\"}"
         }
       },
       "meta": {
@@ -2399,7 +2399,7 @@
           "audio": "",
           "lat": "",
           "lng": "",
-          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"How it began\",\"text\":\"A rooftop party, a borrowed umbrella and a song neither of us could stop humming.\"},{\"year\":\"2022\",\"title\":\"Wild hearts\",\"text\":\"A road trip through the hills that turned two friends into something more.\"},{\"year\":\"2025\",\"title\":\"She said yes\",\"text\":\"Golden hour by the sea, a trembling question and the easiest answer ever.\"}],\"programme\":[{\"kick\":\"Saturday evening\",\"title\":\"Welcome dinner\",\"time\":\"Sat, 13 Feb · 7:30 PM\",\"text\":\"The Garden Terrace\",\"note\":\"Smart casual\"},{\"kick\":\"The main event\",\"title\":\"The wedding\",\"time\":\"Sun, 14 Feb · 5:00 PM\",\"text\":\"The Floral Pavilion\",\"note\":\"Festive formal\"},{\"kick\":\"After sunset\",\"title\":\"Reception\",\"time\":\"Sun, 14 Feb · 8:30 PM\",\"text\":\"The Lantern Lawn\",\"note\":\"Black tie\"}],\"caption\":\"#AaravWedsRiya\",\"instagram\":\"@aarav.weds.riya\",\"venueNote\":\"Tea Garden Road, Munnar, Kerala. Shuttles run from the Munnar town square every 30 minutes from 4 PM.\",\"venuePhone\":\"\"}",
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"How it began\",\"text\":\"A rooftop party, a borrowed umbrella and a song neither of us could stop humming.\"},{\"year\":\"2022\",\"title\":\"Wild hearts\",\"text\":\"A road trip through the hills that turned two friends into something more.\"},{\"year\":\"2025\",\"title\":\"She said yes\",\"text\":\"Golden hour by the sea, a trembling question and the easiest answer ever.\"}],\"programme\":[{\"kick\":\"Saturday evening\",\"title\":\"Welcome dinner\",\"time\":\"Sat, 13 Feb \u00b7 7:30 PM\",\"text\":\"The Garden Terrace\",\"note\":\"Smart casual\"},{\"kick\":\"The main event\",\"title\":\"The wedding\",\"time\":\"Sun, 14 Feb \u00b7 5:00 PM\",\"text\":\"The Floral Pavilion\",\"note\":\"Festive formal\"},{\"kick\":\"After sunset\",\"title\":\"Reception\",\"time\":\"Sun, 14 Feb \u00b7 8:30 PM\",\"text\":\"The Lantern Lawn\",\"note\":\"Black tie\"}],\"caption\":\"#AaravWedsRiya\",\"instagram\":\"@aarav.weds.riya\",\"venueNote\":\"Tea Garden Road, Munnar, Kerala. Shuttles run from the Munnar town square every 30 minutes from 4 PM.\",\"venuePhone\":\"\"}",
           "hosts": "Together with their families",
           "names": "Aarav & Riya",
           "title": "invite you to celebrate their wedding",
@@ -2411,6 +2411,200 @@
           "message": "Three days of lanterns, flowers and family in the hills.",
           "dress": "Festive formal",
           "rsvpBy": "2027-01-20"
+        }
+      }
+    },
+    {
+      "id": "pull",
+      "name": "Pull of Love",
+      "style": "pull",
+      "price": 349,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Guests pull a velvet rope, the curtains part, and a gold scroll unrolls into the wedding.",
+      "asks": {
+        "photos": 6,
+        "audio": true,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "themes": [
+          {
+            "id": "burgundy",
+            "name": "Burgundy & gold"
+          },
+          {
+            "id": "midnight",
+            "name": "Midnight & champagne"
+          },
+          {
+            "id": "emerald",
+            "name": "Emerald & gold"
+          },
+          {
+            "id": "plum",
+            "name": "Plum & rose"
+          }
+        ],
+        "defaultTheme": "burgundy",
+        "shots": [
+          {
+            "label": "Just us"
+          },
+          {
+            "label": "The night we met"
+          },
+          {
+            "label": "Wild hearts"
+          },
+          {
+            "label": "She said yes"
+          },
+          {
+            "label": "Family"
+          },
+          {
+            "label": "The palace"
+          }
+        ],
+        "rsvp": {
+          "meal": true,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The curtain",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Family line",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The functions",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Gallery",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Replies & wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"2019\",\"title\":\"How it began\",\"text\":\"A rooftop party, a borrowed umbrella and a song neither of us could stop humming.\"},{\"year\":\"2022\",\"title\":\"Wild hearts\",\"text\":\"A road trip through the hills that turned two friends into something more.\"},{\"year\":\"2025\",\"title\":\"She said yes\",\"text\":\"Golden hour by the sea, a trembling question and the easiest answer ever.\"}],\"programme\":[{\"kick\":\"Friday evening\",\"title\":\"Mehendi night\",\"time\":\"Fri, 19 Nov \\u00b7 6:00 PM\",\"text\":\"The Courtyard\",\"note\":\"Colourful & festive\"},{\"kick\":\"Friday night\",\"title\":\"Sangeet\",\"time\":\"Fri, 19 Nov \\u00b7 9:00 PM\",\"text\":\"The Mirror Hall\",\"note\":\"Glam & sparkle\"},{\"kick\":\"The main event\",\"title\":\"The wedding\",\"time\":\"Sat, 20 Nov \\u00b7 7:00 PM\",\"text\":\"The Grand Ballroom\",\"note\":\"Traditional formal\"},{\"kick\":\"Sunday night\",\"title\":\"Reception\",\"time\":\"Sun, 21 Nov \\u00b7 8:00 PM\",\"text\":\"The Rooftop Terrace\",\"note\":\"Black tie\"}],\"caption\":\"#VihaanWedsMeera\",\"instagram\":\"@vihaan.weds.meera\",\"venueNote\":\"Amer Road, Jaipur, Rajasthan. Valet parking at the palace gates; shuttles from the city hotels every 30 minutes from 5 PM.\",\"venuePhone\":\"\"}",
+          "hosts": "Together with their families",
+          "names": "Vihaan & Meera",
+          "title": "request the pleasure of your company at the celebration of their marriage",
+          "detail": "",
+          "date": "2027-11-20",
+          "time": "19:00",
+          "venue": "Rosewood Palace",
+          "address": "Jaipur, Rajasthan",
+          "message": "The curtain rises on a night of music, family and celebration.",
+          "dress": "Traditional formal",
+          "rsvpBy": "2027-10-20"
         }
       }
     }

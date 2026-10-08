@@ -3287,6 +3287,177 @@
         "rsvpBy": "2026-12-20"
       }
     }
-  }
+  },
+    {
+      "id": "palace",
+      "name": "Palace",
+      "style": "palace",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "A paper-palace wedding. Tap the plaque, the ribbon falls, and blush doors open onto the celebrations.",
+      "asks": {
+        "photos": 7,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "themes": [
+          {
+            "id": "paper",
+            "name": "Blush paper"
+          }
+        ],
+        "defaultTheme": "paper",
+        "shots": [
+          {
+            "label": "Our photo"
+          },
+          {
+            "label": "Moment 1"
+          },
+          {
+            "label": "Moment 2"
+          },
+          {
+            "label": "Moment 3"
+          },
+          {
+            "label": "Moment 4"
+          },
+          {
+            "label": "Moment 5"
+          },
+          {
+            "label": "Moment 6"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The doors",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Blessing line",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Welcome",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"people\":[{\"name\":\"Mrs. Anjali & Mr. Rohan Mehra\",\"role\":\"Daughter of\"},{\"name\":\"Mrs. Nisha & Mr. Vikram Kapoor\",\"role\":\"Son of\"}],\"story\":[{\"year\":\"2019\",\"title\":\"First hello\",\"text\":\"A rooftop party in Mumbai and a conversation that never ended.\"},{\"year\":\"2025\",\"title\":\"The question\",\"text\":\"At sunrise over Udaipur’s lakes, he asked. She said yes before he finished.\"},{\"year\":\"2027\",\"title\":\"Forever\",\"text\":\"Now we begin our favourite chapter — and we want you there.\"}],\"programme\":[{\"kick\":\"Friday · 22 January\",\"title\":\"Ring Ceremony\",\"time\":\"11:00 AM\",\"text\":\"The Mirror Courtyard\",\"note\":\"Pastels\"},{\"kick\":\"Friday · 22 January\",\"title\":\"Sangeet\",\"time\":\"8:00 PM\",\"text\":\"The Durbar Hall\",\"note\":\"Glam & sparkle\"},{\"kick\":\"Saturday · 23 January\",\"title\":\"The Wedding\",\"time\":\"6:00 PM\",\"text\":\"Lotus Lawns\",\"note\":\"Traditional\"},{\"kick\":\"Saturday · 23 January\",\"title\":\"Cocktails\",\"time\":\"10:00 PM\",\"text\":\"The Rose Terrace\",\"note\":\"Black tie\"},{\"kick\":\"Sunday · 24 January\",\"title\":\"Reception\",\"time\":\"7:30 PM\",\"text\":\"The Palace Ballroom\",\"note\":\"Indo-western\"}],\"wishes\":[{\"text\":\"May your home always be full of laughter, music and good food. Love you both!\",\"by\":\"Meera Didi\"},{\"text\":\"From college canteen to the mandap — so proud of you two. Jaipur, here we come!\",\"by\":\"Arjun & Tara\"},{\"text\":\"Wishing you a lifetime of sunrise walks and late-night chai.\",\"by\":\"Nani\"}],\"caption\":\"#IshaWedsKabir\",\"instagram\":\"\",\"venueNote\":\"VALET PARKING · SHUTTLES FROM CITY HOTELS FROM 5 PM\"}",
+          "hosts": "With the blessings of",
+          "names": "Isha & Kabir",
+          "title": "",
+          "detail": "",
+          "date": "2027-01-23",
+          "time": "18:00",
+          "venue": "Sheesh Mahal Gardens",
+          "address": "Amer Road, Jaipur, Rajasthan",
+          "message": "we request the honour of your presence as our children begin their forever",
+          "dress": "",
+          "rsvpBy": "2026-12-20"
+        }
+      }
+    }
   ]
 }

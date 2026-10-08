@@ -3120,6 +3120,173 @@
         "rsvpBy": "2027-01-15"
       }
     }
+  },
+  {
+    "id": "pastal",
+    "name": "Pastal party",
+    "style": "pastal",
+    "price": 499,
+    "free": false,
+    "events": [
+      "marriage"
+    ],
+    "tagline": "Wedding",
+    "description": "A pressed-paper wedding. Tap the wax seal, the ribbon falls, and a palace garden opens onto the celebrations.",
+    "asks": {
+      "photos": 3,
+      "audio": false,
+      "location": true
+    },
+    "meta": {
+      "names": "couple",
+      "ceremony": "The wedding",
+      "themes": [
+        {
+          "id": "ivory",
+          "name": "Ivory"
+        },
+        {
+          "id": "blush",
+          "name": "Blush"
+        },
+        {
+          "id": "sage",
+          "name": "Sage"
+        }
+      ],
+      "defaultTheme": "ivory",
+      "shots": [
+        {
+          "label": "First hello"
+        },
+        {
+          "label": "The question"
+        },
+        {
+          "label": "Forever"
+        }
+      ],
+      "rsvp": {
+        "meal": false,
+        "song": false,
+        "maxGuests": 10
+      },
+      "components": [
+        {
+          "id": "opening",
+          "label": "The seal",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "hosts",
+          "label": "Opening line",
+          "configurable": true,
+          "fields": [
+            "hosts"
+          ]
+        },
+        {
+          "id": "names",
+          "label": "Couple",
+          "configurable": true,
+          "fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "message",
+          "label": "Welcome",
+          "configurable": true,
+          "fields": [
+            "message"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Wedding day",
+          "configurable": true,
+          "fields": [
+            "date",
+            "time"
+          ]
+        },
+        {
+          "id": "ceremony",
+          "label": "The venue",
+          "configurable": true,
+          "fields": [
+            "venue",
+            "address",
+            "lat",
+            "lng"
+          ]
+        },
+        {
+          "id": "countdown",
+          "label": "Countdown",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "programme",
+          "label": "The celebrations",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "story",
+          "label": "Our story",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "gallery",
+          "label": "Photographs",
+          "configurable": true,
+          "fields": [
+            "photos"
+          ]
+        },
+        {
+          "id": "rsvp",
+          "label": "Kindly reply",
+          "configurable": true,
+          "fields": [
+            "rsvpBy"
+          ]
+        }
+      ]
+    },
+    "samples": {
+      "marriage": {
+        "event": "marriage",
+        "hostEmail": "",
+        "receptionTime": "",
+        "receptionVenue": "",
+        "receptionAddress": "",
+        "photos": [],
+        "audio": "",
+        "lat": "",
+        "lng": "",
+        "lines": "{\"people\": [{\"name\": \"Mrs. Anjali & Mr. Rohan Mehra\", \"role\": \"Daughter of\"}, {\"name\": \"Mrs. Nisha & Mr. Vikram Kapoor\", \"role\": \"Son of\"}], \"story\": [{\"year\": \"2019\", \"title\": \"First hello\", \"text\": \"A rooftop party in Mumbai and a conversation that never ended.\"}, {\"year\": \"2025\", \"title\": \"The question\", \"text\": \"At sunrise over Udaipur\u2019s lakes, he asked. She said yes before he finished.\"}, {\"year\": \"2027\", \"title\": \"Forever\", \"text\": \"Now we begin our favourite chapter \u2014 and we want you there.\"}], \"programme\": [{\"kick\": \"Friday \u00b7 22 January\", \"title\": \"Haldi\", \"time\": \"10:00 AM\", \"text\": \"The Courtyard\", \"note\": \"Shades of yellow\"}, {\"kick\": \"Friday \u00b7 22 January\", \"title\": \"Mehendi\", \"time\": \"4:00 PM\", \"text\": \"Garden Terrace\", \"note\": \"Greens & florals\"}, {\"kick\": \"Friday \u00b7 22 January\", \"title\": \"Sangeet\", \"time\": \"8:00 PM\", \"text\": \"The Durbar Hall\", \"note\": \"Glam & sparkle\"}, {\"kick\": \"Saturday \u00b7 23 January\", \"title\": \"The Wedding\", \"time\": \"6:00 PM\", \"text\": \"Lotus Lawns\", \"note\": \"Traditional\"}, {\"kick\": \"Sunday \u00b7 24 January\", \"title\": \"Reception\", \"time\": \"8:00 PM\", \"text\": \"Sheesh Mahal\", \"note\": \"Black tie\"}], \"venueNote\": \"Valet parking \u00b7 shuttles from city hotels from 5 pm\"}",
+        "hosts": "Together with their families",
+        "names": "Isha & Kabir",
+        "title": "",
+        "detail": "",
+        "date": "2027-01-23",
+        "time": "18:00",
+        "venue": "Sheesh Mahal Gardens",
+        "address": "Amer Road, Jaipur, Rajasthan",
+        "message": "With joy in our hearts and the blessings of our families, we invite you to celebrate the beginning of our forever.",
+        "dress": "",
+        "rsvpBy": "2026-12-20"
+      }
+    }
   }
   ]
 }

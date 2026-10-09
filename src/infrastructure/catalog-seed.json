@@ -3629,6 +3629,327 @@
           "rsvpBy": "2026-11-20"
         }
       }
+    },
+  {
+    "id": "villa",
+    "name": "Villa Serena",
+    "style": "villa",
+    "price": 499,
+    "free": false,
+    "events": [
+      "marriage"
+    ],
+    "tagline": "Wedding",
+    "description": "A sunlit Tuscan wedding. Tap the oval, the cover opens, and lemon trees, fairy lights and a villa garden welcome the weekend.",
+    "asks": {
+      "photos": 1,
+      "audio": false,
+      "location": true
+    },
+    "meta": {
+      "names": "couple",
+      "ceremony": "The ceremony",
+      "themes": [
+        {
+          "id": "olive",
+          "name": "Tuscan olive"
+        }
+      ],
+      "defaultTheme": "olive",
+      "shots": [
+        {
+          "label": "Our photo"
+        }
+      ],
+      "rsvp": {
+        "meal": false,
+        "song": false,
+        "maxGuests": 10
+      },
+      "components": [
+        {
+          "id": "opening",
+          "label": "The oval",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "hosts",
+          "label": "Blessing line",
+          "configurable": true,
+          "fields": [
+            "hosts"
+          ]
+        },
+        {
+          "id": "names",
+          "label": "Couple",
+          "configurable": true,
+          "fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "message",
+          "label": "Welcome",
+          "configurable": true,
+          "fields": [
+            "message"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Wedding day",
+          "configurable": true,
+          "fields": [
+            "date",
+            "time"
+          ]
+        },
+        {
+          "id": "ceremony",
+          "label": "The venue",
+          "configurable": true,
+          "fields": [
+            "venue",
+            "address",
+            "lat",
+            "lng"
+          ]
+        },
+        {
+          "id": "countdown",
+          "label": "Countdown",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "programme",
+          "label": "The weekend",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "story",
+          "label": "Our story",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "gallery",
+          "label": "Photograph",
+          "configurable": true,
+          "fields": [
+            "photos"
+          ]
+        },
+        {
+          "id": "rsvp",
+          "label": "Kindly reply",
+          "configurable": true,
+          "fields": [
+            "rsvpBy"
+          ]
+        }
+      ]
+    },
+    "samples": {
+      "marriage": {
+        "event": "marriage",
+        "hostEmail": "",
+        "receptionTime": "",
+        "receptionVenue": "",
+        "receptionAddress": "",
+        "photos": [],
+        "audio": "",
+        "lat": "",
+        "lng": "",
+        "lines": "{\"people\":[{\"role\":\"Daughter of\",\"name\":\"Mrs. Neha & Mr. Anil Kapoor\"},{\"role\":\"Son of\",\"name\":\"Mrs. Ritu & Mr. Sameer Malhotra\"}],\"story\":[{\"year\":\"2019\",\"title\":\"First hello\",\"text\":\"A Delhi dinner that ran far too long, and a shared plate of pasta that started everything.\"},{\"year\":\"2026\",\"title\":\"The question\",\"text\":\"Between the vines in Chianti, he asked. She said sì before he finished.\"},{\"year\":\"2027\",\"title\":\"Forever\",\"text\":\"They return to Tuscany, this time with everyone they love.\"}],\"programme\":[{\"kick\":\"Friday 16 April\",\"title\":\"Aperitivo & Mehendi\",\"time\":\"5:00 PM\",\"text\":\"The Lemon Garden\",\"note\":\"\"},{\"kick\":\"Saturday 17 April\",\"title\":\"The Ceremony\",\"time\":\"4:30 PM\",\"text\":\"The Pavilion\",\"note\":\"\"},{\"kick\":\"Saturday 17 April\",\"title\":\"Dinner & Dancing\",\"time\":\"7:30 PM\",\"text\":\"The Terrace\",\"note\":\"\"},{\"kick\":\"Sunday 18 April\",\"title\":\"Farewell Brunch\",\"time\":\"11:00 AM\",\"text\":\"The Olive Grove\",\"note\":\"\"}],\"wishes\":[{\"text\":\"May your table always be full, and your glasses fuller.\",\"by\":\"Ishita & Karan\"},{\"text\":\"From Delhi to Tuscany — what a beautiful road. So happy for you both.\",\"by\":\"Meher\"},{\"text\":\"Beta, may every sunrise find you laughing together.\",\"by\":\"Dadi\"}],\"facts\":[{\"label\":\"Antipasti Toscani\",\"value\":\"Burrata, heirloom tomatoes & warm focaccia\"},{\"label\":\"Pici al Ragù\",\"value\":\"Hand-rolled Tuscan pasta, slow-cooked ragù\"},{\"label\":\"Paneer Tikka alla Griglia\",\"value\":\"A little taste of home, from the wood fire\"},{\"label\":\"Dolce della Casa\",\"value\":\"Strawberry layer cake & gelato\"}],\"rooms\":[{\"label\":\"\",\"name\":\"Villa Serena Suites\",\"text\":\"On site · limited rooms for family\",\"note\":\"\"},{\"label\":\"\",\"name\":\"Borgo San Felice\",\"text\":\"10 minutes away · shuttle included\",\"note\":\"\"},{\"label\":\"\",\"name\":\"Hotel in Florence\",\"text\":\"40 minutes · daily shuttles\",\"note\":\"\"}],\"faqs\":[{\"q\":\"Account name\",\"a\":\"Aditi Kapoor\"},{\"q\":\"Account\",\"a\":\"XXXX 4471 · HDFC0000123\"},{\"q\":\"UPI\",\"a\":\"aditi.vikram@upi\"}],\"gift\":\"Your presence is the greatest gift. If you wish to bless us further, a contribution towards our Tuscan honeymoon would mean the world.\",\"travelFrom\":\"The villa is 40 minutes from Florence Airport. Complimentary shuttles run from Florence on Friday afternoon and Saturday morning.\",\"venueNote\":\"Strada di Vignamaggio 5, 50022 Greve in Chianti, Florence\",\"caption\":\"#AditiVikramInTuscany\",\"instagram\":\"\"}",
+        "hosts": "Together with their families",
+        "names": "Aditi & Vikram",
+        "title": "",
+        "detail": "",
+        "date": "2027-04-17",
+        "time": "16:30",
+        "venue": "Villa Serena",
+        "address": "Chianti, Tuscany",
+        "message": "invite you to a weekend of sunshine, good wine and long dinners under the Tuscan sky, as we say yes to forever.",
+        "dress": "Garden Formal",
+        "rsvpBy": "2027-03-10"
+      }
     }
+  },
+  {
+    "id": "hansa",
+    "name": "Hansa",
+    "style": "hansa",
+    "price": 499,
+    "free": false,
+    "events": [
+      "marriage"
+    ],
+    "tagline": "Wedding",
+    "description": "A moonlight wedding on the lake. Break the seal, the envelope opens, and swans, lilies and a full moon welcome the celebrations.",
+    "asks": {
+      "photos": 6,
+      "audio": false,
+      "location": true
+    },
+    "meta": {
+      "names": "couple",
+      "ceremony": "The wedding",
+      "reception": "Reception",
+      "themes": [
+        {
+          "id": "moon",
+          "name": "Moonlight silver"
+        }
+      ],
+      "defaultTheme": "moon",
+      "shots": [
+        {
+          "label": "Our photo"
+        }
+      ],
+      "rsvp": {
+        "meal": false,
+        "song": false,
+        "maxGuests": 10
+      },
+      "components": [
+        {
+          "id": "opening",
+          "label": "The seal",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "hosts",
+          "label": "Blessing line",
+          "configurable": true,
+          "fields": [
+            "hosts"
+          ]
+        },
+        {
+          "id": "names",
+          "label": "Couple",
+          "configurable": true,
+          "fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "message",
+          "label": "Welcome",
+          "configurable": true,
+          "fields": [
+            "message"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Wedding day",
+          "configurable": true,
+          "fields": [
+            "date",
+            "time"
+          ]
+        },
+        {
+          "id": "ceremony",
+          "label": "Hansa Mahal",
+          "configurable": true,
+          "fields": [
+            "venue",
+            "address",
+            "lat",
+            "lng"
+          ]
+        },
+        {
+          "id": "dress",
+          "label": "Dress",
+          "configurable": true,
+          "fields": [
+            "dress"
+          ]
+        },
+        {
+          "id": "countdown",
+          "label": "Countdown",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "programme",
+          "label": "The celebrations",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "story",
+          "label": "Our story",
+          "configurable": true,
+          "fields": [
+            "lines"
+          ]
+        },
+        {
+          "id": "gallery",
+          "label": "Photographs",
+          "configurable": true,
+          "fields": [
+            "photos"
+          ]
+        },
+        {
+          "id": "wishes",
+          "label": "Wishes",
+          "configurable": false,
+          "fields": []
+        },
+        {
+          "id": "rsvp",
+          "label": "Kindly reply",
+          "configurable": true,
+          "fields": [
+            "rsvpBy"
+          ]
+        }
+      ]
+    },
+    "samples": {
+      "marriage": {
+        "event": "marriage",
+        "hostEmail": "",
+        "receptionTime": "",
+        "receptionVenue": "",
+        "receptionAddress": "",
+        "photos": [],
+        "audio": "",
+        "lat": "",
+        "lng": "",
+        "lines": "{\"people\":[{\"role\":\"Daughter of\",\"name\":\"Mrs. Sunita & Mr. Rajiv Sen\"},{\"role\":\"Son of\",\"name\":\"Mrs. Kavya & Mr. Nikhil Mehta\"}],\"story\":[{\"year\":\"2020\",\"title\":\"First hello\",\"text\":\"A rainy Mumbai evening, one umbrella and two strangers who kept talking long after the rain stopped.\"},{\"year\":\"2026\",\"title\":\"The question\",\"text\":\"On a boat on Lake Pichola, under a full moon, he asked. She said yes before he finished.\"},{\"year\":\"2027\",\"title\":\"Forever\",\"text\":\"Now we return to the same lake to begin our favourite chapter — with you.\"}],\"programme\":[{\"kick\":\"13 FEB\",\"title\":\"Mehendi under the Moon\",\"time\":\"4:00 PM\",\"text\":\"Lotus Courtyard\",\"note\":\"\"},{\"kick\":\"13 FEB\",\"title\":\"Sangeet\",\"time\":\"8:00 PM\",\"text\":\"The Durbar Hall\",\"note\":\"\"},{\"kick\":\"14 FEB\",\"title\":\"Haldi\",\"time\":\"10:00 AM\",\"text\":\"Garden Terrace\",\"note\":\"\"},{\"kick\":\"14 FEB\",\"title\":\"The Wedding\",\"time\":\"5:30 PM\",\"text\":\"Swan Ghat\",\"note\":\"\"},{\"kick\":\"14 FEB\",\"title\":\"Reception\",\"time\":\"8:30 PM\",\"text\":\"The Moonlit Lawns\",\"note\":\"\"}],\"wishes\":[{\"text\":\"May you glide through life together as gracefully as two swans on a still lake.\",\"by\":\"Tanvi & Rohan\"},{\"text\":\"Rhea, I’ve waited for this since we were ten. Udaipur, here we come!\",\"by\":\"Ishani\"},{\"text\":\"Wishing you a lifetime of moonlit walks and quiet mornings. Love, always.\",\"by\":\"Nanu\"}],\"venueNote\":\"boats from Gangaur Ghat from 4:30 PM\",\"instagram\":\"\"}",
+        "hosts": "With the blessings of our families",
+        "names": "Rhea & Aarav",
+        "title": "We're getting married",
+        "detail": "",
+        "date": "2027-02-14",
+        "time": "17:30",
+        "venue": "Hansa Mahal",
+        "address": "Lake Pichola, Udaipur",
+        "message": "Like the swans who choose each other for life, we have found our forever. Join us under the full moon as we begin it.",
+        "dress": "Soft pastels, silver and dove grey for the ladies; black or ivory sherwanis and tuxedos for the gents. We kindly reserve white for the bride.",
+        "rsvpBy": "2027-01-10"
+      }
+    }
+  }
   ]
 }

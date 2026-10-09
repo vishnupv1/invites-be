@@ -25,6 +25,7 @@ export const inviteFieldsSchema = z.object({
   lat: text,
   lng: text,
   lines: z.string().max(8000).default(""),
+  canvas: z.string().max(80000).default(""),
 });
 
 export const draftFieldsSchema = inviteFieldsSchema.extend({

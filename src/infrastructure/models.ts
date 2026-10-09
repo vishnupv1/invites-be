@@ -28,6 +28,7 @@ const CouponSchema = new Schema(
   {
     code: { type: String, required: true, unique: true, uppercase: true, trim: true },
     active: { type: Boolean, required: true, default: true },
+    percent: { type: Number, required: true, min: 1, max: 100, default: 100 },
   },
   { timestamps: true },
 );
@@ -53,9 +54,11 @@ const GreetingSchema = new Schema(
     name: { type: String, required: true },
     note: { type: String, default: "" },
     attending: { type: Boolean, required: true },
+    replyTokenHash: { type: String },
   },
   { timestamps: true },
 );
+GreetingSchema.index({ inviteId: 1, replyTokenHash: 1 }, { unique: true, sparse: true });
 
 const MediaSchema = new Schema(
   {

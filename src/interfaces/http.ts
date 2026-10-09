@@ -4,6 +4,7 @@ import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
 import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { suggestTemplates } from "../application/suggest.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../domain/invite-fields.js";
@@ -11,6 +12,20 @@ import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema } from "../dom
 function bearer(header: string | undefined) {
   if (!header?.startsWith("Bearer ")) return undefined;
   return header.slice(7);
+}
+
+const recentHits = new Map<string, number[]>();
+
+function tooMany(key: string, limit: number, windowMs: number) {
+  const now = Date.now();
+  const recent = (recentHits.get(key) ?? []).filter((at) => now - at < windowMs);
+  if (recent.length >= limit) {
+    recentHits.set(key, recent);
+    return true;
+  }
+  recent.push(now);
+  recentHits.set(key, recent);
+  return false;
 }
 
 export function buildServer() {
@@ -50,6 +65,18 @@ export function buildServer() {
     return template;
   });
 
+  const suggestHits = new Map<string, number[]>();
+  app.post("/api/suggest", async (request) => {
+    const body = z.object({ query: z.string().trim().min(1).max(400) }).parse(request.body);
+    const ip = request.ip || "local";
+    const now = Date.now();
+    const recent = (suggestHits.get(ip) ?? []).filter((at) => now - at < 60_000);
+    if (recent.length >= 20) return { relevant: false, ids: [] };
+    recent.push(now);
+    suggestHits.set(ip, recent);
+    return suggestTemplates(body.query);
+  });
+
   app.get("/api/admin/summary", async (request) => adminSummary(bearer(request.headers.authorization)));
 
   app.post("/api/auth/signup", async (request) => {
@@ -80,7 +107,8 @@ export function buildServer() {
     return signInWithGoogle(body.code);
   });
 
-  app.post("/api/session", async (request) => {
+  app.post("/api/session", async (request, reply) => {
+    if (tooMany(`session:${request.ip}`, 20, 60_000)) return reply.status(429).send({ error: "Too many attempts. Wait a minute and try again." });
     const body = z.object({ email: z.string().email(), name: z.string().min(1).max(120) }).parse(request.body);
     return openSession(body.email, body.name);
   });
@@ -108,13 +136,13 @@ export function buildServer() {
   app.get("/api/purchases", async (request) => listPurchases(bearer(request.headers.authorization)));
 
   app.post("/api/payments/order", async (request) => {
-    const body = z.object({ templateId: z.string() }).parse(request.body);
-    return createPaymentOrder(bearer(request.headers.authorization), body.templateId);
+    const body = z.object({ templateId: z.string(), coupon: z.string().max(40).optional() }).parse(request.body);
+    return createPaymentOrder(bearer(request.headers.authorization), body.templateId, body.coupon);
   });
 
   app.post("/api/create-order", async (request) => {
-    const body = z.object({ templateId: z.string() }).parse(request.body);
-    return createPaymentOrder(bearer(request.headers.authorization), body.templateId);
+    const body = z.object({ templateId: z.string(), coupon: z.string().max(40).optional() }).parse(request.body);
+    return createPaymentOrder(bearer(request.headers.authorization), body.templateId, body.coupon);
   });
 
   app.post("/api/verify-payment", async (request) => {
@@ -195,13 +223,15 @@ export function buildServer() {
     return getPublicInvite(slug);
   });
 
-  app.post("/api/invites/:slug/greetings", async (request) => {
+  app.post("/api/invites/:slug/greetings", async (request, reply) => {
     const { slug } = request.params as { slug: string };
+    if (tooMany(`greet:${request.ip}:${slug}`, 12, 60_000)) return reply.status(429).send({ error: "Too many replies. Wait a minute and try again." });
     const body = z
       .object({
         name: z.string().trim().min(1).max(120),
         note: z.string().max(1000).default(""),
         attending: z.boolean().default(true),
+        replyToken: z.string().max(80).optional(),
       })
       .parse(request.body);
     return addGreeting(slug, body);

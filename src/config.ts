@@ -32,6 +32,10 @@ const defaultOrigins = [
   "https://invites-phi-mauve.vercel.app",
   "http://localhost:5175",
   "http://127.0.0.1:5175",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://localhost:5178",
+  "http://127.0.0.1:5178",
 ];
 
 const corsOrigins = [
@@ -49,6 +53,7 @@ export const config = {
   razorpayKeySecret: (process.env.RAZORPAY_KEY_SECRET ?? "").trim(),
   googleClientId: (process.env.GOOGLE_CLIENT_ID ?? "").trim(),
   googleClientSecret: (process.env.GOOGLE_CLIENT_SECRET ?? "").trim(),
+  openaiApiKey: (process.env.OPENAI_API_KEY ?? "").trim(),
   adminEmail: (process.env.ADMIN_EMAIL ?? "admin@invitesready.com").trim().toLowerCase(),
   adminPassword: process.env.ADMIN_PASSWORD ?? "12345",
   adminEmails: (process.env.ADMIN_EMAILS ?? process.env.ADMIN_EMAIL ?? "admin@invitesready.com")

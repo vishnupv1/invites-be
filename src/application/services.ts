@@ -63,25 +63,26 @@ export async function ensureAdmin() {
   });
 }
 
+function isDuplicateKey(error: unknown) {
+  return typeof error === "object" && error !== null && "code" in error && (error as { code?: number }).code === 11000;
+}
+
 export async function openSession(email: string, name: string) {
   const normalized = email.trim().toLowerCase();
-  const issued = issueToken();
   const existing = await HostModel.findOne({ email: normalized });
-  if (existing?.passwordHash) {
-    throw new AppError(401, "Log in to use that email.");
+  if (existing) throw new AppError(401, "Log in to use that email.");
+  const issued = issueToken();
+  try {
+    const host = await HostModel.create({
+      email: normalized,
+      name: name.trim() || "Host",
+      tokenHash: issued.tokenHash,
+    });
+    return hostView(host, issued.token);
+  } catch (error) {
+    if (isDuplicateKey(error)) throw new AppError(401, "Log in to use that email.");
+    throw error;
   }
-  if (existing) {
-    existing.name = name.trim() || existing.name;
-    existing.tokenHash = issued.tokenHash;
-    await existing.save();
-    return hostView(existing, issued.token);
-  }
-  const host = await HostModel.create({
-    email: normalized,
-    name: name.trim() || "Host",
-    tokenHash: issued.tokenHash,
-  });
-  return hostView(host, issued.token);
 }
 
 
@@ -122,14 +123,14 @@ export async function signInWithGoogle(code: string) {
     if (!existing.name || existing.name === "Host") existing.name = name;
     existing.tokenHash = issued.tokenHash;
     await existing.save();
-    return hostView(existing, issued.token);
+    return { ...hostView(existing, issued.token), created: false };
   }
   const host = await HostModel.create({
     email: profile.email,
     name,
     tokenHash: issued.tokenHash,
   });
-  return hostView(host, issued.token);
+  return { ...hostView(host, issued.token), created: true };
 }
 
 export async function signUp(name: string, email: string, password: string) {
@@ -319,7 +320,21 @@ export async function getCatalogTemplate(id: string) {
 }
 
 export async function ensureCoupons() {
-  await CouponModel.updateOne({ code: "WELCOME26" }, { $setOnInsert: { code: "WELCOME26", active: true } }, { upsert: true });
+  await CouponModel.updateOne({ code: "WELCOME26" }, { $set: { active: true, percent: 100 } }, { upsert: true });
+  await CouponModel.updateOne({ code: "ADITYA50" }, { $set: { active: true, percent: 50 } }, { upsert: true });
+}
+
+function discountPercent(value: unknown) {
+  if (value == null) return 100;
+  const percent = Number(value);
+  if (!Number.isInteger(percent) || percent < 1 || percent > 100) {
+    throw new AppError(400, "That coupon code is not valid.");
+  }
+  return percent;
+}
+
+export function discountRupees(price: number, percentOff: number) {
+  return Math.round((price * percentOff) / 100);
 }
 
 export async function verifyCoupon(code: string) {
@@ -327,7 +342,7 @@ export async function verifyCoupon(code: string) {
   if (!normalized) throw new AppError(400, "Enter a coupon code.");
   const coupon = await CouponModel.findOne({ code: normalized }).lean();
   if (!coupon || coupon.active === false) throw new AppError(400, "That coupon code is not valid.");
-  return { valid: true as const, code: coupon.code };
+  return { valid: true as const, code: coupon.code, percent: discountPercent(coupon.percent) };
 }
 
 function razorpayClient() {
@@ -344,7 +359,7 @@ function throwRazorpayError(error: unknown): never {
   throw new AppError(500, "Razorpay could not create the order. Try again.");
 }
 
-export async function createPaymentOrder(token: string | undefined, templateId: string) {
+export async function createPaymentOrder(token: string | undefined, templateId: string, coupon?: string) {
   const host = await hostFromToken(token);
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
@@ -352,7 +367,10 @@ export async function createPaymentOrder(token: string | undefined, templateId: 
   if (await PurchaseModel.exists({ hostId: host.id, templateId })) {
     throw new AppError(409, "You already own this template.");
   }
-  const amount = Math.round(template.price * 100);
+  const verified = coupon?.trim() ? await verifyCoupon(coupon) : null;
+  const payable = template.price - discountRupees(template.price, verified?.percent ?? 0);
+  if (payable <= 0) throw new AppError(400, "This coupon makes the template free. No payment is needed.");
+  const amount = payable * 100;
   if (!Number.isSafeInteger(amount) || amount < 100) {
     throw new AppError(400, "Payment amount must be at least ₹1.");
   }
@@ -362,7 +380,7 @@ export async function createPaymentOrder(token: string | undefined, templateId: 
       amount,
       currency: "INR",
       receipt: `p_${Date.now()}_${randomBytes(4).toString("hex")}`,
-      notes: { hostId: String(host.id), templateId },
+      notes: { hostId: String(host.id), templateId, coupon: verified?.code ?? "" },
     });
   } catch (error) {
     throwRazorpayError(error);
@@ -415,14 +433,16 @@ export async function purchaseTemplate(
   if (!template) throw new AppError(404, "Unknown template.");
   if (template.free) return { templateId, owned: true };
   const verified = coupon?.trim() ? await verifyCoupon(coupon) : null;
-  if (!verified) {
+  const payable = template.price - discountRupees(template.price, verified?.percent ?? 0);
+  if (payable > 0) {
     if (!payment) throw new AppError(402, "Complete the payment to unlock this template.");
     const { order } = await verifyPaymentProof(token, payment);
     const notes = order.notes ?? {};
     if (
-      Number(order.amount) !== Math.round(template.price * 100) ||
+      Number(order.amount) !== payable * 100 ||
       order.currency !== "INR" ||
-      String(notes.templateId ?? "") !== templateId
+      String(notes.templateId ?? "") !== templateId ||
+      String(notes.coupon ?? "") !== (verified?.code ?? "")
     ) {
       throw new AppError(400, "That payment does not match this purchase.");
     }
@@ -433,9 +453,9 @@ export async function purchaseTemplate(
       $setOnInsert: {
         hostId: host.id,
         templateId,
-        price: verified ? 0 : template.price,
+        price: payable,
         coupon: verified?.code ?? "",
-        ...(!verified && payment
+        ...(payable > 0 && payment
           ? {
               razorpayOrderId: payment.razorpay_order_id,
               razorpayPaymentId: payment.razorpay_payment_id,
@@ -459,7 +479,7 @@ async function assertCanUse(hostId: string, templateId: string) {
   if (!template) throw new AppError(404, "Unknown template.");
   if (template.free) return;
   const owned = await PurchaseModel.exists({ hostId, templateId });
-  if (!owned) throw new AppError(402, "Buy this template once before publishing.");
+  if (!owned) throw new AppError(402, "Pay for this template before publishing.");
 }
 
 export async function createInvite(token: string | undefined, templateId: string, fields: InviteFields) {
@@ -587,16 +607,34 @@ export async function getPublicInvite(slugValue: string) {
   };
 }
 
-export async function addGreeting(slugValue: string, input: { name: string; note: string; attending: boolean }) {
+export async function addGreeting(
+  slugValue: string,
+  input: { name: string; note: string; attending: boolean; replyToken?: string },
+) {
   const invite = await InviteModel.findOne({ slug: slugValue });
   if (!invite || invite.status === "draft") throw new AppError(404, "Invitation not found.");
+  const name = input.name.trim();
+  const note = input.note.trim();
+  const token = input.replyToken?.trim();
+  if (token) {
+    const existing = await GreetingModel.findOne({ inviteId: invite.id, replyTokenHash: hashToken(token) });
+    if (existing) {
+      existing.name = name;
+      existing.note = note;
+      existing.attending = input.attending;
+      await existing.save();
+      return { id: existing.id, name: existing.name, note: existing.note, attending: existing.attending, replyToken: token };
+    }
+  }
+  const replyToken = randomBytes(18).toString("hex");
   const greeting = await GreetingModel.create({
     inviteId: invite.id,
-    name: input.name.trim(),
-    note: input.note.trim(),
+    name,
+    note,
     attending: input.attending,
+    replyTokenHash: hashToken(replyToken),
   });
-  return { id: greeting.id, name: greeting.name, note: greeting.note, attending: greeting.attending };
+  return { id: greeting.id, name: greeting.name, note: greeting.note, attending: greeting.attending, replyToken };
 }
 
 export async function saveMedia(token: string | undefined, file: { filename: string; mimetype: string; buffer: Buffer }) {

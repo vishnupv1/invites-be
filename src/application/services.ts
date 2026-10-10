@@ -6,8 +6,9 @@ import { promisify } from "node:util";
 import Razorpay from "razorpay";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
+import { COMPLETED_TTL_MS, OPENING_TTL_MS, PENDING_UNPAID_MS, duplicatePurchaseOutcome, entitlementAllowsPublish, judgePaymentAccess, judgePaymentMatch, judgeRecovery, reusePendingAttempt, type AttemptStatus } from "./payment-decision.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema, type EditorState, type InviteFields } from "../domain/invite-fields.js";
-import { CouponModel, EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
+import { CouponModel, EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PendingPaymentModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
 
 const uploadsDir = path.resolve(process.cwd(), "uploads");
 
@@ -359,6 +360,89 @@ function throwRazorpayError(error: unknown): never {
   throw new AppError(500, "Razorpay could not create the order. Try again.");
 }
 
+const SUPPORT = "We could not match that payment to this design. Contact support. Do not pay again.";
+const EXPIRED = "That checkout expired. No payment was taken.";
+const UNAVAILABLE = "We could not confirm that payment just now. Try again in a moment. You will not be charged again.";
+const NOT_FOUND = "That payment attempt was not found.";
+
+function noteValue(notes: unknown, key: string) {
+  if (!notes || typeof notes !== "object" || Array.isArray(notes)) return "";
+  const value = (notes as Record<string, unknown>)[key];
+  return value == null ? "" : String(value);
+}
+
+function attemptStatus(value: string): AttemptStatus {
+  if (
+    value === "opening" ||
+    value === "awaiting-payment" ||
+    value === "captured" ||
+    value === "completed" ||
+    value === "failed" ||
+    value === "expired"
+  ) {
+    return value;
+  }
+  return "failed";
+}
+
+async function markAttemptCompleted(hostId: unknown, orderId: string) {
+  const keepUntil = new Date(Date.now() + COMPLETED_TTL_MS);
+  await PendingPaymentModel.updateOne(
+    { hostId, razorpayOrderId: orderId, status: { $in: ["opening", "awaiting-payment", "captured"] } },
+    { $set: { status: "completed", finalizedAt: new Date(), expiresAt: keepUntil } },
+  );
+}
+
+async function saveOwnedPurchase(
+  hostId: unknown,
+  templateId: string,
+  price: number,
+  coupon: string,
+  orderId?: string,
+  paymentId?: string,
+) {
+  try {
+    await PurchaseModel.updateOne(
+      { hostId, templateId },
+      {
+        $setOnInsert: {
+          hostId,
+          templateId,
+          price,
+          coupon,
+          ...(orderId && paymentId ? { razorpayOrderId: orderId, razorpayPaymentId: paymentId } : {}),
+        },
+      },
+      { upsert: true },
+    );
+  } catch (error) {
+    const code = typeof error === "object" && error !== null && "code" in error ? Number(error.code) : undefined;
+    const outcome = duplicatePurchaseOutcome(code, false);
+    if (outcome === "unexpected") throw error;
+    const existing = await PurchaseModel.exists({ hostId, templateId });
+    if (duplicatePurchaseOutcome(code, Boolean(existing)) !== "owned") {
+      throw new AppError(409, "That payment is already used.");
+    }
+  }
+  if (orderId) await markAttemptCompleted(hostId, orderId);
+  return { templateId, owned: true as const };
+}
+
+function payResponse(
+  attempt: { id?: unknown; _id?: unknown; razorpayOrderId?: string | null; amount: number; currency: string },
+  reused: boolean,
+) {
+  return {
+    action: "pay" as const,
+    keyId: config.razorpayKeyId,
+    orderId: attempt.razorpayOrderId || "",
+    amount: attempt.amount,
+    currency: attempt.currency,
+    attemptId: String(attempt.id ?? attempt._id),
+    reused,
+  };
+}
+
 export async function createPaymentOrder(token: string | undefined, templateId: string, coupon?: string) {
   const host = await hostFromToken(token);
   const template = await getCatalogTemplate(templateId);
@@ -374,23 +458,83 @@ export async function createPaymentOrder(token: string | undefined, templateId: 
   if (!Number.isSafeInteger(amount) || amount < 100) {
     throw new AppError(400, "Payment amount must be at least ₹1.");
   }
-  let order;
+  const couponCode = verified?.code ?? "";
+  const now = Date.now();
+  const open = await PendingPaymentModel.findOne({
+    hostId: host.id,
+    templateId,
+    status: { $in: ["opening", "awaiting-payment", "captured"] },
+  });
+  if (open) {
+    const decision = reusePendingAttempt({
+      status: attemptStatus(open.status),
+      hasOrderId: Boolean(open.razorpayOrderId),
+      amount: open.amount,
+      coupon: open.coupon || "",
+      expiresAtMs: open.expiresAt ? open.expiresAt.getTime() : null,
+      now,
+      requestedAmount: amount,
+      requestedCoupon: couponCode,
+    });
+    if (decision === "recover") return { action: "recover" as const, attemptId: String(open.id) };
+    if (decision === "resume" && open.razorpayOrderId) return payResponse(open, true);
+    if (decision === "busy") throw new AppError(503, "Checkout is already starting. You have not been charged.");
+    open.status = "expired";
+    open.expiresAt = new Date();
+    await open.save();
+  }
+  let attempt;
+  try {
+    attempt = await PendingPaymentModel.create({
+      hostId: host.id,
+      templateId,
+      amount,
+      currency: "INR",
+      coupon: couponCode,
+      status: "opening",
+      expiresAt: new Date(now + OPENING_TTL_MS),
+    });
+  } catch (error) {
+    const code = typeof error === "object" && error !== null && "code" in error ? Number(error.code) : undefined;
+    if (code !== 11000) throw new AppError(500, "Could not start checkout. You have not been charged.");
+    const again = await PendingPaymentModel.findOne({
+      hostId: host.id,
+      templateId,
+      status: { $in: ["opening", "awaiting-payment", "captured"] },
+    });
+    if (again?.status === "captured") return { action: "recover" as const, attemptId: String(again.id) };
+    if (again?.razorpayOrderId) return payResponse(again, true);
+    throw new AppError(503, "Checkout is already starting. You have not been charged.");
+  }
+  let order: { id: string; amount: number | string; currency: string };
   try {
     order = await razorpayClient().orders.create({
       amount,
       currency: "INR",
       receipt: `p_${Date.now()}_${randomBytes(4).toString("hex")}`,
-      notes: { hostId: String(host.id), templateId, coupon: verified?.code ?? "" },
+      notes: { hostId: String(host.id), templateId, coupon: couponCode, attemptId: String(attempt.id) },
     });
   } catch (error) {
+    attempt.status = "failed";
+    attempt.expiresAt = new Date(Date.now() + COMPLETED_TTL_MS);
+    await attempt.save().catch(() => undefined);
     throwRazorpayError(error);
   }
-  return {
-    keyId: config.razorpayKeyId,
-    orderId: order.id,
-    amount: Number(order.amount),
-    currency: order.currency,
-  };
+  attempt.razorpayOrderId = order.id;
+  attempt.status = "awaiting-payment";
+  attempt.expiresAt = new Date(Date.now() + PENDING_UNPAID_MS);
+  try {
+    await attempt.save();
+  } catch {
+    try {
+      await attempt.save();
+    } catch {
+      attempt.status = "failed";
+      await attempt.save().catch(() => undefined);
+      throw new AppError(500, "Could not start checkout. You have not been charged.");
+    }
+  }
+  return payResponse(attempt, false);
 }
 
 type PaymentProof = {
@@ -407,14 +551,17 @@ async function verifyPaymentProof(token: string | undefined, payment: PaymentPro
     .digest("hex");
   const actual = Buffer.from(payment.razorpay_signature, "hex");
   const wanted = Buffer.from(expected, "hex");
-  if (actual.length !== wanted.length || !timingSafeEqual(actual, wanted)) {
-    throw new AppError(400, "Razorpay could not verify that payment.");
-  }
-  const order = await razorpayClient().orders.fetch(payment.razorpay_order_id);
-  if (order.status !== "paid" || String(order.notes?.hostId ?? "") !== String(host.id)) {
-    throw new AppError(400, "That payment does not match this purchase.");
-  }
-  return { host, order };
+  const signatureMatches = actual.length === wanted.length && timingSafeEqual(actual, wanted);
+  const order = signatureMatches ? await razorpayClient().orders.fetch(payment.razorpay_order_id) : null;
+  const rejection = judgePaymentAccess({
+    signatureMatches,
+    orderStatus: String(order?.status ?? ""),
+    orderHostId: String(order?.notes?.hostId ?? ""),
+    requestHostId: String(host.id),
+  });
+  if (rejection === "bad-signature") throw new AppError(400, "Razorpay could not verify that payment.");
+  if (rejection) throw new AppError(400, "That payment does not match this purchase.");
+  return { host, order: order! };
 }
 
 export async function verifyPayment(token: string | undefined, payment: PaymentProof) {
@@ -432,40 +579,46 @@ export async function purchaseTemplate(
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
   if (template.free) return { templateId, owned: true };
-  const verified = coupon?.trim() ? await verifyCoupon(coupon) : null;
+  let verified: { code: string; percent: number } | null = null;
+  let trustCapturedAmount = false;
+  if (coupon?.trim()) {
+    try {
+      verified = await verifyCoupon(coupon);
+    } catch (error) {
+      if (!payment || !(error instanceof AppError) || error.status !== 400) throw error;
+      trustCapturedAmount = true;
+      verified = { code: coupon.trim().toUpperCase(), percent: 0 };
+    }
+  }
   const payable = template.price - discountRupees(template.price, verified?.percent ?? 0);
-  if (payable > 0) {
+  let recordedPrice = payable;
+  if (payable > 0 || trustCapturedAmount) {
     if (!payment) throw new AppError(402, "Complete the payment to unlock this template.");
     const { order } = await verifyPaymentProof(token, payment);
     const notes = order.notes ?? {};
     if (
-      Number(order.amount) !== payable * 100 ||
-      order.currency !== "INR" ||
-      String(notes.templateId ?? "") !== templateId ||
-      String(notes.coupon ?? "") !== (verified?.code ?? "")
+      judgePaymentMatch({
+        orderAmount: Number(order.amount),
+        expectedAmount: trustCapturedAmount ? Number(order.amount) : payable * 100,
+        currency: String(order.currency),
+        noteTemplateId: String(notes.templateId ?? ""),
+        templateId,
+        noteCoupon: String(notes.coupon ?? ""),
+        coupon: verified?.code ?? "",
+      })
     ) {
       throw new AppError(400, "That payment does not match this purchase.");
     }
+    if (trustCapturedAmount) recordedPrice = Number(order.amount) / 100;
   }
-  await PurchaseModel.updateOne(
-    { hostId: host.id, templateId },
-    {
-      $setOnInsert: {
-        hostId: host.id,
-        templateId,
-        price: payable,
-        coupon: verified?.code ?? "",
-        ...(payable > 0 && payment
-          ? {
-              razorpayOrderId: payment.razorpay_order_id,
-              razorpayPaymentId: payment.razorpay_payment_id,
-            }
-          : {}),
-      },
-    },
-    { upsert: true },
+  return saveOwnedPurchase(
+    host.id,
+    templateId,
+    recordedPrice,
+    verified?.code ?? "",
+    payment?.razorpay_order_id,
+    payment?.razorpay_payment_id,
   );
-  return { templateId, owned: true };
 }
 
 export async function listPurchases(token: string | undefined) {
@@ -479,7 +632,142 @@ async function assertCanUse(hostId: string, templateId: string) {
   if (!template) throw new AppError(404, "Unknown template.");
   if (template.free) return;
   const owned = await PurchaseModel.exists({ hostId, templateId });
-  if (!owned) throw new AppError(402, "Pay for this template before publishing.");
+  if (!entitlementAllowsPublish(Boolean(owned))) throw new AppError(402, "Pay for this template before publishing.");
+}
+
+export async function listPendingPayments(token: string | undefined, templateId: string) {
+  const host = await hostFromToken(token);
+  const rows = await PendingPaymentModel.find({
+    hostId: host.id,
+    templateId,
+    status: { $in: ["awaiting-payment", "captured", "failed"] },
+  }).sort({ createdAt: -1 });
+  const ranked = [...rows].sort((left, right) => {
+    const weight = (status: string) => (status === "captured" ? 0 : status === "awaiting-payment" ? 1 : 2);
+    return weight(left.status) - weight(right.status);
+  });
+  const chosen = ranked[0];
+  if (!chosen) return { attempts: [] as { id: string; templateId: string; amount: number; currency: string; coupon: string; status: string }[] };
+  return {
+    attempts: [
+      {
+        id: String(chosen.id),
+        templateId: chosen.templateId,
+        amount: chosen.amount,
+        currency: chosen.currency,
+        coupon: chosen.coupon || "",
+        status: chosen.status,
+      },
+    ],
+  };
+}
+
+export async function recoverPendingPayment(token: string | undefined, attemptId: string, finalize: boolean) {
+  const host = await hostFromToken(token);
+  const attempt = await PendingPaymentModel.findOne({ _id: attemptId, hostId: host.id });
+  if (!attempt) throw new AppError(404, NOT_FOUND);
+  if (attempt.status === "completed") {
+    const purchase = await PurchaseModel.findOne({ hostId: host.id, templateId: attempt.templateId }).lean();
+    return {
+      state: "completed" as const,
+      templateId: attempt.templateId,
+      coupon: attempt.coupon || "",
+      amount: attempt.amount,
+      currency: attempt.currency,
+      paymentId: purchase?.razorpayPaymentId || "",
+    };
+  }
+  if (attempt.status === "failed") throw new AppError(409, SUPPORT);
+  if (!attempt.razorpayOrderId) throw new AppError(503, UNAVAILABLE);
+  let order: { amount?: number | string; currency?: string; status?: string; notes?: unknown };
+  let capturedPaymentId: string | null = null;
+  let orderFetched = false;
+  try {
+    order = await razorpayClient().orders.fetch(attempt.razorpayOrderId);
+    orderFetched = true;
+    if (String(order.status) === "paid") {
+      const payments = await razorpayClient().orders.fetchPayments(attempt.razorpayOrderId);
+      const captured = payments.items.find((item) => item.status === "captured" && item.id && item.order_id === attempt.razorpayOrderId);
+      capturedPaymentId = captured?.id || null;
+    }
+  } catch {
+    throw new AppError(503, UNAVAILABLE);
+  }
+  const judgement = judgeRecovery({
+    sameHost: true,
+    status: attemptStatus(attempt.status),
+    expiresAtMs: attempt.expiresAt ? attempt.expiresAt.getTime() : null,
+    now: Date.now(),
+    orderFetched,
+    orderStatus: String(order.status ?? ""),
+    orderAmount: Number(order.amount),
+    storedAmount: attempt.amount,
+    orderCurrency: String(order.currency ?? ""),
+    storedCurrency: attempt.currency,
+    orderHostId: noteValue(order.notes, "hostId"),
+    storedHostId: String(host.id),
+    orderTemplateId: noteValue(order.notes, "templateId"),
+    storedTemplateId: attempt.templateId,
+    orderCoupon: noteValue(order.notes, "coupon"),
+    storedCoupon: attempt.coupon || "",
+    capturedPaymentId,
+  });
+  if (judgement.state === "mismatch" || judgement.state === "failed") {
+    attempt.status = "failed";
+    attempt.expiresAt = new Date(Date.now() + COMPLETED_TTL_MS);
+    await attempt.save().catch(() => undefined);
+    throw new AppError(409, SUPPORT);
+  }
+  if (judgement.state === "expired") {
+    attempt.status = "expired";
+    attempt.expiresAt = new Date();
+    await attempt.save().catch(() => undefined);
+    throw new AppError(410, EXPIRED);
+  }
+  if (judgement.state === "unavailable") throw new AppError(503, UNAVAILABLE);
+  if (judgement.state === "unpaid") {
+    return {
+      state: "unpaid" as const,
+      attemptId: String(attempt.id),
+      templateId: attempt.templateId,
+      orderId: attempt.razorpayOrderId,
+      amount: attempt.amount,
+      currency: attempt.currency,
+      coupon: attempt.coupon || "",
+      keyId: config.razorpayKeyId,
+    };
+  }
+  if (attempt.status !== "captured") {
+    await PendingPaymentModel.updateOne({ _id: attempt.id }, { $set: { status: "captured" }, $unset: { expiresAt: 1 } });
+    attempt.status = "captured";
+  }
+  if (!finalize || !capturedPaymentId) {
+    return {
+      state: "captured" as const,
+      attemptId: String(attempt.id),
+      templateId: attempt.templateId,
+      amount: attempt.amount,
+      currency: attempt.currency,
+      coupon: attempt.coupon || "",
+    };
+  }
+  const saved = await saveOwnedPurchase(
+    host.id,
+    attempt.templateId,
+    attempt.amount / 100,
+    attempt.coupon || "",
+    attempt.razorpayOrderId,
+    capturedPaymentId,
+  );
+  return {
+    state: "recovered" as const,
+    owned: saved.owned,
+    templateId: attempt.templateId,
+    paymentId: capturedPaymentId,
+    coupon: attempt.coupon || "",
+    amount: attempt.amount,
+    currency: attempt.currency,
+  };
 }
 
 export async function createInvite(token: string | undefined, templateId: string, fields: InviteFields) {

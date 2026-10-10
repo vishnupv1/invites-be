@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { suggestTemplates } from "../application/suggest.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
@@ -143,6 +143,16 @@ export function buildServer() {
   app.post("/api/create-order", async (request) => {
     const body = z.object({ templateId: z.string(), coupon: z.string().max(40).optional() }).parse(request.body);
     return createPaymentOrder(bearer(request.headers.authorization), body.templateId, body.coupon);
+  });
+
+  app.get("/api/payments/pending", async (request) => {
+    const query = z.object({ templateId: z.string().min(1).max(80) }).parse(request.query);
+    return listPendingPayments(bearer(request.headers.authorization), query.templateId);
+  });
+
+  app.post("/api/payments/recover", async (request) => {
+    const body = z.object({ attemptId: z.string().min(1).max(40), finalize: z.boolean().optional() }).parse(request.body);
+    return recoverPendingPayment(bearer(request.headers.authorization), body.attemptId, body.finalize === true);
   });
 
   app.post("/api/verify-payment", async (request) => {

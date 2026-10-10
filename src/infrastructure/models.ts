@@ -24,6 +24,31 @@ const PurchaseSchema = new Schema(
 PurchaseSchema.index({ hostId: 1, templateId: 1 }, { unique: true });
 PurchaseSchema.index({ razorpayPaymentId: 1 }, { unique: true, sparse: true });
 
+const PendingPaymentSchema = new Schema(
+  {
+    hostId: { type: Schema.Types.ObjectId, ref: "Host", required: true },
+    templateId: { type: String, required: true },
+    razorpayOrderId: { type: String },
+    amount: { type: Number, required: true },
+    currency: { type: String, required: true, default: "INR" },
+    coupon: { type: String, default: "" },
+    status: {
+      type: String,
+      required: true,
+      enum: ["opening", "awaiting-payment", "captured", "completed", "failed", "expired"],
+    },
+    expiresAt: { type: Date },
+    finalizedAt: { type: Date },
+  },
+  { timestamps: true },
+);
+PendingPaymentSchema.index({ razorpayOrderId: 1 }, { unique: true, sparse: true });
+PendingPaymentSchema.index(
+  { hostId: 1, templateId: 1 },
+  { unique: true, partialFilterExpression: { status: { $in: ["opening", "awaiting-payment", "captured"] } } },
+);
+PendingPaymentSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+
 const CouponSchema = new Schema(
   {
     code: { type: String, required: true, unique: true, uppercase: true, trim: true },
@@ -104,6 +129,7 @@ export const EventModel = mongoose.model("Event", EventSchema);
 export const TemplateModel = mongoose.model("Template", TemplateSchema);
 export const HostModel = mongoose.model("Host", HostSchema);
 export const PurchaseModel = mongoose.model("Purchase", PurchaseSchema);
+export const PendingPaymentModel = mongoose.model("PendingPayment", PendingPaymentSchema);
 export const CouponModel = mongoose.model("Coupon", CouponSchema);
 export const InviteModel = mongoose.model("Invite", InviteSchema);
 export const GreetingModel = mongoose.model("Greeting", GreetingSchema);

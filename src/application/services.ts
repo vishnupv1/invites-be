@@ -586,7 +586,12 @@ export async function purchaseTemplate(
   const host = await hostFromToken(token);
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
-  if (template.free) return { templateId, owned: true };
+  // Prices are paused. Unlock the design without a charge.
+  void host;
+  void coupon;
+  void payment;
+  return { templateId, owned: true };
+  /* if (template.free) return { templateId, owned: true };
   let verified: { code: string; percent: number } | null = null;
   let trustCapturedAmount = false;
   if (coupon?.trim()) {
@@ -627,6 +632,7 @@ export async function purchaseTemplate(
     payment?.razorpay_order_id,
     payment?.razorpay_payment_id,
   );
+  */
 }
 
 export async function listPurchases(token: string | undefined) {
@@ -638,9 +644,13 @@ export async function listPurchases(token: string | undefined) {
 async function assertCanUse(hostId: string, templateId: string) {
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
-  if (template.free) return;
-  const owned = await PurchaseModel.exists({ hostId, templateId });
-  if (!entitlementAllowsPublish(Boolean(owned))) throw new AppError(402, "Pay for this template before publishing.");
+  // Prices are paused. Publishing does not require a purchase.
+  void hostId;
+  void entitlementAllowsPublish;
+  return;
+  // if (template.free) return;
+  // const owned = await PurchaseModel.exists({ hostId, templateId });
+  // if (!entitlementAllowsPublish(Boolean(owned))) throw new AppError(402, "Pay for this template before publishing.");
 }
 
 export async function listPendingPayments(token: string | undefined, templateId: string) {

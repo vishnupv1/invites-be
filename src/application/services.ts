@@ -8,7 +8,7 @@ import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { COMPLETED_TTL_MS, OPENING_TTL_MS, PENDING_UNPAID_MS, duplicatePurchaseOutcome, entitlementAllowsPublish, judgePaymentAccess, judgePaymentMatch, judgeRecovery, reusePendingAttempt, type AttemptStatus } from "./payment-decision.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema, type EditorState, type InviteFields } from "../domain/invite-fields.js";
-import { CouponModel, EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PendingPaymentModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
+import { CatalogStateModel, CouponModel, EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PendingPaymentModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
 
 const uploadsDir = path.resolve(process.cwd(), "uploads");
 
@@ -262,11 +262,16 @@ type SeedTemplate = {
 };
 
 function catalogSeed() {
-  return catalogSeedFile as { events: SeedEvent[]; templates: SeedTemplate[] };
+  return catalogSeedFile as { revision?: number; events: SeedEvent[]; templates: SeedTemplate[] };
 }
 
 export async function ensureCatalog() {
   const seed = catalogSeed();
+  const revision = Number.isInteger(seed.revision) ? Number(seed.revision) : 0;
+  const applied = await CatalogStateModel.findOne({ id: "catalog" }).lean();
+  const appliedRevision = Number(applied?.revision ?? 0);
+  if (applied && appliedRevision > revision) return;
+
   for (const event of seed.events) {
     await EventModel.updateOne({ id: event.id }, { $setOnInsert: event }, { upsert: true });
   }
@@ -274,7 +279,10 @@ export async function ensureCatalog() {
   for (const template of seed.templates) {
     await TemplateModel.updateOne({ id: template.id }, { $set: template }, { upsert: true });
   }
-  await TemplateModel.deleteMany({ id: { $nin: ids } });
+  if (!applied || revision > appliedRevision) {
+    await TemplateModel.deleteMany({ id: { $nin: ids } });
+    await CatalogStateModel.updateOne({ id: "catalog" }, { $set: { revision } }, { upsert: true });
+  }
 }
 
 function publicEvent(row: { id: string; label: string; cardLabel: string; detailLabel?: string; namesLabel?: string; hostsLabel?: string; titleLabel?: string }) {

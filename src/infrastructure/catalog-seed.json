@@ -1,4 +1,5 @@
 {
+  "revision": 1,
   "events": [
     {
       "id": "marriage",
@@ -65,6 +66,170 @@
     }
   ],
   "templates": [
+    {
+      "id": "lace",
+      "name": "Lace Reveal",
+      "style": "lace",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "An ivory lace wedding. Guests break the seal, scratch the oval, then the day, the lake venue, and a reply.",
+      "asks": {
+        "photos": 1,
+        "audio": false,
+        "location": true
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "20:30",
+          "receptionVenue": "The Pearl Ballroom",
+          "receptionAddress": "Lake Pichola Road, Udaipur",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\": [{\"kick\": \"12 FEB 2027\", \"title\": \"Mehendi\", \"time\": \"4:00 PM\", \"text\": \"The Garden Courtyard\", \"note\": \"\"}, {\"kick\": \"13 FEB 2027\", \"title\": \"Sangeet\", \"time\": \"8:00 PM\", \"text\": \"The Lakeside Lawn\", \"note\": \"\"}, {\"kick\": \"14 FEB 2027\", \"title\": \"The Wedding\", \"time\": \"6:30 PM\", \"text\": \"The Lake Villa\", \"note\": \"\"}, {\"kick\": \"15 FEB 2027\", \"title\": \"Reception\", \"time\": \"8:30 PM\", \"text\": \"The Pearl Ballroom\", \"note\": \"\"}]}",
+          "hosts": "Mr & Mrs Anil Sharma\n&\nMr & Mrs Rajiv Malhotra",
+          "names": "Meera & Kabir",
+          "title": "",
+          "detail": "",
+          "date": "2027-02-14",
+          "time": "18:30",
+          "venue": "The Lake Villa",
+          "address": "Lake Pichola Road, Udaipur",
+          "message": "With the blessings of our families, we joyfully invite you to celebrate our wedding by the lake in Udaipur. Your presence would make our day complete.",
+          "dress": "Soft neutrals, pearls and lace — ivory, champagne, blush and gold.",
+          "rsvpBy": "2027-01-10"
+        }
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "ivory",
+            "name": "Ivory lace"
+          }
+        ],
+        "defaultTheme": "ivory",
+        "shots": [
+          {
+            "label": "The couple"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The seal",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Invitation",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The Lake Villa",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photograph",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      }
+    },
     {
       "id": "gazal",
       "name": "Gazal",

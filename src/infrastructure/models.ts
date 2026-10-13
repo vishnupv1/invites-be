@@ -108,6 +108,14 @@ const EventSchema = new Schema(
   { timestamps: true },
 );
 
+const CatalogStateSchema = new Schema(
+  {
+    id: { type: String, required: true, unique: true },
+    revision: { type: Number, required: true },
+  },
+  { timestamps: true },
+);
+
 const TemplateSchema = new Schema(
   {
     id: { type: String, required: true, unique: true },
@@ -126,6 +134,7 @@ const TemplateSchema = new Schema(
 );
 
 export const EventModel = mongoose.model("Event", EventSchema);
+export const CatalogStateModel = mongoose.model("CatalogState", CatalogStateSchema);
 export const TemplateModel = mongoose.model("Template", TemplateSchema);
 export const HostModel = mongoose.model("Host", HostSchema);
 export const PurchaseModel = mongoose.model("Purchase", PurchaseSchema);

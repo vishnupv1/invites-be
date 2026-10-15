@@ -910,11 +910,13 @@ export async function getPublicInvite(slugValue: string) {
   const invite = await InviteModel.findOne({ slug: slugValue });
   if (!invite || invite.status === "draft") throw new AppError(404, "Invitation not found.");
   const greetings = await GreetingModel.find({ inviteId: invite.id }).sort({ createdAt: -1 });
+  const raw = invite.fields ? JSON.parse(JSON.stringify(invite.fields)) as Record<string, unknown> : {};
+  delete raw.hostEmail;
   const editor = invite.editor as { swatch?: unknown } | null | undefined;
   return {
     slug: invite.slug,
     templateId: invite.templateId,
-    fields: invite.fields,
+    fields: raw,
     swatch: typeof editor?.swatch === "string" ? editor.swatch : "",
     greetings: greetings
       .filter((row) => row.note.trim())

@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, deleteInvite, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { suggestTemplates } from "../application/suggest.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
@@ -221,6 +221,11 @@ export function buildServer() {
   app.post("/api/invites/record/:id/publish", async (request) => {
     const { id } = request.params as { id: string };
     return publishInvite(bearer(request.headers.authorization), id);
+  });
+
+  app.delete("/api/invites/record/:id", async (request) => {
+    const { id } = request.params as { id: string };
+    return deleteInvite(bearer(request.headers.authorization), id);
   });
 
   app.get("/api/invites/:slug/greetings", async (request) => {

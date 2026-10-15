@@ -869,6 +869,15 @@ export async function getOwnInvite(token: string | undefined, id: string) {
   return { ...toInvite(invite, replies, yes), fields: invite.fields, editor: invite.editor ?? null };
 }
 
+export async function deleteInvite(token: string | undefined, id: string) {
+  const host = await hostFromToken(token);
+  const invite = await InviteModel.findOne({ _id: id, hostId: host.id });
+  if (!invite) throw new AppError(404, "Invitation not found.");
+  await GreetingModel.deleteMany({ inviteId: invite.id });
+  await invite.deleteOne();
+  return { ok: true };
+}
+
 export async function listInvites(token: string | undefined) {
   const host = await hostFromToken(token);
   const invites = await InviteModel.find({ hostId: host.id }).sort({ createdAt: -1 });

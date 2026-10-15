@@ -67,6 +67,48 @@
   ],
   "templates": [
     {
+      "id": "lotus",
+      "name": "Lotus Lens",
+      "style": "lotus",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "A courtyard save-the-date. Guests tap the camera, the window opens, and the three days by the lake follow.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\": [{\"kick\": \"28 NOV\", \"title\": \"Haldi & Mehendi\", \"time\": \"11:00 AM onwards\", \"text\": \"The Lotus Garden\", \"note\": \"\"}, {\"kick\": \"28 NOV\", \"title\": \"Sangeet\", \"time\": \"7:30 PM onwards\", \"text\": \"The Lakeside Terrace\", \"note\": \"\"}, {\"kick\": \"29 NOV\", \"title\": \"The Wedding\", \"time\": \"6:00 PM · Pheras at dusk\", \"text\": \"The Lotus Courtyard\", \"note\": \"\"}, {\"kick\": \"30 NOV\", \"title\": \"Reception\", \"time\": \"8:00 PM onwards\", \"text\": \"The Palace Lawns\", \"note\": \"\"}]}",
+          "hosts": "Together with their families",
+          "names": "Aarohi & Vihaan",
+          "title": "A little moment for you",
+          "detail": "",
+          "date": "2027-11-29",
+          "time": "18:00",
+          "venue": "The Lotus Courtyard",
+          "address": "Lake Pichola, Udaipur, Rajasthan",
+          "message": "Formal invitation to follow — but please keep these dates free for us.",
+          "dress": "",
+          "rsvpBy": "2027-09-30"
+        }
+      }
+    },
+    {
       "id": "goa",
       "name": "Goa Gates",
       "style": "goa",

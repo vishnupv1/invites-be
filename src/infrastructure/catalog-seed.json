@@ -67,6 +67,48 @@
   ],
   "templates": [
     {
+      "id": "goa",
+      "name": "Goa Gates",
+      "style": "goa",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "A Goa destination wedding. Guests tap to open the garden gates, then the sea, the celebrations, and a reply.",
+      "asks": {
+        "photos": 1,
+        "audio": false,
+        "location": true
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"people\": [{\"name\": \"Mrs. Kavita & Mr. Sunil Mehta\", \"role\": \"D/o\"}, {\"name\": \"Mrs. Neha & Mr. Arjun Kapoor\", \"role\": \"S/o\"}], \"facts\": [{\"label\": \"From\", \"value\": \"BOM\"}, {\"label\": \"To\", \"value\": \"GOI\"}, {\"label\": \"Flight\", \"value\": \"IR 1701\"}, {\"label\": \"Seat\", \"value\": \"1A\"}], \"programme\": [{\"kick\": \"THURSDAY · 16 JANUARY 2027\", \"title\": \"Mehendi & Bhaat\", \"time\": \"11:30 AM onwards · Followed by lunch\", \"text\": \"The Courtyard Garden\", \"note\": \"Sunshine yellows & greens\"}, {\"kick\": \"THURSDAY · 16 JANUARY 2027\", \"title\": \"Sangeet & Cocktails\", \"time\": \"7:30 PM onwards\", \"text\": \"The Sea Terrace\", \"note\": \"Ivory, gold & glitter\"}, {\"kick\": \"THURSDAY · 16 JANUARY 2027\", \"title\": \"After Party\", \"time\": \"11:00 PM till late\", \"text\": \"The Beach Deck\", \"note\": \"Neon, sequins & dancing shoes\"}, {\"kick\": \"FRIDAY · 17 JANUARY 2027\", \"title\": \"The Wedding\", \"time\": \"4:30 PM · Pheras at sunset\", \"text\": \"The Shoreline Mandap\", \"note\": \"Blush & pastel ethnic\"}]}",
+          "hosts": "With the blessings of our families",
+          "names": "Ananya & Rohan",
+          "title": "We cordially invite you to the wedding celebrations of",
+          "detail": "",
+          "date": "2027-01-17",
+          "time": "16:30",
+          "venue": "The Palm Cove",
+          "address": "Candolim Beach Road, North Goa",
+          "message": "Three days of sun, sea and celebrations by the Arabian Sea — and it wouldn’t be complete without you.",
+          "dress": "Blush & pastel ethnic",
+          "rsvpBy": "2026-12-15"
+        }
+      }
+    },
+    {
       "id": "lace",
       "name": "Lace Reveal",
       "style": "lace",

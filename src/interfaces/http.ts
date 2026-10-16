@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, deleteInvite, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, deleteInvite, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveFeedback, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { suggestTemplates } from "../application/suggest.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
@@ -66,6 +66,25 @@ export function buildServer() {
   });
 
   const suggestHits = new Map<string, number[]>();
+  app.post("/api/feedback", async (request, reply) => {
+    if (tooMany(`feedback:${request.ip}`, 8, 60_000)) {
+      return reply.status(429).send({ error: "Too many notes. Wait a minute and try again." });
+    }
+    const body = z
+      .object({
+        rating: z.number().int().min(1).max(5),
+        topic: z.enum(["designs", "editor", "sharing", "replies", "payments", "other", "general"]).default("general"),
+        message: z.string().trim().max(1000).default(""),
+        name: z.string().trim().max(120).default(""),
+        email: z.string().trim().max(200).default(""),
+      })
+      .parse(request.body);
+    if (body.email && !z.string().email().safeParse(body.email).success) {
+      return reply.status(400).send({ error: "Check the email address." });
+    }
+    return saveFeedback(bearer(request.headers.authorization), body);
+  });
+
   app.post("/api/suggest", async (request) => {
     const body = z.object({ query: z.string().trim().min(1).max(400) }).parse(request.body);
     const ip = request.ip || "local";

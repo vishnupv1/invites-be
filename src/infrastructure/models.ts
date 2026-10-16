@@ -85,6 +85,18 @@ const GreetingSchema = new Schema(
 );
 GreetingSchema.index({ inviteId: 1, replyTokenHash: 1 }, { unique: true, sparse: true });
 
+const FeedbackSchema = new Schema(
+  {
+    rating: { type: Number, required: true, min: 1, max: 5 },
+    topic: { type: String, required: true, default: "general" },
+    message: { type: String, default: "" },
+    name: { type: String, default: "" },
+    email: { type: String, default: "", lowercase: true },
+    hostId: { type: Schema.Types.ObjectId, ref: "Host" },
+  },
+  { timestamps: true },
+);
+
 const MediaSchema = new Schema(
   {
     hostId: { type: Schema.Types.ObjectId, ref: "Host", required: true },
@@ -142,4 +154,5 @@ export const PendingPaymentModel = mongoose.model("PendingPayment", PendingPayme
 export const CouponModel = mongoose.model("Coupon", CouponSchema);
 export const InviteModel = mongoose.model("Invite", InviteSchema);
 export const GreetingModel = mongoose.model("Greeting", GreetingSchema);
+export const FeedbackModel = mongoose.model("Feedback", FeedbackSchema);
 export const MediaModel = mongoose.model("Media", MediaSchema);

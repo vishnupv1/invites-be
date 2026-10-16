@@ -8,7 +8,7 @@ import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
 import { COMPLETED_TTL_MS, OPENING_TTL_MS, PENDING_UNPAID_MS, duplicatePurchaseOutcome, entitlementAllowsPublish, judgePaymentAccess, judgePaymentMatch, judgeRecovery, reusePendingAttempt, type AttemptStatus } from "./payment-decision.js";
 import { draftFieldsSchema, editorStateSchema, inviteFieldsSchema, type EditorState, type InviteFields } from "../domain/invite-fields.js";
-import { CatalogStateModel, CouponModel, EventModel, GreetingModel, HostModel, InviteModel, MediaModel, PendingPaymentModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
+import { CatalogStateModel, CouponModel, EventModel, FeedbackModel, GreetingModel, HostModel, InviteModel, MediaModel, PendingPaymentModel, PurchaseModel, TemplateModel } from "../infrastructure/models.js";
 
 const uploadsDir = path.resolve(process.cwd(), "uploads");
 
@@ -169,13 +169,32 @@ export async function logIn(email: string, password: string) {
   return hostView(host, issued.token);
 }
 
+const FEEDBACK_TOPICS = ["designs", "editor", "sharing", "replies", "payments", "other", "general"] as const;
+
+export async function saveFeedback(
+  token: string | undefined,
+  input: { rating: number; topic: string; message: string; name: string; email: string },
+) {
+  const host = token ? await HostModel.findOne({ tokenHash: hashToken(token) }) : null;
+  await FeedbackModel.create({
+    rating: input.rating,
+    topic: FEEDBACK_TOPICS.includes(input.topic as (typeof FEEDBACK_TOPICS)[number]) ? input.topic : "general",
+    message: input.message.trim(),
+    name: input.name.trim(),
+    email: input.email.trim().toLowerCase(),
+    hostId: host?._id,
+  });
+  return { ok: true as const };
+}
+
 export async function adminSummary(token: string | undefined) {
   const host = await hostFromToken(token);
   if (!config.adminEmails.includes(host.email)) throw new AppError(403, "This account is not an admin.");
-  const [hosts, invites, purchases] = await Promise.all([
+  const [hosts, invites, purchases, feedback] = await Promise.all([
     HostModel.find().sort({ createdAt: -1 }),
     InviteModel.find().sort({ createdAt: -1 }),
     PurchaseModel.find().sort({ createdAt: -1 }),
+    FeedbackModel.find().sort({ createdAt: -1 }).limit(80),
   ]);
   const demo = (email: string) => email.endsWith("@example.com") || email === config.adminEmail;
   const realHosts = hosts.filter((item) => !demo(item.email));
@@ -221,6 +240,15 @@ export async function adminSummary(token: string | undefined) {
       templateId: row.templateId,
       host: hostName.get(String(row.hostId))?.name ?? "",
       price: row.price,
+      at: row.createdAt?.toISOString() ?? "",
+    })),
+    feedback: feedback.map((row) => ({
+      id: String(row._id),
+      rating: row.rating,
+      topic: row.topic,
+      message: row.message,
+      name: row.name,
+      email: row.email,
       at: row.createdAt?.toISOString() ?? "",
     })),
   };

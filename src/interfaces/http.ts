@@ -122,8 +122,8 @@ export function buildServer() {
   app.get("/api/auth/google", async () => ({ clientId: config.googleClientId }));
 
   app.post("/api/auth/google", async (request) => {
-    const body = z.object({ code: z.string().min(1).max(2048) }).parse(request.body);
-    return signInWithGoogle(body.code);
+    const body = z.object({ code: z.string().min(1).max(2048), redirectUri: z.string().url().max(300) }).parse(request.body);
+    return signInWithGoogle(body.code, body.redirectUri);
   });
 
   app.post("/api/session", async (request, reply) => {

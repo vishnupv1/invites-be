@@ -87,7 +87,25 @@ export async function openSession(email: string, name: string) {
 }
 
 
-async function googleProfile(code: string) {
+const GOOGLE_CALLBACK_PATH = "/auth/google/done.html";
+
+function googleRedirectUri(value: string) {
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new AppError(400, "Google sign-in could not be confirmed.");
+  }
+  if (url.pathname !== GOOGLE_CALLBACK_PATH || url.search || url.hash || url.username || url.password) {
+    throw new AppError(400, "Google sign-in could not be confirmed.");
+  }
+  const local = url.hostname === "localhost" || url.hostname === "127.0.0.1";
+  const ours = url.hostname === "invitesready.com" || url.hostname === "www.invitesready.com" || url.hostname.endsWith(".vercel.app");
+  if ((local && url.protocol === "http:") || (ours && url.protocol === "https:")) return `${url.origin}${GOOGLE_CALLBACK_PATH}`;
+  throw new AppError(400, "Google sign-in could not be confirmed.");
+}
+
+async function googleProfile(code: string, redirectUri: string) {
   if (!config.googleClientId || !config.googleClientSecret) throw new AppError(503, "Google sign-in is not set up.");
   const exchanged = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
@@ -96,7 +114,7 @@ async function googleProfile(code: string) {
       code,
       client_id: config.googleClientId,
       client_secret: config.googleClientSecret,
-      redirect_uri: "postmessage",
+      redirect_uri: redirectUri,
       grant_type: "authorization_code",
     }),
     signal: AbortSignal.timeout(8000),
@@ -115,8 +133,8 @@ async function googleProfile(code: string) {
   return { email: token.email.trim().toLowerCase(), name: token.name?.trim() || "" };
 }
 
-export async function signInWithGoogle(code: string) {
-  const profile = await googleProfile(code);
+export async function signInWithGoogle(code: string, redirectUri: string) {
+  const profile = await googleProfile(code, googleRedirectUri(redirectUri));
   const issued = issueToken();
   const name = profile.name || profile.email.split("@")[0] || "Host";
   const existing = await HostModel.findOne({ email: profile.email });

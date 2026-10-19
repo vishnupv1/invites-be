@@ -67,6 +67,1113 @@
   ],
   "templates": [
     {
+      "id": "satinbow",
+      "name": "Satin Bow",
+      "style": "satinbow",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Untie the satin bow, the doors open, and Ishaan and Riya’s garden wedding at Rambagh Palace begins.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The ceremony",
+        "reception": "Dinner & dancing",
+        "themes": [
+          {
+            "id": "blush",
+            "name": "Satin blush"
+          }
+        ],
+        "defaultTheme": "blush",
+        "shots": [
+          {
+            "label": "Our first coffee"
+          },
+          {
+            "label": "The proposal"
+          },
+          {
+            "label": "Forever begins"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The bow",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Invitation",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Rambagh Palace",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebration",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Moments",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Love notes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\": [{\"year\": \"2019\", \"title\": \"First hello\", \"text\": \"A shared table at a crowded café in Pune, and a conversation that lasted four hours.\"}, {\"year\": \"2023\", \"title\": \"Two cities, one heart\", \"text\": \"Endless video calls, surprise visits and a lot of train tickets.\"}, {\"year\": \"2026\", \"title\": \"The question\", \"text\": \"Under a gazebo full of roses, he asked — and she said yes before he finished.\"}], \"programme\": [{\"kick\": \"Sunday, 14 Feb\", \"title\": \"The ceremony\", \"time\": \"5:00 PM\", \"text\": \"Rose Gazebo, Rambagh Palace Gardens\", \"note\": \"\"}, {\"kick\": \"Sunday, 14 Feb\", \"title\": \"Dinner & dancing\", \"time\": \"8:00 PM\", \"text\": \"The Moonlit Lawn, Rambagh Palace\", \"note\": \"\"}], \"wishes\": [{\"text\": \"May your love bloom brighter with every season.\", \"by\": \"Nani\"}, {\"text\": \"Cannot wait to dance with you two under the gazebo!\", \"by\": \"Aditi & Karan\"}, {\"text\": \"Wishing you a lifetime of soft mornings and big laughs.\", \"by\": \"The Sharma family\"}, {\"text\": \"Riya, you are going to look like a dream. Love you!\", \"by\": \"Meher\"}], \"caption\": \"Soft pastels and flowing fabrics — think blush, sage, champagne and mauve. Comfortable shoes for the garden lawn.\"}",
+          "hosts": "Together with their families",
+          "names": "Ishaan & Riya",
+          "title": "request the pleasure of your company",
+          "detail": "",
+          "date": "2027-02-14",
+          "time": "17:00",
+          "venue": "Rambagh Palace Gardens",
+          "address": "Jaipur",
+          "message": "as they begin their forever",
+          "dress": "Garden romance",
+          "rsvpBy": "2027-01-14"
+        }
+      }
+    },
+    {
+      "id": "starryfairytale",
+      "name": "Starry Fairytale",
+      "style": "starryfairytale",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Scroll a starry night as the chapel rises and a ring descends. Nathan and Grace invite you to St. Mary's Basilica in Bengaluru.",
+      "asks": {
+        "photos": 0,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Holy Matrimony",
+        "reception": "Cocktail reception",
+        "themes": [
+          {
+            "id": "starry",
+            "name": "Starry night"
+          }
+        ],
+        "defaultTheme": "starry",
+        "shots": [],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Starry story",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "St. Mary's Basilica",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Blessings and wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly respond",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"\",\"title\":\"Our story\",\"text\":\"It began in a little chapel,\\nunder a sky full of stars.\"},{\"year\":\"\",\"title\":\"The question\",\"text\":\"…he asked, and she said yes.\"}],\"programme\":[{\"kick\":\"4:00 PM\",\"title\":\"Holy Matrimony\",\"time\":\"4:00 PM\",\"text\":\"St. Mary's Basilica, Bengaluru\",\"note\":\"Saturday, 15 May 2027\"},{\"kick\":\"7:00 PM\",\"title\":\"Cocktail reception\",\"time\":\"7:00 PM\",\"text\":\"The Starlight Ballroom\",\"note\":\"Saturday, 15 May 2027\"},{\"kick\":\"8:30 PM\",\"title\":\"Dinner & cake cutting\",\"time\":\"8:30 PM\",\"text\":\"The Starlight Ballroom\",\"note\":\"Saturday, 15 May 2027\"}],\"wishes\":[{\"text\":\"May your love shine brighter than every star tonight.\",\"by\":\"Grandma Rosy\"},{\"text\":\"We will be front row with tissues and confetti!\",\"by\":\"Ashwin & Leah\"},{\"text\":\"God bless your journey together, always.\",\"by\":\"The Mathew family\"},{\"text\":\"Grace, you deserve a fairytale. Nathan, take care of her!\",\"by\":\"Aunty Beena\"}]}",
+          "hosts": "Mr. & Mrs. Thomas George\nand\nMr. & Mrs. Joseph Mathew",
+          "names": "Nathan & Grace",
+          "title": "request the honour of your presence\nat the marriage of their children",
+          "detail": "",
+          "date": "2027-05-15",
+          "time": "16:00",
+          "venue": "St. Mary's Basilica",
+          "address": "Bengaluru",
+          "message": "It began in a little chapel, under a sky full of stars.",
+          "dress": "",
+          "rsvpBy": "2027-04-15"
+        }
+      }
+    },
+    {
+      "id": "weddingride",
+      "name": "Wedding Ride",
+      "style": "weddingride",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "A pink car arrives through the fog. Cut the ribbon, then walk through Aarav and Meher’s moments in Jaipur.",
+      "asks": {
+        "photos": 6,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "reception": "Brunch & farewell",
+        "themes": [
+          {
+            "id": "sunlit",
+            "name": "Sunlit"
+          },
+          {
+            "id": "rose",
+            "name": "Rose"
+          },
+          {
+            "id": "dusk",
+            "name": "Dusk"
+          }
+        ],
+        "defaultTheme": "sunlit",
+        "shots": [
+          {
+            "label": "Walking through the garden"
+          },
+          {
+            "label": "Steps of the old palace"
+          },
+          {
+            "label": "Hands, henna and haldi"
+          },
+          {
+            "label": "Our pink ride"
+          },
+          {
+            "label": "First twirl"
+          },
+          {
+            "label": "Into the sunset, together"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Cut the ribbon",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Blessing line",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Dear",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Welcome",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Samode Bagh",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "gallery",
+            "label": "Moments",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Moment captions",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"\",\"title\":\"Walking through the garden\",\"text\":\"\"},{\"year\":\"\",\"title\":\"Steps of the old palace\",\"text\":\"\"},{\"year\":\"\",\"title\":\"Hands, henna and haldi\",\"text\":\"\"},{\"year\":\"\",\"title\":\"Our pink ride\",\"text\":\"\"},{\"year\":\"\",\"title\":\"First twirl\",\"text\":\"\"},{\"year\":\"\",\"title\":\"Into the sunset, together\",\"text\":\"\"}],\"programme\":[{\"kick\":\"Thursday · 4 Feb\",\"title\":\"Mehendi in the garden\",\"time\":\"4:00 PM\",\"text\":\"Bougainvillea Lawn\",\"note\":\"greens & yellows\"},{\"kick\":\"Friday · 5 Feb\",\"title\":\"Sangeet night\",\"time\":\"7:30 PM\",\"text\":\"Durbar Courtyard\",\"note\":\"sparkle & sequins\"},{\"kick\":\"Saturday · 6 Feb\",\"title\":\"The wedding\",\"time\":\"7:00 PM\",\"text\":\"Samode Bagh, Jaipur\",\"note\":\"rani pink & gold\"},{\"kick\":\"Sunday · 7 Feb\",\"title\":\"Brunch & farewell\",\"time\":\"11:00 AM\",\"text\":\"Poolside Pavilion\",\"note\":\"pastels\"}],\"wishes\":[{\"text\":\"May your journey together be as colourful as this garden.\",\"by\":\"Dadi\"},{\"text\":\"Save us a seat in that pink car!\",\"by\":\"Kabir & Tara\"},{\"text\":\"Wishing you a lifetime of happy rides and sweet stops.\",\"by\":\"The Mehta family\"},{\"text\":\"Bhai, drive slow — the best part is the journey.\",\"by\":\"Ishaan\"}]}",
+          "hosts": "with the blessings of our families",
+          "names": "Aarav & Meher",
+          "title": "we invite you to the wedding of",
+          "detail": "the Sharma family",
+          "date": "2027-02-06",
+          "time": "19:00",
+          "venue": "Samode Bagh",
+          "address": "Jaipur",
+          "message": "Scroll across and walk with us through the little moments that led to the big one.",
+          "dress": "rani pink & gold",
+          "rsvpBy": "2027-01-06"
+        }
+      }
+    },
+    {
+      "id": "firstdance",
+      "name": "First Dance",
+      "style": "firstdance",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Tap the wax seal, the curtains open, and Kabir and Ananya’s first dance begins at a palace in Udaipur.",
+      "asks": {
+        "photos": 8,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The first dance",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "ivory",
+            "name": "Ivory & gold"
+          },
+          {
+            "id": "rose",
+            "name": "Rose"
+          },
+          {
+            "id": "twilight",
+            "name": "Twilight"
+          }
+        ],
+        "defaultTheme": "ivory",
+        "shots": [
+          {
+            "label": "Engagement"
+          },
+          {
+            "label": "Haldi"
+          },
+          {
+            "label": "Sangeet"
+          },
+          {
+            "label": "Mehendi"
+          },
+          {
+            "label": "Us"
+          },
+          {
+            "label": "Story · A salsa class"
+          },
+          {
+            "label": "Story · Paris, in the rain"
+          },
+          {
+            "label": "Story · The proposal"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The seal",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Welcome",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The Leela Palace",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "story",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Moments",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Wishes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\": [{\"year\": \"2019\", \"title\": \"A salsa class\", \"text\": \"Two left feet, one shared laugh, and a partner swap that never happened.\"}, {\"year\": \"2023\", \"title\": \"Paris, in the rain\", \"text\": \"An umbrella, a street musician and our very first slow dance.\"}, {\"year\": \"2026\", \"title\": \"The proposal\", \"text\": \"Mid-twirl on the terrace in Udaipur. She said yes before the song ended.\"}], \"programme\": [{\"kick\": \"Saturday, 13 February\", \"title\": \"Cocktail evening\", \"time\": \"6:00 PM\", \"text\": \"Lakeside Terrace\", \"note\": \"\"}, {\"kick\": \"Saturday, 13 February\", \"title\": \"The first dance & reception\", \"time\": \"7:30 PM\", \"text\": \"Durbar Hall\", \"note\": \"\"}, {\"kick\": \"Saturday, 13 February\", \"title\": \"Royal dinner\", \"time\": \"9:30 PM\", \"text\": \"Mewar Courtyard\", \"note\": \"\"}], \"wishes\": [{\"text\": \"May every song you dance to be a happy one.\", \"by\": \"Nani\"}, {\"text\": \"Front row for the first dance — we are bringing tissues!\", \"by\": \"Rhea & Dev\"}, {\"text\": \"Wishing you a lifetime of love, laughter and slow dances.\", \"by\": \"The Kapoor family\"}, {\"text\": \"Kabir, practise those steps. Ananya, we are proud of you!\", \"by\": \"Uncle Sameer\"}], \"caption\": \"Tuxedos and bandhgalas for the gentlemen, lehengas and gowns in champagne, ivory and blush for the ladies. Comfortable shoes recommended — we will be dancing!\", \"stay\": \"Rooms are held for our guests from 12 to 14 February. Mention “{{names}}” when you book; a shuttle will run from Udaipur airport all day on Saturday.\", \"instagram\": \"\"}",
+          "hosts": "Together with their families",
+          "names": "Kabir & Ananya",
+          "title": "invite you to celebrate their wedding",
+          "detail": "",
+          "date": "2027-02-13",
+          "time": "19:00",
+          "venue": "The Leela Palace",
+          "address": "Lake Pichola, Udaipur, Rajasthan 313001",
+          "message": "Two left feet, one shared laugh, and a first dance we want you there for.",
+          "dress": "Black tie & festive glam",
+          "rsvpBy": "2027-01-15"
+        }
+      }
+    },
+    {
+      "id": "baptism2",
+      "name": "Baptism",
+      "style": "baptism2",
+      "price": 1299,
+      "free": false,
+      "events": [
+        "baptism"
+      ],
+      "tagline": "Baptism",
+      "description": "A sealed card opens onto a dove, the Holy Baptism, and a blessing.",
+      "asks": {
+        "photos": 4,
+        "audio": true,
+        "location": true
+      },
+      "meta": {
+        "names": "child",
+        "ceremony": "Holy Baptism",
+        "reception": "Lunch and cake",
+        "themes": [
+          {
+            "id": "sky",
+            "name": "Sky"
+          },
+          {
+            "id": "rose",
+            "name": "Blush"
+          },
+          {
+            "id": "emerald",
+            "name": "Sage"
+          }
+        ],
+        "defaultTheme": "sky",
+        "shots": [
+          {
+            "label": "Baby photo"
+          },
+          {
+            "label": "Family photo"
+          },
+          {
+            "label": "Tiny feet"
+          },
+          {
+            "label": "First smile"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 12
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Sealed card",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Parents",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Child",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Relationship",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Verse",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "story",
+            "label": "Godparents and little facts",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Date and time",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Holy Baptism",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Lunch and cake",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "baptism": {
+          "event": "baptism",
+          "hostEmail": "",
+          "receptionTime": "12:30",
+          "receptionVenue": "Parish Hall",
+          "receptionAddress": "next to the church",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"people\":[{\"name\":\"Tony Mathew\",\"role\":\"Godfather\"},{\"name\":\"Anita George\",\"role\":\"Godmother\"}],\"facts\":[{\"label\":\"Born\",\"value\":\"2 November 2026\"},{\"label\":\"Loves\",\"value\":\"Milk & long naps\"},{\"label\":\"First smile\",\"value\":\"Christmas Eve\"},{\"label\":\"Best friend\",\"value\":\"Bruno the bear\"}]}",
+          "hosts": "Jacob & Maria Thomas",
+          "names": "Ethan Joseph",
+          "title": "Please join us for the Holy Baptism of",
+          "detail": "beloved son of",
+          "date": "2027-03-14",
+          "time": "10:30",
+          "venue": "St. Mary's Church",
+          "address": "Pala",
+          "message": "Suffer the little children to come unto me, and forbid them not: for of such is the kingdom of God.",
+          "dress": "",
+          "rsvpBy": "2027-02-28"
+        }
+      }
+    },
+    {
+      "id": "rose",
+      "name": "Rose Glass",
+      "style": "rose",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Tap the wax seal, the stained-glass doors open, and a rose window in Jaipur welcomes Saanvi and Arjun.",
+      "asks": {
+        "photos": 1,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "blush",
+            "name": "Rose glass"
+          }
+        ],
+        "defaultTheme": "blush",
+        "shots": [
+          {
+            "label": "The couple"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The seal",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "A note for guests",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Welcome",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The Rose Haveli",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The day",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photograph",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"ceremonyName\":\"Having you with us means the world. We can’t wait to celebrate with the people we love most.\",\"programme\":[{\"title\":\"Guest Arrival\",\"time\":\"4:00 PM\",\"text\":\"\"},{\"title\":\"The Pheras\",\"time\":\"5:30 PM\",\"text\":\"\"},{\"title\":\"Cocktail Hour\",\"time\":\"7:30 PM\",\"text\":\"\"},{\"title\":\"First Dance\",\"time\":\"9:00 PM\",\"text\":\"\"}],\"venueNote\":\"Think rose, blush, ivory and sage — lehengas, sarees, sherwanis and bandhgalas. Dancing shoes encouraged.\",\"gift\":\"Having you celebrate with us is the greatest gift. If you wish to bless us further, a contribution towards our first home together would be lovely.\",\"caption\":\"Hotel Gulab Bagh\",\"instagram\":\"SAANVIARJUN27\",\"airport\":\"22 – 24 May 2027\",\"stay\":\"A special rate for our guests, 22 – 24 May 2027. Double room ₹9,500 / night · Single ₹7,500 / night\"}",
+          "hosts": "Together with their families",
+          "names": "Saanvi & Arjun",
+          "title": "request the honour of your presence at the wedding of",
+          "detail": "We’re so happy to share this day with you",
+          "date": "2027-05-23",
+          "time": "17:30",
+          "venue": "The Rose Haveli",
+          "address": "Amer Road, near Jal Mahal, Jaipur, Rajasthan",
+          "message": "With hearts full of joy, the Mehra and Kapoor families invite you to witness Saanvi and Arjun take their pheras and begin a lifetime together. We hope you’ll join us for an evening of love, laughter and dancing.",
+          "dress": "Festive Formal",
+          "rsvpBy": "2027-04-01"
+        }
+      }
+    },
+    {
       "id": "lotus",
       "name": "Lotus Lens",
       "style": "lotus",

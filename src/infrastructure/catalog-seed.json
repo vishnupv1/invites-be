@@ -67,6 +67,190 @@
   ],
   "templates": [
     {
+      "id": "storybook",
+      "name": "Storybook",
+      "style": "storybook",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Open the storybook, the couple pops up from the page, and Arjun and Meera’s wedding at Umaid Bhawan Palace begins.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "reception": "The reception",
+        "themes": [
+          {
+            "id": "wine",
+            "name": "Storybook wine"
+          }
+        ],
+        "defaultTheme": "wine",
+        "shots": [
+          {
+            "label": "The bookshop, 2020"
+          },
+          {
+            "label": "Our first trip"
+          },
+          {
+            "label": "She said yes!"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The book",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "This book is for",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Invitation",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Umaid Bhawan",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "story",
+            "label": "How it began",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Pressed pages",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Notes in the margins",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\": [{\"year\": \"2020\", \"title\": \"How it all began\", \"text\": \"Once upon a time, in a crowded little bookshop in Pune, two strangers reached for the same worn copy of an old fairytale. Neither would let go. They shared it instead — and a pot of chai, and a conversation that lasted until closing time.\"}, {\"year\": \"2026\", \"title\": \"The next chapter\", \"text\": \"Six years, a hundred train rides and one very nervous proposal later, they are writing their happiest chapter yet — and they would love for you to be in it.\"}], \"programme\": [{\"kick\": \"Thursday, 21 January\", \"title\": \"The Haldi\", \"time\": \"half past ten in the morning\", \"text\": \"The Marigold Courtyard, Umaid Bhawan Palace\", \"note\": \"sunshine yellow | A morning of turmeric, marigolds and a great deal of giggling. Old clothes are wise — nobody leaves without a little gold on their cheeks.\"}, {\"kick\": \"Thursday, 21 January\", \"title\": \"Mehendi & Sangeet\", \"time\": \"six in the evening, till late\", \"text\": \"The Baradari Lawns, Umaid Bhawan Palace\", \"note\": \"jewel tones & mirror work | Henna for the hands, dhol for the feet. Both families have been rehearsing in secret — come ready to sing along.\"}, {\"kick\": \"Friday, 22 January\", \"title\": \"The Wedding\", \"time\": \"pheras at half past seven in the evening\", \"text\": \"The Palace Mandap, Umaid Bhawan Gardens\", \"note\": \"reds, ivory & gold | Seven steps around the sacred fire, seven promises for a lifetime. The baraat arrives at six — dancing shoes recommended.\"}, {\"kick\": \"Saturday, 23 January\", \"title\": \"The Reception\", \"time\": \"eight in the evening\", \"text\": \"The Grand Durbar Hall, Umaid Bhawan Palace\", \"note\": \"midnight & metallics | One last starry night: dinner, speeches that may run long, fireworks over the domes and dancing until the band gives up.\"}], \"wishes\": [{\"text\": \"May your book never run out of pages, my darlings.\", \"by\": \"Dadi\"}, {\"text\": \"Saving our best dance moves for the sangeet!\", \"by\": \"Rohan & Tara\"}, {\"text\": \"From one bookshop to forever — what a story.\", \"by\": \"The Kapoors\"}, {\"text\": \"Meera, the palace will not know what hit it. Love you!\", \"by\": \"Ishita\"}], \"faqs\": [{\"q\": \"Where to stay\", \"a\": \"Rooms are held at the palace under “Arjun & Meera” until 15 December.\"}, {\"q\": \"Getting there\", \"a\": \"Fly into Jodhpur. Our shuttles meet every flight on 20 and 21 January.\"}, {\"q\": \"Share the story\", \"a\": \"Tag your photos #ArjunMeeraKiKahani\"}, {\"q\": \"Any questions\", \"a\": \"Call Kabir (Meera’s brother) on +91 98290 00000.\"}], \"caption\": \"#ArjunMeeraKiKahani\"}",
+          "hosts": "the Mehta family",
+          "names": "Arjun & Meera",
+          "title": "request the joy of your company",
+          "detail": "",
+          "date": "2027-01-22",
+          "time": "19:30",
+          "venue": "Umaid Bhawan Palace",
+          "address": "Jodhpur",
+          "message": "as they write their happiest chapter",
+          "dress": "reds, ivory & gold",
+          "rsvpBy": "2026-12-20"
+        }
+      }
+    },
+    {
       "id": "satinbow",
       "name": "Satin Bow",
       "style": "satinbow",

@@ -1,5 +1,5 @@
 {
-  "revision": 2,
+  "revision": 3,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,188 @@
     }
   ],
   "templates": [
+    {
+      "id": "templebells",
+      "name": "Temple Bells",
+      "style": "templebells",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Step through the leaves, the gopuram rises, and Karthik and Meenakshi’s wedding at Sri Annapoorna Kalyana Mahal begins.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Muhurtham",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "maroon",
+            "name": "Temple maroon"
+          }
+        ],
+        "defaultTheme": "maroon",
+        "shots": [
+          {
+            "label": "First meeting"
+          },
+          {
+            "label": "The yes"
+          },
+          {
+            "label": "Us"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The leaves",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Parents",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Muhurtham",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Kalyana mahal",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Blessings",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\": [{\"kick\": \"The engagement\", \"title\": \"Nichayathartham\", \"time\": \"half past six in the evening\", \"text\": \"Sri Annapoorna Kalyana Mahal, Madurai\", \"note\": \"Tuesday · 9 February\"}, {\"kick\": \"The wedding\", \"title\": \"Muhurtham\", \"time\": \"7:30 – 9:00 in the morning\", \"text\": \"Main Mandapam, Sri Annapoorna Kalyana Mahal\", \"note\": \"Wednesday · 10 February\"}, {\"kick\": \"The celebration\", \"title\": \"Reception\", \"time\": \"seven in the evening onwards\", \"text\": \"The Lotus Lawn, Hotel Heritage Madurai\", \"note\": \"Wednesday · 10 February\"}], \"wishes\": [{\"text\": \"May you live together for a hundred years, like the temple that has stood for a thousand.\", \"by\": \"Paati\"}, {\"text\": \"Saving our seats right in front for the thaali moment!\", \"by\": \"Arun & Divya\"}, {\"text\": \"Wishing you a home full of music, filter coffee and laughter.\", \"by\": \"The Iyer family\"}, {\"text\": \"Meenakshi, you are going to look like a goddess. Love you!\", \"by\": \"Priya\"}], \"caption\": \"Silks and veshtis for the Muhurtham, your festive best for the Reception — and jasmine in your hair is always welcome.\"}",
+          "hosts": "Mr. R. Sundaram & Mrs. Lakshmi Sundaram\nMr. S. Venkatesh & Mrs. Gowri Venkatesh",
+          "names": "Karthik & Meenakshi",
+          "title": "With the blessings of our elders, we joyfully invite you to the wedding of",
+          "detail": "",
+          "date": "2027-02-10",
+          "time": "07:30",
+          "venue": "Sri Annapoorna Kalyana Mahal",
+          "address": "Madurai",
+          "message": "As the nadaswaram plays and the thaali is tied, two families become one. We would be honoured to have you with us.",
+          "dress": "Temple traditional",
+          "rsvpBy": "2027-01-10"
+        }
+      }
+    },
     {
       "id": "satinbow",
       "name": "Satin Bow",

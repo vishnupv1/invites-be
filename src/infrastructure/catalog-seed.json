@@ -1,5 +1,5 @@
 {
-  "revision": 3,
+  "revision": 4,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,196 @@
     }
   ],
   "templates": [
+    {
+      "id": "journal",
+      "name": "Watercolour Journal",
+      "style": "journal",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "The page writes and paints itself, then opens Arvind and Nila’s journal for a wedding in Coimbatore.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Muhurtham",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "sage",
+            "name": "Journal sage"
+          }
+        ],
+        "defaultTheme": "sage",
+        "shots": [
+          {
+            "label": "first chai"
+          },
+          {
+            "label": "she said yes"
+          },
+          {
+            "label": "forever"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The journal",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Greeting",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Muhurtham",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Mandapam",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Notes",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\": [{\"kick\": \"The evening before\", \"title\": \"The Reception\", \"time\": \"seven in the evening onwards\", \"text\": \"The Palm Grove Lawns, Coimbatore\", \"note\": \"Saturday \\u00b7 6 March\"}, {\"kick\": \"The wedding\", \"title\": \"The Muhurtham\", \"time\": \"9:00 \\u2013 10:30 in the morning\", \"text\": \"Sri Kamakshi Thirumana Mandapam, Coimbatore\", \"note\": \"Sunday \\u00b7 7 March\"}], \"wishes\": [{\"text\": \"May your home always smell of jasmine and filter coffee.\", \"by\": \"Ammamma\"}, {\"text\": \"Front row seats for the thaali moment, please!\", \"by\": \"Karthik & Divya\"}, {\"text\": \"From one coffee to forever \\u2014 what a beautiful story.\", \"by\": \"The Iyers\"}, {\"text\": \"Nila, you will be the prettiest bride. Love you!\", \"by\": \"Sowmya\"}], \"caption\": \"Soft silks and pastels for the Muhurtham, your festive best for the Reception \\u2014 and a little jasmine in your hair is always welcome.\"}",
+          "hosts": "son of Mrs. Kala & Mr. Ramesh Iyer\ndaughter of Mrs. Revathi & Mr. Suresh Kumar",
+          "names": "Arvind & Nila",
+          "title": "Together with their families",
+          "detail": "Dear friend,",
+          "date": "2027-03-07",
+          "time": "09:00",
+          "venue": "Sri Kamakshi Thirumana Mandapam",
+          "address": "Coimbatore",
+          "message": "We met over a cup of filter coffee that went cold because we could not stop talking. Seven years, two cities and countless letters later, we are writing the happiest page of our story — and we would love you there.",
+          "dress": "Soft silks and pastels for the Muhurtham, your festive best for the Reception — and a little jasmine in your hair is always welcome.",
+          "rsvpBy": "2027-02-07"
+        }
+      }
+    },
     {
       "id": "templebells",
       "name": "Temple Bells",

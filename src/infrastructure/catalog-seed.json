@@ -1,5 +1,5 @@
 {
-  "revision": 4,
+  "revision": 5,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,196 @@
     }
   ],
   "templates": [
+    {
+      "id": "peacock",
+      "name": "Peacock Dance",
+      "style": "peacock",
+      "price": 499,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Rain gathers, the peacock’s tail fans open, and Aarav and Ishita’s monsoon wedding in Udaipur begins.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The wedding",
+        "reception": "Sangeet",
+        "themes": [
+          {
+            "id": "teal",
+            "name": "Monsoon teal"
+          }
+        ],
+        "defaultTheme": "teal",
+        "shots": [
+          {
+            "label": "first glance"
+          },
+          {
+            "label": "our first dance"
+          },
+          {
+            "label": "forever begins"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The rain",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Greeting",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Gardens",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "wishes",
+            "label": "Blessings",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\": [{\"kick\": \"The henna\", \"title\": \"Mehendi\", \"time\": \"four in the afternoon\", \"text\": \"The Courtyard, Jag Niwas Gardens\", \"note\": \"Thursday \\u00b7 18 February\"}, {\"kick\": \"The music night\", \"title\": \"Sangeet\", \"time\": \"half past seven in the evening\", \"text\": \"The Lake Terrace, Udaipur\", \"note\": \"Friday \\u00b7 19 February\"}, {\"kick\": \"The pheras\", \"title\": \"The Wedding\", \"time\": \"pheras at seven in the evening\", \"text\": \"The Peacock Lawns, Jag Niwas Gardens\", \"note\": \"Saturday \\u00b7 20 February\"}], \"wishes\": [{\"text\": \"May your life be as colourful as a peacock in the first rain.\", \"by\": \"Nani\"}, {\"text\": \"We are bringing our best dance moves to the sangeet!\", \"by\": \"Kabir & Zoya\"}, {\"text\": \"Two beautiful souls, one beautiful journey.\", \"by\": \"The Mehras\"}, {\"text\": \"Ishita, you are going to look like a dream. Love you!\", \"by\": \"Tanya\"}], \"caption\": \"Teals, emeralds, sapphire blues and a flash of magenta \\u2014 come dressed like the monsoon's favourite bird.\"}",
+          "hosts": "son of Mrs. Neha & Mr. Vikram Malhotra\n& daughter of Mrs. Anjali & Mr. Rohit Mehra",
+          "names": "Aarav & Ishita",
+          "title": "Shubh Vivah",
+          "detail": "Dear friend,",
+          "date": "2027-02-20",
+          "time": "19:00",
+          "venue": "Jag Niwas Gardens",
+          "address": "Udaipur",
+          "message": "It began with a rainy evening in Udaipur and a borrowed umbrella. Like the peacock that dances when the monsoon arrives, our hearts knew the season had changed.",
+          "dress": "Teals, emeralds, sapphire blues and a flash of magenta — come dressed like the monsoon's favourite bird.",
+          "rsvpBy": "2027-01-20"
+        }
+      }
+    },
     {
       "id": "journal",
       "name": "Watercolour Journal",

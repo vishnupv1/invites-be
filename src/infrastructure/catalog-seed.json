@@ -1,5 +1,5 @@
 {
-  "revision": 6,
+  "revision": 8,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,356 @@
     }
   ],
   "templates": [
+    {
+      "id": "blockbuster",
+      "name": "Blockbuster",
+      "style": "blockbuster",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Curtains part, a projector flickers on, and nine reels tell a Jaipur wedding story.",
+      "asks": {
+        "photos": 6,
+        "audio": true,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Wedding",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "crimson",
+            "name": "Cinema crimson"
+          }
+        ],
+        "defaultTheme": "crimson",
+        "shots": [
+          {
+            "label": "first look"
+          },
+          {
+            "label": "coffee dates"
+          },
+          {
+            "label": "the road trip"
+          },
+          {
+            "label": "the proposal"
+          },
+          {
+            "label": "family blessings"
+          },
+          {
+            "label": "forever begins"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The curtains",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Guest name",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "Blockbuster events",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Our moments",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\":[{\"year\":\"Scene 1\",\"title\":\"We Met\",\"text\":\"A chance meeting on a pink-city street changed everything.\"},{\"year\":\"Scene 2\",\"title\":\"We Grew\",\"text\":\"New places, new dreams, one old motorcycle and a stronger bond.\"},{\"year\":\"Scene 3\",\"title\":\"Now Forever\",\"text\":\"And here we are — ready for our biggest premiere yet.\"}],\"programme\":[{\"kick\":\"Sun · 13 Dec 2026\",\"title\":\"Haldi\",\"time\":\"10:00 AM\",\"text\":\"Royal Courtyard\",\"note\":\"Wear something yellow — it will get messy!\"},{\"kick\":\"Mon · 14 Dec 2026\",\"title\":\"Mehendi\",\"time\":\"4:00 PM\",\"text\":\"Zenana Lawn\",\"note\":\"Greens & pinks, and bring your dancing shoes.\"},{\"kick\":\"Tue · 15 Dec 2026\",\"title\":\"Wedding\",\"time\":\"4:00 PM\",\"text\":\"The Royal Palace\",\"note\":\"Traditional festive — sherwanis, sarees, safas.\"},{\"kick\":\"Wed · 16 Dec 2026\",\"title\":\"Reception\",\"time\":\"7:00 PM\",\"text\":\"Durbar Hall\",\"note\":\"Black-tie Bollywood glamour.\"}],\"facts\":[{\"label\":\"Address\",\"value\":\"The Royal Palace, Jaipur, Rajasthan\"},{\"label\":\"Gates open\",\"value\":\"3:30 PM · Baraat at 4:00 PM\"},{\"label\":\"Parking\",\"value\":\"Valet at the main gate\"},{\"label\":\"Nearest airport\",\"value\":\"Jaipur International Airport (12 km)\"},{\"label\":\"Nearest railway station\",\"value\":\"Jaipur Junction (8 km)\"},{\"label\":\"By road\",\"value\":\"Well connected from Delhi (5 hrs) and Agra (4 hrs)\"},{\"label\":\"Stay options\",\"value\":\"Heritage hotels near the venue — ask us for the guest rate\"}],\"venuePhone\":\"+919800000000\"}",
+          "hosts": "son of Mrs. Kavita & Mr. Rakesh Sharma\ndaughter of Mrs. Meena & Mr. Arjun Rathore",
+          "names": "Vishnu & Ananya",
+          "title": "You're invited to the wedding of",
+          "detail": "Meera aunty",
+          "date": "2026-12-15",
+          "time": "16:00",
+          "venue": "The Royal Palace",
+          "address": "Jaipur, Rajasthan",
+          "message": "",
+          "dress": "",
+          "rsvpBy": "2026-11-30"
+        }
+      }
+    },
+    {
+      "id": "backwater",
+      "name": "Backwater Story",
+      "style": "backwater",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Swipe through a backwater wedding story, from the cover to the lanterns over Punnamada Lake.",
+      "asks": {
+        "photos": 6,
+        "audio": true,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Wedding",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "blush",
+            "name": "Backwater blush"
+          }
+        ],
+        "defaultTheme": "blush",
+        "shots": [
+          {
+            "label": "first glance"
+          },
+          {
+            "label": "coffee dates"
+          },
+          {
+            "label": "Munnar mornings"
+          },
+          {
+            "label": "the proposal"
+          },
+          {
+            "label": "family blessings"
+          },
+          {
+            "label": "forever begins"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The cover",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "detail",
+            "label": "Guest name",
+            "configurable": true,
+            "fields": [
+              "detail"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "A note from us",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "Venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "Wedding events",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Our memories",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          },
+          {
+            "id": "music",
+            "label": "Music",
+            "configurable": true,
+            "fields": [
+              "audio"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"story\": [{\"year\": \"2019 · Fort Kochi\", \"title\": \"We Met\", \"text\": \"A rainy evening, one borrowed book and a conversation that never really ended.\"}, {\"year\": \"2021 · Munnar\", \"title\": \"We Explored\", \"text\": \"Misty tea hills, long drives and a hundred little adventures together.\"}, {\"year\": \"2025 · Alleppey\", \"title\": \"We Chose Forever\", \"text\": \"By the backwaters at sunset, he knelt down — and she said yes.\"}], \"programme\": [{\"kick\": \"Mon · 14 Dec\", \"title\": \"Haldi\", \"time\": \"10:00 AM\", \"text\": \"Poolside Lawn\", \"note\": \"Sunshine yellows\"}, {\"kick\": \"Mon · 14 Dec\", \"title\": \"Mehendi\", \"time\": \"4:00 PM\", \"text\": \"Garden Pavilion\", \"note\": \"Pinks & greens\"}, {\"kick\": \"Tue · 15 Dec\", \"title\": \"Wedding\", \"time\": \"4:00 PM\", \"text\": \"Lakeside Mandap\", \"note\": \"Kasavu & silks\"}, {\"kick\": \"Tue · 15 Dec\", \"title\": \"Reception\", \"time\": \"7:30 PM\", \"text\": \"Palm Grove Lawn\", \"note\": \"Evening festive\"}], \"facts\": [{\"label\": \"Cochin Airport\", \"value\": \"85 km · 2 hrs\"}, {\"label\": \"Alleppey town\", \"value\": \"15 min drive\"}, {\"label\": \"Resort jetty\", \"value\": \"free boat pick-up\"}], \"rooms\": [{\"label\": \"Stay\", \"name\": \"Stay by the lake\", \"text\": \"Cottages at Lakeview Resort are held for our guests from 13 to 16 December. Just mention our names when you call.\", \"note\": \"tel:+914770000000\"}, {\"label\": \"Cruise\", \"name\": \"A houseboat morning\", \"text\": \"Join us for a slow cruise through the backwaters on 16 December at 9 AM, with breakfast on board.\", \"note\": \"\"}], \"venuePhone\": \"+914770000000\"}",
+          "hosts": "son of Mrs. Lakshmi & Mr. Rajesh Menon\ndaughter of Mrs. Priya & Mr. Suresh Nair",
+          "names": "Vihaan & Ananya",
+          "title": "Together with their families",
+          "detail": "Meera aunty",
+          "date": "2026-12-15",
+          "time": "16:00",
+          "venue": "Lakeview Resort",
+          "address": "Punnamada Lake, Alleppey, Kerala",
+          "message": "Our story began with one borrowed book and grew into a lifetime of laughter, long drives and little adventures.\nAs we begin this new chapter by the backwaters, nothing would make us happier than having you beside us.\nCome celebrate love, laughter & forever with us.",
+          "dress": "",
+          "rsvpBy": "2026-11-15"
+        }
+      }
+    },
     {
       "id": "peacock",
       "name": "Peacock Dance",

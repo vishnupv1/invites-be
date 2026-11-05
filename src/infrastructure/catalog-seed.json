@@ -1,5 +1,5 @@
 {
-  "revision": 5,
+  "revision": 6,
   "events": [
     {
       "id": "marriage",
@@ -70,7 +70,7 @@
       "id": "peacock",
       "name": "Peacock Dance",
       "style": "peacock",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -260,7 +260,7 @@
       "id": "journal",
       "name": "Watercolour Journal",
       "style": "journal",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -450,7 +450,7 @@
       "id": "templebells",
       "name": "Temple Bells",
       "style": "templebells",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -632,7 +632,7 @@
       "id": "satinbow",
       "name": "Satin Bow",
       "style": "satinbow",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -814,7 +814,7 @@
       "id": "starryfairytale",
       "name": "Starry Fairytale",
       "style": "starryfairytale",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -962,7 +962,7 @@
       "id": "weddingride",
       "name": "Wedding Ride",
       "style": "weddingride",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -1169,7 +1169,7 @@
       "id": "firstdance",
       "name": "First Dance",
       "style": "firstdance",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -1374,7 +1374,7 @@
       "id": "baptism2",
       "name": "Baptism",
       "style": "baptism2",
-      "price": 1299,
+      "price": 199,
       "free": false,
       "events": [
         "baptism"
@@ -1569,7 +1569,7 @@
       "id": "rose",
       "name": "Rose Glass",
       "style": "rose",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -1739,7 +1739,7 @@
       "id": "lotus",
       "name": "Lotus Lens",
       "style": "lotus",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -1781,7 +1781,7 @@
       "id": "goa",
       "name": "Goa Gates",
       "style": "goa",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -1823,7 +1823,7 @@
       "id": "lace",
       "name": "Lace Reveal",
       "style": "lace",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -1987,8 +1987,8 @@
       "id": "gazal",
       "name": "Gazal",
       "style": "gazal",
-      "price": 0,
-      "free": true,
+      "price": 199,
+      "free": false,
       "events": [
         "marriage"
       ],
@@ -2168,8 +2168,8 @@
       "id": "aurelia",
       "name": "Aurelia",
       "style": "aurelia",
-      "price": 0,
-      "free": true,
+      "price": 199,
+      "free": false,
       "events": [
         "marriage"
       ],
@@ -2331,7 +2331,7 @@
       "id": "anna",
       "name": "Anna",
       "style": "anna",
-      "price": 299,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -2539,7 +2539,7 @@
       "id": "baptism",
       "name": "Baptism",
       "style": "baptism",
-      "price": 1299,
+      "price": 199,
       "free": false,
       "events": [
         "baptism"
@@ -2734,7 +2734,7 @@
       "id": "vivah",
       "name": "Vivah",
       "style": "vivah",
-      "price": 379,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -2935,7 +2935,7 @@
       "id": "beach",
       "name": "Beach",
       "style": "beach",
-      "price": 549,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -3125,7 +3125,7 @@
       "id": "hearth",
       "name": "Hearth",
       "style": "home",
-      "price": 599,
+      "price": 199,
       "free": false,
       "events": [
         "housewarming"
@@ -3294,7 +3294,7 @@
       "id": "shaadi",
       "name": "Shaadi",
       "style": "shaadi",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -3510,7 +3510,7 @@
       "id": "thiruvizha",
       "name": "Thiruvizha",
       "style": "thiruvizha",
-      "price": 449,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -3721,7 +3721,7 @@
       "id": "peace",
       "name": "Peace",
       "style": "peace",
-      "price": 999,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -3948,7 +3948,7 @@
       "id": "botanica",
       "name": "Blush Botanica",
       "style": "botanica",
-      "price": 479,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -4154,7 +4154,7 @@
       "id": "heavenly",
       "name": "Heavenly",
       "style": "heavenly",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -4336,7 +4336,7 @@
       "id": "pull",
       "name": "Pull of Love",
       "style": "pull",
-      "price": 349,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -4530,7 +4530,7 @@
       "id": "inland",
       "name": "Inland Letter",
       "style": "inland",
-      "price": 299,
+      "price": 199,
       "free": false,
       "events": [
         "birthday"
@@ -4706,7 +4706,7 @@
       "id": "grandoor",
       "name": "The Grand Door",
       "style": "grandoor",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -4865,7 +4865,7 @@
       "id": "grandenvelope",
       "name": "Grand Envelope",
       "style": "grandenvelope",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -5043,7 +5043,7 @@
       "id": "palace",
       "name": "Palace",
       "style": "palace",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -5214,7 +5214,7 @@
       "id": "moonlit",
       "name": "Moonlit Jharokha",
       "style": "moonlit",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -5385,7 +5385,7 @@
       "id": "villa",
       "name": "Villa Serena",
       "style": "villa",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -5538,7 +5538,7 @@
       "id": "hansa",
       "name": "Hansa",
       "style": "hansa",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"
@@ -5706,7 +5706,7 @@
       "id": "bloom",
       "name": "Bloom Letter",
       "style": "bloom",
-      "price": 499,
+      "price": 199,
       "free": false,
       "events": [
         "marriage"

@@ -1,5 +1,5 @@
 {
-  "revision": 8,
+  "revision": 9,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,160 @@
     }
   ],
   "templates": [
+    {
+      "id": "jasmine",
+      "name": "Jasmine",
+      "style": "jasmine",
+      "price": 0,
+      "free": true,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Jasmine curtains part onto a Kerala wedding. Guests tap to open, then see the day, the venue, and reply on the page.",
+      "asks": {
+        "photos": 0,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Wedding ceremony",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "jasmine",
+            "name": "Jasmine"
+          }
+        ],
+        "defaultTheme": "jasmine",
+        "shots": [],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The curtains",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The Grand Grove",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Kindly reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "19:00",
+          "receptionVenue": "The Grand Grove",
+          "receptionAddress": "Kochi, Kerala",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\": [{\"kick\": \"Saturday, 14 December\", \"title\": \"Wedding ceremony\", \"time\": \"5:30 PM\", \"text\": \"The Grand Grove, Kochi\", \"note\": \"Saturday, 14 December 2026\"}, {\"kick\": \"Saturday, 14 December\", \"title\": \"Wedding reception\", \"time\": \"7:00 PM\", \"text\": \"The Grand Grove, Kochi\", \"note\": \"Saturday, 14 December 2026\"}]}",
+          "hosts": "Together with their families",
+          "names": "Athira & Rahul",
+          "title": "To celebrate our wedding",
+          "detail": "",
+          "date": "2026-12-14",
+          "time": "17:30",
+          "venue": "The Grand Grove",
+          "address": "Kochi, Kerala",
+          "message": "Your presence would make the evening complete.",
+          "dress": "Festive traditional",
+          "rsvpBy": "2026-12-01"
+        }
+      }
+    },
     {
       "id": "blockbuster",
       "name": "Blockbuster",

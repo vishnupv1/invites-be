@@ -42,8 +42,21 @@ function slug() {
   return randomBytes(6).toString("base64url");
 }
 
+function isAdminEmail(email: string) {
+  return config.adminEmails.includes(email.trim().toLowerCase());
+}
+
+export function publicHost(host: { id?: unknown; email: string; name: string }) {
+  return {
+    id: String(host.id),
+    email: host.email,
+    name: host.name,
+    admin: isAdminEmail(host.email),
+  };
+}
+
 function hostView(host: { id?: unknown; email: string; name: string }, token: string) {
-  return { token, host: { id: String(host.id), email: host.email, name: host.name } };
+  return { token, host: publicHost(host) };
 }
 
 export async function ensureAdmin() {
@@ -207,7 +220,7 @@ export async function saveFeedback(
 
 export async function adminSummary(token: string | undefined) {
   const host = await hostFromToken(token);
-  if (!config.adminEmails.includes(host.email)) throw new AppError(403, "This account is not an admin.");
+  if (!isAdminEmail(host.email)) throw new AppError(403, "This account is not an admin.");
   const [hosts, invites, purchases, feedback] = await Promise.all([
     HostModel.find().sort({ createdAt: -1 }),
     InviteModel.find().sort({ createdAt: -1 }),
@@ -289,7 +302,7 @@ export async function renameHost(token: string | undefined, name: string) {
   const host = await hostFromToken(token);
   host.name = name.trim();
   await host.save();
-  return { id: String(host.id), email: host.email, name: host.name };
+  return publicHost(host);
 }
 
 type SeedEvent = { id: string; label: string; cardLabel: string; detailLabel: string; namesLabel: string; hostsLabel: string; titleLabel: string };

@@ -3,7 +3,7 @@ import multipart from "@fastify/multipart";
 import Fastify from "fastify";
 import { createReadStream } from "node:fs";
 import { z } from "zod";
-import { addGreeting, adminSummary, createInvite, createPaymentOrder, deleteInvite, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveFeedback, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
+import { addGreeting, adminSummary, createInvite, createPaymentOrder, deleteInvite, endSession, getCatalogTemplate, getOwnInvite, getPublicInvite, hostFromToken, listEvents, listGreetings, listInvites, listPendingPayments, listPurchases, listTemplates, logIn, openSession, publicHost, publishInvite, purchaseTemplate, readMedia, recoverPendingPayment, renameHost, saveFeedback, saveInvite, saveMedia, signInWithGoogle, signUp, verifyCoupon, verifyPayment } from "../application/services.js";
 import { suggestTemplates } from "../application/suggest.js";
 import { config } from "../config.js";
 import { AppError } from "../domain/errors.js";
@@ -134,7 +134,7 @@ export function buildServer() {
 
   app.get("/api/session", async (request) => {
     const host = await hostFromToken(bearer(request.headers.authorization));
-    return { id: host.id, email: host.email, name: host.name };
+    return publicHost(host);
   });
 
   app.patch("/api/session", async (request) => {

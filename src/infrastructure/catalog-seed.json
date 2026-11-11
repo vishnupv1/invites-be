@@ -67,6 +67,178 @@
   ],
   "templates": [
     {
+      "id": "marble",
+      "name": "Marble Promise",
+      "style": "marble",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "A marble lotus opens onto a Taj Mahal wedding. Guests see the celebrations, the venue, and reply on the page.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Wedding ceremony",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "marble",
+            "name": "Marble Promise"
+          }
+        ],
+        "defaultTheme": "marble",
+        "shots": [
+          {
+            "label": "The two of us"
+          },
+          {
+            "label": "A quiet hour"
+          },
+          {
+            "label": "With everyone"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Marble lotus",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "21:00",
+          "receptionVenue": "The Royal Gardens",
+          "receptionAddress": "Hyderabad, Telangana",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\":[{\"kick\":\"Friday, 10 December\",\"title\":\"Mehendi\",\"time\":\"4:00 PM\",\"text\":\"The Garden Pavilion\",\"note\":\"An afternoon of colour and celebration\"},{\"kick\":\"Saturday, 11 December\",\"title\":\"Sangeet\",\"time\":\"7:00 PM\",\"text\":\"The Royal Courtyard\",\"note\":\"Music, laughter and memories\"},{\"kick\":\"Sunday, 12 December\",\"title\":\"Wedding ceremony\",\"time\":\"6:00 PM\",\"text\":\"The Royal Gardens\",\"note\":\"The beginning of forever\"}]}",
+          "hosts": "Together with their families",
+          "names": "Aarav & Meera",
+          "title": "Two hearts, one timeless promise.",
+          "detail": "",
+          "date": "2027-12-12",
+          "time": "18:00",
+          "venue": "The Royal Gardens",
+          "address": "Hyderabad, Telangana",
+          "message": "With the blessings of our families, we invite you to celebrate our wedding.",
+          "dress": "Traditional festive",
+          "rsvpBy": "2027-11-20"
+        }
+      }
+    },
+    {
       "id": "raas",
       "name": "Eternal Raas",
       "style": "raas",

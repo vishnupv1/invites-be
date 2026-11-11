@@ -700,11 +700,12 @@ export async function listPurchases(token: string | undefined) {
   return rows.map((row) => row.templateId);
 }
 
-async function assertCanUse(hostId: string, templateId: string) {
+async function assertCanUse(host: { email: string }, templateId: string) {
   const template = await getCatalogTemplate(templateId);
   if (!template) throw new AppError(404, "Unknown template.");
+  // Admin accounts publish without a purchase so a design can be tested.
+  if (isAdminEmail(host.email)) return;
   // Prices are paused. Publishing does not require a purchase.
-  void hostId;
   void entitlementAllowsPublish;
   return;
   // if (template.free) return;
@@ -907,7 +908,7 @@ export async function publishInvite(token: string | undefined, id: string) {
   const invite = await InviteModel.findOne({ _id: id, hostId: host.id });
   if (!invite) throw new AppError(404, "Invitation not found.");
   if (invite.status !== "draft") return toInvite(invite, await GreetingModel.countDocuments({ inviteId: invite.id }), await GreetingModel.countDocuments({ inviteId: invite.id, attending: true }));
-  await assertCanUse(host.id, invite.templateId);
+  await assertCanUse(host, invite.templateId);
   const names = String(invite.fields?.names ?? "").trim();
   const date = String(invite.fields?.date ?? "").trim();
   if (!names || date.length < 8) throw new AppError(400, "Add the names and a date before publishing.");

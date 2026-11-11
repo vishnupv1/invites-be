@@ -67,6 +67,178 @@
   ],
   "templates": [
     {
+      "id": "raas",
+      "name": "Eternal Raas",
+      "style": "raas",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "A peacock feather opens a painted Radha-Krishna wedding. Guests see the celebrations, the venue, and reply on the page.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Wedding ceremony",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "raas",
+            "name": "Eternal Raas"
+          }
+        ],
+        "defaultTheme": "raas",
+        "shots": [
+          {
+            "label": "The two of us"
+          },
+          {
+            "label": "A quiet hour"
+          },
+          {
+            "label": "With everyone"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "Peacock feather",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "20:30",
+          "receptionVenue": "Falaknuma Palace",
+          "receptionAddress": "Hyderabad, Telangana",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\":[{\"kick\":\"Friday, 10 December\",\"title\":\"Haldi\",\"time\":\"11:00 AM\",\"text\":\"Falaknuma Palace, Hyderabad\",\"note\":\"Sunshine yellow\"},{\"kick\":\"Saturday, 11 December\",\"title\":\"Sangeet\",\"time\":\"7:00 PM\",\"text\":\"Falaknuma Palace, Hyderabad\",\"note\":\"Festive glamour\"},{\"kick\":\"Sunday, 12 December\",\"title\":\"Wedding ceremony\",\"time\":\"6:30 PM\",\"text\":\"Falaknuma Palace, Hyderabad\",\"note\":\"Traditional festive\"}]}",
+          "hosts": "With the blessings of our families",
+          "names": "Aarav & Meera",
+          "title": "A love painted in eternity",
+          "detail": "",
+          "date": "2027-12-12",
+          "time": "18:30",
+          "venue": "Falaknuma Palace",
+          "address": "Hyderabad, Telangana",
+          "message": "With the blessings of our families and the grace of Radha and Krishna, we invite you to celebrate the beginning of our forever.",
+          "dress": "Traditional festive",
+          "rsvpBy": "2027-11-20"
+        }
+      }
+    },
+    {
       "id": "celestial",
       "name": "Celestial Vows",
       "style": "celestial",
@@ -76,9 +248,9 @@
         "marriage"
       ],
       "tagline": "Wedding",
-    "description": "A night sky opens on a north star, then the names, the celebrations, and a reply under the moon.",
-    "asks": {
-      "photos": 3,
+      "description": "A night sky opens on a north star, then the names, the celebrations, and a reply under the moon.",
+      "asks": {
+        "photos": 3,
         "audio": false,
         "location": true
       },

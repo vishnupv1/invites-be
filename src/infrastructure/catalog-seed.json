@@ -67,6 +67,178 @@
   ],
   "templates": [
     {
+      "id": "celestial",
+      "name": "Celestial Vows",
+      "style": "celestial",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+    "description": "A night sky opens on a north star, then the names, the celebrations, and a reply under the moon.",
+    "asks": {
+      "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Wedding ceremony",
+        "reception": "Reception",
+        "themes": [
+          {
+            "id": "celestial",
+            "name": "Celestial"
+          }
+        ],
+        "defaultTheme": "celestial",
+        "shots": [
+          {
+            "label": "The two of us"
+          },
+          {
+            "label": "A quiet hour"
+          },
+          {
+            "label": "With everyone"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "North star",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Note",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The venue",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "reception",
+            "label": "Reception",
+            "configurable": true,
+            "fields": [
+              "receptionVenue",
+              "receptionAddress",
+              "receptionTime"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The celebrations",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "19:30",
+          "receptionVenue": "The Observatory Terrace",
+          "receptionAddress": "Udaipur, Rajasthan",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\":[{\"kick\":\"Friday, 11 December\",\"title\":\"Welcome evening\",\"time\":\"7:00 PM\",\"text\":\"The Observatory Terrace, Udaipur\",\"note\":\"Festive elegance\"},{\"kick\":\"Saturday, 12 December\",\"title\":\"Wedding ceremony\",\"time\":\"5:00 PM\",\"text\":\"The Observatory Terrace, Udaipur\",\"note\":\"Formal attire\"},{\"kick\":\"Saturday, 12 December\",\"title\":\"Reception\",\"time\":\"7:30 PM\",\"text\":\"The Observatory Terrace, Udaipur\",\"note\":\"Evening elegance\"}]}",
+          "hosts": "Together with their families",
+          "names": "Mira & Arjun",
+          "title": "Our forever begins here",
+          "detail": "",
+          "date": "2026-12-12",
+          "time": "17:00",
+          "venue": "The Observatory Terrace",
+          "address": "Udaipur, Rajasthan",
+          "message": "Across all the skies and all the seasons, we found our way to each other.",
+          "dress": "Formal attire",
+          "rsvpBy": "2026-11-28"
+        }
+      }
+    },
+    {
       "id": "jasmine",
       "name": "Jasmine",
       "style": "jasmine",

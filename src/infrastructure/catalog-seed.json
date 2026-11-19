@@ -1,5 +1,5 @@
 {
-  "revision": 10,
+  "revision": 11,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,168 @@
     }
   ],
   "templates": [
+    {
+      "id": "estate",
+      "name": "The Painted Estate",
+      "style": "estate",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Untie a silk ribbon and two painted flaps open onto a Mediterranean estate wedding. Guests see the day, the garden, and reply on the page.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The ceremony",
+        "reception": "Dinner & dancing",
+        "themes": [
+          {
+            "id": "estate",
+            "name": "The Painted Estate"
+          }
+        ],
+        "defaultTheme": "estate",
+        "shots": [
+          {
+            "label": "The two of us"
+          },
+          {
+            "label": "A quiet hour"
+          },
+          {
+            "label": "With everyone"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The ribbon",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The estate",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The day",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "19:00",
+          "receptionVenue": "Villa del Mare",
+          "receptionAddress": "Amalfi Coast, Italy",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\":[{\"kick\":\"Tuesday, 27 July\",\"title\":\"Welcome drinks\",\"time\":\"16:00\",\"text\":\"Terrace · Garden attire\",\"note\":\"\"},{\"kick\":\"Tuesday, 27 July\",\"title\":\"The ceremony\",\"time\":\"17:00\",\"text\":\"Estate garden\",\"note\":\"\"},{\"kick\":\"Tuesday, 27 July\",\"title\":\"Dinner & dancing\",\"time\":\"19:00\",\"text\":\"Villa courtyard\",\"note\":\"\"}]}",
+          "hosts": "Together with their families",
+          "names": "Sophia & Alexander",
+          "title": "Invite you to celebrate their wedding",
+          "detail": "",
+          "date": "2027-07-27",
+          "time": "16:00",
+          "venue": "Villa del Mare",
+          "address": "Amalfi Coast, Italy",
+          "message": "Somewhere between the quiet mornings and the unexpected adventures, we found our favourite place: beside each other. Now we would love to share the beginning of our next chapter with you.",
+          "dress": "Garden attire",
+          "rsvpBy": "2027-06-27"
+        }
+      }
+    },
     {
       "id": "forever",
       "name": "Garden of Forever",

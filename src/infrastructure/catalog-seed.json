@@ -1,5 +1,5 @@
 {
-  "revision": 11,
+  "revision": 12,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,152 @@
     }
   ],
   "templates": [
+    {
+      "id": "bali",
+      "name": "Bali Romance",
+      "style": "bali",
+      "price": 199,
+      "free": false,
+      "events": [
+        "engagement"
+      ],
+      "tagline": "Engagement",
+      "description": "Two fans open onto a coast road, and a scooter carries the couple toward their engagement in Bali. Guests see the day and reply on the page.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The celebration",
+        "reception": "The celebration",
+        "themes": [
+          {
+            "id": "bali",
+            "name": "Bali Romance"
+          }
+        ],
+        "defaultTheme": "bali",
+        "shots": [
+          {
+            "label": "The two of us"
+          },
+          {
+            "label": "A quiet hour"
+          },
+          {
+            "label": "With everyone"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The fans",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Announcement",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Save the date",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "The day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The place",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "engagement": {
+          "event": "engagement",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\":[{\"kick\":\"Sunday, 18 April\",\"title\":\"The celebration\",\"time\":\"17:00\",\"text\":\"Uluwatu, Bali\",\"note\":\"\"}]}",
+          "hosts": "We are getting engaged",
+          "names": "Kelly & Daniel",
+          "title": "Save the Date",
+          "detail": "",
+          "date": "2027-04-18",
+          "time": "17:00",
+          "venue": "Uluwatu",
+          "address": "Bali",
+          "message": "Now we want to celebrate our next chapter with you.",
+          "dress": "Tropical linen",
+          "rsvpBy": "2027-03-18"
+        }
+      }
+    },
     {
       "id": "estate",
       "name": "The Painted Estate",

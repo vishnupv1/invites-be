@@ -1017,14 +1017,19 @@ export async function addGreeting(
 export async function saveMedia(token: string | undefined, file: { filename: string; mimetype: string; buffer: Buffer }) {
   const host = await hostFromToken(token);
   if (!file.buffer.length) throw new AppError(400, "That file is empty. Choose it again.");
-  if (!file.mimetype.startsWith("image/") && !file.mimetype.startsWith("audio/")) {
+  const image = file.mimetype.startsWith("image/");
+  const mpegName = /\.(mp3|mpeg|mpg|mp2|mpa)$/i.test(file.filename);
+  const mpegType = !image && (file.mimetype === "video/mpeg" || file.mimetype === "video/mpg" || mpegName);
+  const song = file.mimetype.startsWith("audio/") || mpegType;
+  if (!image && !song) {
     throw new AppError(400, "Upload a photo or an audio file.");
   }
   if (file.buffer.length > 4_500_000) throw new AppError(400, "That file is larger than 4.5 MB. Choose a smaller one.");
   const id = randomBytes(8).toString("hex");
-  const ext = path.extname(file.filename).slice(0, 8) || (file.mimetype.startsWith("audio/") ? ".mp3" : ".jpg");
+  const mime = mpegType && !file.mimetype.startsWith("audio/") ? "audio/mpeg" : file.mimetype;
+  const ext = path.extname(file.filename).slice(0, 8) || (song ? ".mp3" : ".jpg");
   const filename = `${id}${ext}`;
-  await MediaModel.create({ hostId: host.id, filename, mime: file.mimetype, data: file.buffer });
+  await MediaModel.create({ hostId: host.id, filename, mime, data: file.buffer });
   try {
     await mkdir(uploadsDir, { recursive: true });
     await writeFile(path.join(uploadsDir, filename), file.buffer);

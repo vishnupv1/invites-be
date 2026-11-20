@@ -1,5 +1,5 @@
 {
-  "revision": 12,
+  "revision": 13,
   "events": [
     {
       "id": "marriage",
@@ -78,7 +78,7 @@
       "tagline": "Engagement",
       "description": "Two fans open onto a coast road, and a scooter carries the couple toward their engagement in Bali. Guests see the day and reply on the page.",
       "asks": {
-        "photos": 3,
+        "photos": 6,
         "audio": false,
         "location": true
       },
@@ -102,6 +102,15 @@
           },
           {
             "label": "With everyone"
+          },
+          {
+            "label": "The coast"
+          },
+          {
+            "label": "A Sunday"
+          },
+          {
+            "label": "The celebration"
           }
         ],
         "rsvp": {

@@ -1,5 +1,5 @@
 {
-  "revision": 13,
+  "revision": 14,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,168 @@
     }
   ],
   "templates": [
+    {
+      "id": "secretgarden",
+      "name": "The Secret Garden",
+      "style": "secretgarden",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Wedding",
+      "description": "Break a wax seal and the curtains part onto a garden wedding. Guests see the day, the venue, and reply on the page.",
+      "asks": {
+        "photos": 3,
+        "audio": false,
+        "location": true
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The ceremony",
+        "reception": "Dinner & dancing",
+        "themes": [
+          {
+            "id": "secretgarden",
+            "name": "The Secret Garden"
+          }
+        ],
+        "defaultTheme": "secretgarden",
+        "shots": [
+          {
+            "label": "A quiet hour"
+          },
+          {
+            "label": "The two of us"
+          },
+          {
+            "label": "With everyone"
+          }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 10
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The wax seal",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "hosts",
+            "label": "Families",
+            "configurable": true,
+            "fields": [
+              "hosts"
+            ]
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "message",
+            "label": "Our story",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "Wedding day",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The garden",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address",
+              "lat",
+              "lng"
+            ]
+          },
+          {
+            "id": "dress",
+            "label": "Dress",
+            "configurable": true,
+            "fields": [
+              "dress"
+            ]
+          },
+          {
+            "id": "programme",
+            "label": "The day",
+            "configurable": true,
+            "fields": [
+              "lines"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "{\"programme\":[{\"kick\":\"Saturday, 16 October\",\"title\":\"Welcome drinks\",\"time\":\"3:30 PM\",\"text\":\"Meet us in the gardens.\",\"note\":\"\"},{\"kick\":\"Saturday, 16 October\",\"title\":\"The ceremony\",\"time\":\"4:00 PM\",\"text\":\"Our vows, surrounded by nature.\",\"note\":\"\"},{\"kick\":\"Saturday, 16 October\",\"title\":\"Dinner & dancing\",\"time\":\"6:00 PM\",\"text\":\"Celebrate under the evening lights.\",\"note\":\"\"}],\"faqs\":[{\"q\":\"What should I wear?\",\"a\":\"Garden formal. Comfortable shoes are encouraged.\"},{\"q\":\"Can I bring a guest?\",\"a\":\"Please refer to your invitation and indicate your guest count below.\"},{\"q\":\"What about dietary requirements?\",\"a\":\"Include any requirements in your RSVP.\"}]}",
+          "hosts": "Together with their families",
+          "names": "Amelia & Oliver",
+          "title": "Invite you to celebrate their wedding",
+          "detail": "A garden celebration",
+          "date": "2027-10-16",
+          "time": "16:00",
+          "venue": "Royal Botanic Gardens, Kew",
+          "address": "Richmond, London",
+          "message": "Every little moment led us here.",
+          "dress": "Garden formal",
+          "rsvpBy": "2027-09-16"
+        }
+      }
+    },
     {
       "id": "bali",
       "name": "Bali Romance",

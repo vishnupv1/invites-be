@@ -1,5 +1,5 @@
 {
-  "revision": 14,
+  "revision": 18,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,147 @@
     }
   ],
   "templates": [
+    {
+      "id": "sage",
+      "name": "Sage",
+      "style": "sage",
+      "price": 199,
+      "free": false,
+      "events": [
+        "marriage"
+      ],
+      "tagline": "Save the date",
+      "description": "Tap a sage envelope and a polaroid prints the date, then the day continues with photographs, a countdown, a scratch to reveal, and a reply.",
+      "asks": {
+        "photos": 8,
+        "audio": false,
+        "location": false
+      },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The place",
+        "reception": "",
+        "themes": [
+          {
+            "id": "sage",
+            "name": "Sage"
+          }
+        ],
+        "defaultTheme": "sage",
+        "shots": [
+          { "label": "First page" },
+          { "label": "Reveal" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" }
+        ],
+        "rsvp": {
+          "meal": false,
+          "song": false,
+          "maxGuests": 6
+        },
+        "components": [
+          {
+            "id": "opening",
+            "label": "The envelope",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "names",
+            "label": "Couple",
+            "configurable": true,
+            "fields": [
+              "names"
+            ]
+          },
+          {
+            "id": "line",
+            "label": "Invitation line",
+            "configurable": true,
+            "fields": [
+              "title"
+            ]
+          },
+          {
+            "id": "when",
+            "label": "The date",
+            "configurable": true,
+            "fields": [
+              "date",
+              "time"
+            ]
+          },
+          {
+            "id": "ceremony",
+            "label": "The place",
+            "configurable": true,
+            "fields": [
+              "venue",
+              "address"
+            ]
+          },
+          {
+            "id": "gallery",
+            "label": "Photographs",
+            "configurable": true,
+            "fields": [
+              "photos"
+            ]
+          },
+          {
+            "id": "countdown",
+            "label": "Countdown",
+            "configurable": false,
+            "fields": []
+          },
+          {
+            "id": "message",
+            "label": "Scratch to reveal",
+            "configurable": true,
+            "fields": [
+              "message"
+            ]
+          },
+          {
+            "id": "rsvp",
+            "label": "Reply",
+            "configurable": true,
+            "fields": [
+              "rsvpBy"
+            ]
+          }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "",
+          "hosts": "",
+          "names": "Ana & Luka",
+          "title": "We're getting married",
+          "detail": "",
+          "date": "2027-04-29",
+          "time": "16:00",
+          "venue": "The Orangery",
+          "address": "Lisbon",
+          "message": "Lisbon, in the spring light.",
+          "dress": "",
+          "rsvpBy": ""
+        }
+      }
+    },
     {
       "id": "secretgarden",
       "name": "The Secret Garden",

@@ -1,5 +1,5 @@
 {
-  "revision": 18,
+  "revision": 20,
   "events": [
     {
       "id": "marriage",
@@ -66,6 +66,132 @@
     }
   ],
   "templates": [
+    {
+      "id": "deepam",
+      "name": "Deepam",
+      "style": "deepam",
+      "price": 199,
+      "free": false,
+      "events": ["marriage"],
+      "tagline": "Wedding",
+      "description": "Tap to light a brass deepastambham in a Kerala temple courtyard, then the invitation, the celebrations, a countdown, and a reply.",
+      "asks": { "photos": 4, "audio": false, "location": false },
+      "meta": {
+        "names": "couple",
+        "ceremony": "Muhurtham",
+        "reception": "Reception",
+        "themes": [{ "id": "deepam", "name": "Deepam" }],
+        "defaultTheme": "deepam",
+        "shots": [
+          { "label": "Our journey" },
+          { "label": "Our journey" },
+          { "label": "Our journey" },
+          { "label": "Our journey" }
+        ],
+        "rsvp": { "meal": false, "song": false, "maxGuests": 6 },
+        "components": [
+          { "id": "opening", "label": "The lamp", "configurable": false, "fields": [] },
+          { "id": "names", "label": "Couple", "configurable": true, "fields": ["names"] },
+          { "id": "line", "label": "Blessing", "configurable": true, "fields": ["title"] },
+          { "id": "when", "label": "Muhurtham", "configurable": true, "fields": ["date", "time"] },
+          { "id": "ceremony", "label": "Muhurtham", "configurable": true, "fields": ["venue", "address"] },
+          { "id": "reception", "label": "Reception", "configurable": true, "fields": ["receptionTime", "receptionVenue", "receptionAddress"] },
+          { "id": "gallery", "label": "Our journey", "configurable": true, "fields": ["photos"] },
+          { "id": "countdown", "label": "Countdown", "configurable": false, "fields": [] },
+          { "id": "rsvp", "label": "Reply", "configurable": true, "fields": ["rsvpBy"] }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "18:30",
+          "receptionVenue": "Kalyana Mandapam",
+          "receptionAddress": "Guruvayur",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "",
+          "hosts": "",
+          "names": "Arun & Anju",
+          "title": "With the Blessings of Sri Guruvayurappan",
+          "detail": "",
+          "date": "2027-01-30",
+          "time": "09:30",
+          "venue": "Guruvayur Temple",
+          "address": "Guruvayur, Kerala",
+          "message": "",
+          "dress": "",
+          "rsvpBy": ""
+        }
+      }
+    },
+    {
+      "id": "peony",
+      "name": "Peony",
+      "style": "peony",
+      "price": 199,
+      "free": false,
+      "events": ["marriage"],
+      "tagline": "Save the date",
+      "description": "Tap a burgundy envelope and a polaroid prints the date, then the day continues with peonies, a countdown, a scratch to reveal, and a reply.",
+      "asks": { "photos": 8, "audio": false, "location": false },
+      "meta": {
+        "names": "couple",
+        "ceremony": "The place",
+        "reception": "",
+        "themes": [{ "id": "peony", "name": "Peony" }],
+        "defaultTheme": "peony",
+        "shots": [
+          { "label": "First page" },
+          { "label": "Reveal" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" },
+          { "label": "Gallery" }
+        ],
+        "rsvp": { "meal": false, "song": false, "maxGuests": 6 },
+        "components": [
+          { "id": "opening", "label": "The envelope", "configurable": false, "fields": [] },
+          { "id": "names", "label": "Couple", "configurable": true, "fields": ["names"] },
+          { "id": "line", "label": "Invitation line", "configurable": true, "fields": ["title"] },
+          { "id": "when", "label": "The date", "configurable": true, "fields": ["date", "time"] },
+          { "id": "ceremony", "label": "The place", "configurable": true, "fields": ["venue", "address"] },
+          { "id": "gallery", "label": "Photographs", "configurable": true, "fields": ["photos"] },
+          { "id": "countdown", "label": "Countdown", "configurable": false, "fields": [] },
+          { "id": "message", "label": "Scratch to reveal", "configurable": true, "fields": ["message"] },
+          { "id": "rsvp", "label": "Reply", "configurable": true, "fields": ["rsvpBy"] }
+        ]
+      },
+      "samples": {
+        "marriage": {
+          "event": "marriage",
+          "hostEmail": "",
+          "receptionTime": "",
+          "receptionVenue": "",
+          "receptionAddress": "",
+          "photos": [],
+          "audio": "",
+          "lat": "",
+          "lng": "",
+          "lines": "",
+          "hosts": "",
+          "names": "Clara & Julien",
+          "title": "We joyfully invite you to our wedding",
+          "detail": "",
+          "date": "2027-06-20",
+          "time": "17:00",
+          "venue": "The Rose Conservatory",
+          "address": "Florence",
+          "message": "Among the peonies.",
+          "dress": "",
+          "rsvpBy": ""
+        }
+      }
+    },
     {
       "id": "sage",
       "name": "Sage",
